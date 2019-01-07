@@ -56,7 +56,7 @@
                     <p>{{$t("samples.ec01.member.login.payInfo")}}</p>
                     <p><router-link class="text-dark" v-bind:to="{name: 'inputShippingInfoNoMember'}">{{$t("samples.ec01.member.login.pay")}}</router-link></p>
                 </div>
-            <output-token ref="token"><output-token>
+            <output-token ref="token"></output-token>
             </form>
         </div>
     </div>

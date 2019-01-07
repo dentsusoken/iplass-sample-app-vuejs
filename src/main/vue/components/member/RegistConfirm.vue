@@ -89,7 +89,7 @@
                         <button type="button" class="btn btn-dark" v-on:click="registMemberInfo()">{{$t("samples.ec01.member.registConfirm.regist")}}</button>
                     </div>
                 </div>
-            <output-token ref="token"><output-token>
+            <output-token ref="token"></output-token>
             </form>
         </div>
     </div>

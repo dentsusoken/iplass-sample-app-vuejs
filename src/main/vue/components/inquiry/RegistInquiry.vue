@@ -82,7 +82,7 @@
                         <button type="button" class="btn btn-dark" v-on:click="doInquiry()">{{$t("samples.ec01.inquiry.regist.doRegist")}}</button>
                     </div>
                 </div>
-                <output-token ref="token"><output-token>
+                <output-token ref="token"></output-token>
             </form>
         </div>
     </div>

@@ -1,3 +1,5 @@
+lang: [English](./README-EN.md) | [日本語](./README.md)
+
 # iplass-sample-app-vuejs
 iPLAssのVue.js/WebAPI版のサンプルアプリです。
 

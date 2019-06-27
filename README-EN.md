@@ -5,11 +5,11 @@ The Vue.js/WebAPI version of iPLAss sample application.
 
 For the abstracts about the sample application, please refer to the following document.
 
-<https://iplass.org/docs/sample/>
+<https://iplass.org/docs/sample/> _(English version is under constuction)_
 
 For the steps to run the sample application, please refer to the following document.
 
-<https://iplass.org/docs/sample/vuejswebapi/>
+<https://iplass.org/docs/sample/vuejswebapi/> _(English version is under constuction)_
 
 ## Related repositories
 

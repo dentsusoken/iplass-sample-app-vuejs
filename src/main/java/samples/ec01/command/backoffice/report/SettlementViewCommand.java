@@ -66,9 +66,9 @@ public class SettlementViewCommand implements Command {
 		// 初期化
 		for (int cnt = 0; cnt < MAX_CNT; cnt++) {
 			request.setAttribute(RESULT_PRODUCT + cnt, "");
-			request.setAttribute(RESULT_QUANTITY + cnt, "0");
-			request.setAttribute(RESULT_ITEM_PRICE + cnt, "0");
-			request.setAttribute(RESULT_PRICE + cnt, "0");
+			request.setAttribute(RESULT_QUANTITY + cnt, 0L);
+			request.setAttribute(RESULT_ITEM_PRICE + cnt, 0L);
+			request.setAttribute(RESULT_PRICE + cnt, 0L);
 		}
 		int cnt = 0;
 		Long totalPrice = 0L;

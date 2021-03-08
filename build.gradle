@@ -14,7 +14,6 @@ apply plugin: 'eclipse-wtp'
 apply plugin: 'com.github.node-gradle.node'
 
 repositories {
-	jcenter()
 	mavenCentral()
 
 	maven {

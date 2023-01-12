@@ -1,17 +1,16 @@
-buildscript {
-  repositories {
-    maven {
-      url "https://plugins.gradle.org/m2/"
-    }
-  }
-  dependencies {
-    classpath "com.github.node-gradle:gradle-node-plugin:2.2.4"
-  }
+plugins {
+	id 'com.github.node-gradle.node' version '3.5.1' apply false
 }
+
 apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'eclipse-wtp'
 apply plugin: 'com.github.node-gradle.node'
+
+ext {
+	javaVersion = JavaVersion.VERSION_1_8
+	nodejsVersion = '16.19.0'
+}
 
 repositories {
 	mavenCentral()
@@ -113,6 +112,18 @@ dependencies {
 	providedRuntime fileTree('lib').include('**/*.jar')
 }
 
+java {
+	sourceCompatibility = javaVersion
+	targetCompatibility = javaVersion
+}
+
+node {
+	download = true
+	version = nodejsVersion
+	// install | ci
+	npmInstallCommand = 'install'
+}
+
 eclipse {
 	project {
 
@@ -127,11 +138,11 @@ eclipse {
 
 		facet {
 			facets = []
-			facet name: 'jst.java', version: '1.8'
+			facet name: 'jst.java', version: javaVersion
 			facet name: 'jst.web', version: '4.0'
 			facet name: 'wst.jsdt.web', version: '1.0'
 
-			//set Runtime to tocat v9.0
+			//set Runtime to tomcat v9.0
 			file {
 				withXml {
 					it.asNode().appendNode('runtime', [name: 'Apache Tomcat v9.0'])
@@ -155,6 +166,6 @@ tasks.withType(AbstractCompile) {
 
 // テナント作成ツール実行
 task runTenantBatch(type: JavaExec, group: 'application', description : 'execute tenant batch.') {
-	main = "org.iplass.mtp.tools.batch.tenant.TenantBatch"
+	mainClass = "org.iplass.mtp.tools.batch.tenant.TenantBatch"
 	classpath = sourceSets.main.runtimeClasspath
 }

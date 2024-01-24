@@ -13,7 +13,7 @@ For the steps to run the sample application, please refer to the following docum
 
 ## Related repositories
 
-* <https://github.com/ISID/iPLAss>
+* <https://github.com/dentsusoken/iPLAss>
 
 ## License
 [AGPL-3.0](https://www.gnu.org/licenses/agpl.html)

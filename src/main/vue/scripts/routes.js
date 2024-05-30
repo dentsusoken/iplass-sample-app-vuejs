@@ -18,6 +18,7 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { createRouter, createWebHistory } from 'vue-router'
 import DefaultLayout from '../components/layout/DefaultLayout.vue'
 import ShippingLayout from '../components/layout/ShippingLayout.vue'
 import Top from '../components/Top.vue'
@@ -39,7 +40,9 @@ import InputShippingInfo from '../components/shipping/InputShippingInfo.vue'
 import ConfirmShippingInfo from '../components/shipping/ConfirmShippingInfo.vue'
 import OrderSuccess from '../components/shipping/OrderSuccess.vue'
 
-export const routes = [
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
     {
         path: '/', component: DefaultLayout, props: {},
         children: [
@@ -70,4 +73,7 @@ export const routes = [
             { path: 'orderSuccess', name: 'orderSuccess', component: OrderSuccess, props: true }
         ]
     }
-];
+  ]
+})
+
+export default router

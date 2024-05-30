@@ -15,7 +15,7 @@
  * GNU Affero General Public License for more details.
  * 
  * You should have received a copy of the GNU Affero General Public License
- * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ * along with this program. If not, see &lt;https://www.gnu.org/licenses/&gt;.
  */
 
 <template>
@@ -35,21 +35,21 @@
             <div>
                 <label for="mail" class="col-form-label label-hidden">{{$t("samples.ec01.shipping.input.mail")}}</label>
                 <input type="text" class="form-control border rounded input-hint-visible" name="mail" v-model="shippingBean.mail" v-bind:placeholder="$t('samples.ec01.shipping.input.mail')">
-                <small class="form-text text-danger"><template v-for="message in errorsMap.mail">{{message}}<br v-bind:key="message"/></template></small>
+                <small class="form-text text-danger"><template v-for="message in errorsMap.mail" v-bind:key="message">{{message}}<br/></template></small>
             </div>
         </div>
         <div class="col-12 col-md-6 mt-3">
             <div>
                 <label for="familyName" class="col-form-label label-hidden">{{$t("samples.ec01.shipping.input.familyName")}}</label>
                 <input type="text" class="form-control border rounded input-hint-visible" name="familyName" v-model="shippingBean.familyName" v-bind:placeholder="$t('samples.ec01.shipping.input.familyName')">
-                <small class="form-text text-danger"><template v-for="message in errorsMap.familyName">{{message}}<br v-bind:key="message"/></template></small>
+                <small class="form-text text-danger"><template v-for="message in errorsMap.familyName" v-bind:key="message">{{message}}<br/></template></small>
             </div>
         </div>
         <div class="col-12 col-md-6 mt-3">
             <div>
                 <label for="firstName" class="col-form-label label-hidden">{{$t("samples.ec01.shipping.input.firstName")}}</label>
                 <input type="text" class="form-control border rounded input-hint-visible" name="firstName" v-model="shippingBean.firstName" v-bind:placeholder="$t('samples.ec01.shipping.input.firstName')">
-                <small class="form-text text-danger"><template v-for="message in errorsMap.firstName">{{message}}<br v-bind:key="message"/></template></small>
+                <small class="form-text text-danger"><template v-for="message in errorsMap.firstName" v-bind:key="message">{{message}}<br/></template></small>
             </div>
         </div>
         <template v-if="locale == 'ja' || locale === undefined">
@@ -57,14 +57,14 @@
             <div>
                 <label for="familyNameKana" class="col-form-label label-hidden">{{$t("samples.ec01.shipping.input.familyNameKana")}}</label>
                 <input type="text" class="form-control border rounded input-hint-visible" name="familyNameKana" v-model="shippingBean.familyNameKana" v-bind:placeholder="$t('samples.ec01.shipping.input.familyNameKana')">
-                <small class="form-text text-danger"><template v-for="message in errorsMap.familyNameKana">{{message}}<br v-bind:key="message"/></template></small>
+                <small class="form-text text-danger"><template v-for="message in errorsMap.familyNameKana" v-bind:key="message">{{message}}<br/></template></small>
             </div>
         </div>
         <div class="col-12 col-md-6 mt-3">
             <div>
                 <label for="firstNameKana" class="col-form-label label-hidden">{{$t("samples.ec01.shipping.input.firstNameKana")}}</label>
                 <input type="text" class="form-control border rounded input-hint-visible" name="firstNameKana" v-model="shippingBean.firstNameKana" v-bind:placeholder="$t('samples.ec01.shipping.input.firstNameKana')">
-                <small class="form-text text-danger"><template v-for="message in errorsMap.firstNameKana">{{message}}<br v-bind:key="message"/></template></small>
+                <small class="form-text text-danger"><template v-for="message in errorsMap.firstNameKana" v-bind:key="message">{{message}}<br/></template></small>
             </div>
         </div>
         </template>
@@ -72,14 +72,14 @@
             <div>
                 <label for="address" class="col-form-label label-hidden">{{$t("samples.ec01.shipping.input.address")}}</label>
                 <input type="text" class="form-control border rounded input-hint-visible" name="address" v-model="shippingBean.address" v-bind:placeholder="$t('samples.ec01.shipping.input.address')">
-                <small class="form-text text-danger"><template v-for="message in errorsMap.address">{{message}}<br v-bind:key="message"/></template></small>
+                <small class="form-text text-danger"><template v-for="message in errorsMap.address" v-bind:key="message">{{message}}<br/></template></small>
             </div>
         </div>
         <div class="col-12 col-md-12 mt-3">
             <div>
                 <label for="tel" class="col-form-label label-hidden">{{$t("samples.ec01.shipping.input.tel")}}</label>
                 <input type="text" class="form-control border rounded input-hint-visible" name="tel" v-model="shippingBean.tel" v-bind:placeholder="$t('samples.ec01.shipping.input.tel')">
-                <small class="form-text text-danger"><template v-for="message in errorsMap.tel">{{message}}<br v-bind:key="message"/></template></small>
+                <small class="form-text text-danger"><template v-for="message in errorsMap.tel" v-bind:key="message">{{message}}<br/></template></small>
             </div>
         </div>
         <div class="col-12 mt-4 text-center clearfix">

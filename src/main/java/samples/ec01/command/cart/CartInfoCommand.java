@@ -43,7 +43,7 @@ import samples.ec01.utils.Consts;
 		displayName = "カート情報取得WebAPI", 
 		accepts = RequestType.REST_JSON, 
 		methods = MethodType.GET, 
-		privilaged = true, 
+		privileged = true, 
 		synchronizeOnSession = true,
 		results = { 
 				Consts.CART_BEAN_SESSION_KEY, 

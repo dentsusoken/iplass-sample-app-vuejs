@@ -15,7 +15,7 @@
  * GNU Affero General Public License for more details.
  * 
  * You should have received a copy of the GNU Affero General Public License
- * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ * along with this program. If not, see &lt;https://www.gnu.org/licenses/&gt;.
  */
 
 <template>
@@ -37,10 +37,10 @@
     <li class="page-item disabled" v-bind:key="i" v-if="i == currentPage">
         <a class="page-link border-0 text-dark bg-light">{{i + 1}}</a>
     </li>  
-    <li class="page-item" v-bind:key="i" v-else-if="i < 3 || i > totalPage - 3">
+    <li class="page-item" v-else-if="i < 3 || i > totalPage - 3">
         <router-link class="page-link border-0 text-dark" v-bind:to="{path: paginationUrl + i}">{{i + 1}}</router-link>
     </li>
-    <li class="page-item" v-bind:key="i" v-else-if="i == 3">
+    <li class="page-item" v-else-if="i == 3">
         <a class="page-link border-0 text-dark">......</a>
     </li>
 </template>

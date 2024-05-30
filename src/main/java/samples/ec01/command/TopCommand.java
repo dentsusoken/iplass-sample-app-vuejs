@@ -41,7 +41,7 @@ import samples.ec01.utils.Consts;
 		displayName = "デモトップ画面表示WebAPI", 
 		accepts = RequestType.REST_JSON, 
 		methods = MethodType.GET, 
-		privilaged = true,
+		privileged = true,
 		results = { TopCommand.RESULT_PRODUCT_LIST })
 @CommandClass(
 		name = "samples/ec01/TopCommand", 

@@ -15,7 +15,7 @@
  * GNU Affero General Public License for more details.
  * 
  * You should have received a copy of the GNU Affero General Public License
- * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ * along with this program. If not, see &lt;https://www.gnu.org/licenses/&gt;.
  */
 
 <template>
@@ -43,8 +43,8 @@
             <p v-html="regInfo"></p>
             <!-- 商品サブ情報 -->
             <p class="h5">
-                <template v-for="sub in subInfoList">
-                    <span class="badge badge-info" v-bind:key="sub.oid" v-bind:title="sub.description">{{sub.name}}</span>&nbsp;
+                <template v-for="sub in subInfoList" v-bind:key="sub.oid">
+                    <span class="badge badge-info" v-bind:title="sub.description">{{sub.name}}</span>&nbsp;
                 </template>
             </p>
             <div v-bind:class="{'d-none': alreadyAdded}">

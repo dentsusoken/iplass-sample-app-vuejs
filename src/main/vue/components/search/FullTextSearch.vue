@@ -15,7 +15,7 @@
  * GNU Affero General Public License for more details.
  * 
  * You should have received a copy of the GNU Affero General Public License
- * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ * along with this program. If not, see &lt;https://www.gnu.org/licenses/&gt;.
  */
 
 <template>
@@ -39,8 +39,8 @@
                     <div class="dropdown-menu" aria-labelledby="categoryList">
                         <a class="dropdown-item" href="javascript:void(0);" v-on:click="dropdownSelect" category-item-value="all">{{$t("samples.ec01.product.category.all")}}</a>
                         <div class="dropdown-divider"></div>
-                        <template v-for="c in categoryList">
-                        <a class="dropdown-item" href="javascript:void(0);" v-on:click="dropdownSelect" v-bind:category-item-value="c.oid" v-bind:key="c.oid">{{c.name}}</a>
+                        <template v-for="c in categoryList" v-bind:key="c.oid">
+                        <a class="dropdown-item" href="javascript:void(0);" v-on:click="dropdownSelect" v-bind:category-item-value="c.oid">{{c.name}}</a>
                         </template>
                     </div>
                 </div>

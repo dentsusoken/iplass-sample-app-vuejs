@@ -1,4 +1,3 @@
-require('es6-promise/auto');
 /*
  * Copyright (C) 2018 DENTSU SOKEN INC. All Rights Reserved.
  * 
@@ -18,43 +17,28 @@ require('es6-promise/auto');
  * You should have received a copy of the GNU Affero General Public License
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
-import Vue from 'vue'
-import VueI18n from 'vue-i18n'
-import VueRouter from 'vue-router'
+import { createApp } from 'vue'
+import { createI18n } from 'vue-i18n'
 import axios from 'axios'
 import Messages from "./scripts/iplass-wtp-messages"
-import {routes} from "./scripts/routes"
+import router from "./scripts/routes"
+import mitt from 'mitt';
 
 // 外部引数
 // tcPath: テナントコンテキストパス
 // lang: 言語設定
 
 // Event Busの設定
-Vue.prototype.$bus = new Vue();
-// Axiosの設定
-Vue.prototype.$http = axios.create({
-  //  contentType: 'application/json',
-    headers: {'X-Requested-With': 'XMLHttpRequest'}
-});
+const emitter = mitt();
+
 // 言語の設定
-Vue.use(VueI18n);
-const i18n = new VueI18n({
+const i18n = createI18n({
   locale: lang, 
   messages: Messages
 });
-// ルーターの設定
-Vue.use(VueRouter);
-const router = new VueRouter({
-  routes
-});
-// ルートナビゲーション中にエラーが検出されたときに呼び出されるコールバック
-router.onError((error) => {
-  router.replace({name: 'genericError', params: {'exception': error.message}});
-});
-const app = new Vue({
-  el: '#app',
-  i18n: i18n,
-  router: router,
+
+// アプリケーションインスタンスの生成
+const app = createApp({
   methods: {
     setupAxiosErrorInterceptors: function() {
       this.$http.interceptors.response.use((response) => {
@@ -75,3 +59,19 @@ const app = new Vue({
     this.setupAxiosErrorInterceptors();
   }
 });
+
+// ルートナビゲーション中にエラーが検出されたときに呼び出されるコールバック
+router.onError((error) => {
+  router.replace({name: 'genericError', params: {'exception': error.message}});
+});
+
+app.config.globalProperties.emitter = emitter;
+
+// Axiosの設定
+app.config.globalProperties.$http = axios.create({
+  headers: {'X-Requested-With': 'XMLHttpRequest'}
+});
+
+app.use(i18n)
+app.use(router)
+app.mount('#app')

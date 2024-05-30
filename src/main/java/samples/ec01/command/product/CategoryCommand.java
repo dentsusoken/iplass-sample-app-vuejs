@@ -46,7 +46,7 @@ import samples.ec01.utils.Consts;
 		accepts = RequestType.REST_JSON,
 		restJson = @RestJson(parameterName = "param"),
 		methods = MethodType.GET,
-		privilaged = true, 
+		privileged = true, 
 		results = {
 				CategoryCommand.RESULT_CATEGROY_ID, 
 				CategoryCommand.RESULT_CATEGORY_NAME,

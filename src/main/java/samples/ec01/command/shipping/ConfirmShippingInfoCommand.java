@@ -20,7 +20,7 @@
 
 package samples.ec01.command.shipping;
 
-import javax.validation.groups.Default;
+import jakarta.validation.groups.Default;
 
 import org.iplass.gem.command.Constants;
 import org.iplass.mtp.command.Command;
@@ -45,7 +45,7 @@ import samples.ec01.utils.Consts;
 		accepts = RequestType.REST_JSON,
 		restJson = @RestJson(parameterName = "param"),
 		methods = MethodType.POST, 
-		privilaged = true, 
+		privileged = true, 
 		tokenCheck = @WebApiTokenCheck(
 				executeCheck = true, 
 				consume = true, 

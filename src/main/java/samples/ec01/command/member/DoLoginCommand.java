@@ -39,7 +39,7 @@ import samples.ec01.utils.Consts;
 		displayName = "ログイン認証処理WebAPI", 
 		accepts = RequestType.REST_JSON, 
 		methods = MethodType.POST, 
-		privilaged = true, 
+		privileged = true, 
 		restJson = @RestJson(parameterName = "param"), 
 		results = { Consts.LOGIN_REDIRECT_PATH_ATTRIBUTE })
 @CommandClass(

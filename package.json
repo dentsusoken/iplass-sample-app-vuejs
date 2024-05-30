@@ -5,37 +5,33 @@
   "author": "",
   "license": "",
   "private": true,
+  "type": "module",
   "scripts": {
     "vue:build": "npm install & npm run build",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "format": "prettier --write src/"
   },
   "dependencies": {
-    "axios": "^0.21.1",
-    "bootstrap": "^4.0.0",
-    "es6-promise": "^4.2.4",
-    "jquery": "^3.3.1",
-    "popper.js": "^1.14.3",
-    "vue": "^2.5.16",
-    "vue-i18n": "^7.6.0",
-    "vue-router": "^3.0.1"
+    "@popperjs/core": "^2.11.8",
+    "axios": "^1.6.8",
+    "bootstrap": "^5.3.3",
+    "create-vite": "^5.2.3",
+    "jquery": "^3.7.1",
+    "mitt": "^3.0.1",
+    "vue": "^3.4.27",
+    "vue-i18n": "^9.13.1",
+    "vue-router": "^4.3.2"
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ],
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-stage-3": "^6.24.1",
-    "cross-env": "^5.0.5",
-    "css-loader": "^0.28.7",
-    "file-loader": "^1.1.4",
-    "vue-loader": "^14.2.2",
-    "vue-template-compiler": "^2.4.4",
-    "webpack": "^4.0.0",
-    "webpack-cli": "^3.2.0",
-    "webpack-dev-server": "^3.1.14"
+    "@rushstack/eslint-patch": "^1.8.0",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "@vue/eslint-config-prettier": "^9.0.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.23.0",
+    "prettier": "^3.2.5",
+    "vite": "^5.2.8"
   }
 }

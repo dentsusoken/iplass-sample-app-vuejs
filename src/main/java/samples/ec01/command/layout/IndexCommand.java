@@ -41,7 +41,7 @@ import samples.ec01.utils.Consts;
 @ActionMapping(
 		name = "samples/ec01/", 
 		displayName = "index画面", 
-		privilaged = true, 
+		privileged = true, 
 		result = @Result(
 				type = Type.JSP, 
 				value = "/jsp/samples/ec01/index.jsp"),
@@ -51,7 +51,7 @@ import samples.ec01.utils.Consts;
 		displayName = "標準レイアウトWebAPI", 
 		accepts = RequestType.REST_JSON, 
 		methods = MethodType.GET, 
-		privilaged = true, 
+		privileged = true, 
 		results = { 
 				IndexCommand.RESULT_CATEGORY_LIST, 
 				IndexCommand.RESULT_TOTAL_AMOUNT })

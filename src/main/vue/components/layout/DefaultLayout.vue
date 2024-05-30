@@ -15,7 +15,7 @@
  * GNU Affero General Public License for more details.
  * 
  * You should have received a copy of the GNU Affero General Public License
- * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ * along with this program. If not, see &lt;https://www.gnu.org/licenses/&gt;.
  */
 
 <template>
@@ -106,8 +106,8 @@
                 <div class="col-12">
                     <div class="list-group list-group-item-dark list-group-flush">
                         <router-link v-bind:to="{name: 'top'}" class="list-group-item list-group-item-action font-weight-bold border-top">{{$t("samples.ec01.layout.defaultLayout.home")}}</router-link>
-                        <template v-for="category in categoryList">
-                            <router-link v-bind:to="{name: 'category', query: {categoryId: category.oid}}" v-bind:key="category.oid" class="list-group-item list-group-item-action">{{category.name}}</router-link>
+                        <template v-for="category in categoryList" v-bind:key="category.oid">
+                            <router-link v-bind:to="{name: 'category', query: {categoryId: category.oid}}" class="list-group-item list-group-item-action">{{category.name}}</router-link>
                         </template>
                     </div>
                 </div>

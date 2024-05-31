@@ -1,22 +1,19 @@
 {
   "name": "iplass-sample-app-vuejs",
-  "description": "",
   "version": "1.0.0",
-  "author": "",
-  "license": "",
   "private": true,
   "type": "module",
   "scripts": {
-    "vue:build": "npm install & npm run build",
+    "vue:build": "npm install && npm run build",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "lint": "eslint src/main/vue --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "format": "prettier --write src/main/vue"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
-    "axios": "^1.6.8",
+    "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "create-vite": "^5.2.3",
     "jquery": "^3.7.1",
@@ -26,12 +23,12 @@
     "vue-router": "^4.3.2"
   },
   "devDependencies": {
-    "@rushstack/eslint-patch": "^1.8.0",
+    "@rushstack/eslint-patch": "^1.10.3",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vue/eslint-config-prettier": "^9.0.0",
     "eslint": "^8.57.0",
-    "eslint-plugin-vue": "^9.23.0",
+    "eslint-plugin-vue": "^9.26.0",
     "prettier": "^3.2.5",
-    "vite": "^5.2.8"
+    "vite": "^5.2.12"
   }
 }

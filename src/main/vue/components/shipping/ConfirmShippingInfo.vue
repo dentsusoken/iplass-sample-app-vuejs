@@ -24,43 +24,47 @@
 		<div class="col-12 d-none d-md-block">
 			<span class="h4"> </span>
 			<nav class="breadcrumb all-breadcrumb">
-				<router-link class="breadcrumb-item text-primary" v-bind:to="{name: 'top'}">{{$t("samples.ec01.all.breadcrumb.home")}}</router-link>
-				<a class="breadcrumb-item text-primary" href="_blank" v-on:click.prevent="editShippingInfo()">{{$t("samples.ec01.shipping.input.title")}}</a>
+				<router-link class="breadcrumb-item text-primary" :to="{name: 'top'}">{{$t("samples.ec01.all.breadcrumb.home")}}</router-link>
+				<a class="breadcrumb-item text-primary" href="_blank" @click.prevent="editShippingInfo()">{{$t("samples.ec01.shipping.input.title")}}</a>
 				<span class="breadcrumb-item active" >{{$t("samples.ec01.shipping.confirm.title")}}</span>
 			</nav>
 		</div>
 		<div class="col-12 col-md-12">
 			<h5>{{$t("samples.ec01.shipping.confirm.title")}}</h5>
 			<div class="card col bg-light">
-				<div div class="card-body pl-0 text-left"
-					style="position: relative;">
-					<div class="row">
-						<div class="col-12 col-md-12 text-muted font-weight-bold">{{$t("samples.ec01.shipping.confirm.addressInfo")}}</div>
-						<div class="col-12 col-md-4 text-muted font-weight-bold shipping-contract-label">{{$t("samples.ec01.shipping.input.mail")}}</div>
-						<div class="col-12 col-md-8 shipping-contract-text">{{shippingBean.mail}}</div>
-						<div class="col-12 col-md-4 text-muted font-weight-bold shipping-contract-label">{{$t("samples.ec01.shipping.confirm.fullName")}}</div>
-						<div class="col-12 col-md-8 shipping-contract-text">{{shippingBean.familyName}}&nbsp;{{shippingBean.firstName}}</div>
-						<template v-if="locale == 'ja' || locale === undefined">
-						<div class="col-12 col-md-4 text-muted font-weight-bold shipping-contract-label">{{$t("samples.ec01.shipping.confirm.fullNameKana")}}</div>
-						<div class="col-12 col-md-8 shipping-contract-text">{{shippingBean.familyNameKana}}&nbsp;{{shippingBean.firstNameKana}}</div>
-						</template>
-						<div>
-							<button type="button" class="btn btn-link shipping-contract-edit" v-on:click="editShippingInfo()">{{$t("samples.ec01.shipping.confirm.edit")}}</button>
+				<div class="card-body pl-0 text-left" style="position: relative;">
+					<div v-if="localShippingBean !== null">
+						<div class="row">
+							<div class="col-12 col-md-12 text-muted fw-bold">{{$t("samples.ec01.shipping.confirm.addressInfo")}}</div>
+							<div class="col-12 col-md-4 text-muted fw-bold shipping-contract-label">{{$t("samples.ec01.shipping.input.mail")}}</div>
+							<div class="col-12 col-md-8 shipping-contract-text">{{localShippingBean.mail}}</div>
+							<div class="col-12 col-md-4 text-muted fw-bold shipping-contract-label">{{$t("samples.ec01.shipping.confirm.fullName")}}</div>
+							<div class="col-12 col-md-8 shipping-contract-text">{{localShippingBean.familyName}}&nbsp;{{localShippingBean.firstName}}</div>
+							<template v-if="locale == 'ja' || locale === undefined">
+							<div class="col-12 col-md-4 text-muted fw-bold shipping-contract-label">{{$t("samples.ec01.shipping.confirm.fullNameKana")}}</div>
+							<div class="col-12 col-md-8 shipping-contract-text">{{localShippingBean.familyNameKana}}&nbsp;{{localShippingBean.firstNameKana}}</div>
+							</template>
+							<div>
+								<button type="button" class="btn btn-link shipping-contract-edit" @click="editShippingInfo()">{{$t("samples.ec01.shipping.confirm.edit")}}</button>
+							</div>
+							<div class="col-12 col-md-4 text-muted fw-bold shipping-contract-label">{{$t("samples.ec01.shipping.input.address")}}</div>
+							<div class="col-12 col-md-8 shipping-contract-text">{{localShippingBean.address}}</div>
+							<div class="col-12 col-md-4 text-muted fw-bold shipping-contract-label">{{$t("samples.ec01.shipping.input.tel")}}</div>
+							<div class="col-12 col-md-8 shipping-contract-text">{{localShippingBean.tel}}</div>
 						</div>
-						<div class="col-12 col-md-4 text-muted font-weight-bold shipping-contract-label">{{$t("samples.ec01.shipping.input.address")}}</div>
-						<div class="col-12 col-md-8 shipping-contract-text">{{shippingBean.address}}</div>
-						<div class="col-12 col-md-4 text-muted font-weight-bold shipping-contract-label">{{$t("samples.ec01.shipping.input.tel")}}</div>
-						<div class="col-12 col-md-8 shipping-contract-text">{{shippingBean.tel}}</div>
+					</div>
+					<div v-else>
+						<p>Loading...</p>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="col-12 mt-4 text-center clearfix">
 			<div class="float-md-right">
-				<button type="button" class="btn btn-dark btn-lg" v-on:click="doOrder()">{{$t("samples.ec01.shipping.confirm.order")}}</button>
+				<button type="button" class="btn btn-dark btn-lg" @click="doOrder()">{{$t("samples.ec01.shipping.confirm.order")}}</button>
 			</div>
-			<div class="text-md-left mt-2">
-				<button type="button" class="btn btn-link btn-sm" v-on:click="editShippingInfo()">&lt;{{$t("samples.ec01.shipping.confirm.return")}}</button>
+			<div class="text-md-start mt-2">
+				<button type="button" class="btn btn-link btn-sm" @click="editShippingInfo()">&lt;{{$t("samples.ec01.shipping.confirm.return")}}</button>
 			</div>
 		</div>
 	</div>
@@ -72,13 +76,47 @@
 import {Custom} from '../../mixins/Custom'
 import OutputToken from '../token/OutputToken.vue'
 import {Consts} from '../../mixins/Consts'
+import mitt from 'mitt';
+
+// Event Busの設定
+const emitter = mitt();
 
 export default {
 	name: 'ConfirmShippingInfo',
-	mixins: [Custom, Consts],
-	props: ['shippingBean'],
 	components: {
 		'outputToken': OutputToken
+	},
+	mixins: [Custom, Consts],
+	beforeRouteUpdate(to, from, next) {
+		// 不正な画面遷移が発生したと判断
+		if(['inputShippingInfo', 'inputShippingInfoNoMember', 'editShippingInfo'].indexOf(from.name) == -1 || to.params.shippingBean === undefined) {
+            next(new Error('samples.ec01.exception.invalidTransition'));
+		} else {
+			next();
+        }
+	},
+	props: {
+		shippingBean: {
+			type: Object,
+      		required: true
+		},
+	},
+	data: function () {
+		return {
+			localShippingBean: {
+				mail: '',
+				tel: '',
+				address: '',
+				familyName: '',
+				firstName: '',
+				familyNameKana: '',
+				firstNameKana: ''
+			},
+		};
+	},
+	created: function() {
+		var decodedData = JSON.parse(decodeURIComponent(this.$route.query.shippingBean));
+		this.localShippingBean = decodedData;
 	},
 	methods: {
 		doOrder: function() {
@@ -89,7 +127,7 @@ export default {
                     var commandResult = response.data;
                     if (commandResult.status == 'SUCCESS'){
                         this.$router.replace({name: 'orderSuccess', params: {status: commandResult.status}});
-                        this.$bus.$emit('confirmShippingInfo.order.success');
+                        emitter.emit('confirmShippingInfo.order.success');
 					} else if (commandResult.status == 'ERROR') {
 						this.$refs.token.reload();
 					}
@@ -102,16 +140,9 @@ export default {
 			return data;
 		},
 		editShippingInfo: function() {
-			this.$router.replace({name: 'editShippingInfo', params: {editShippingBean: this.shippingBean}});
+			var encodedData = encodeURIComponent(JSON.stringify(this.localShippingBean));
+			this.$router.replace({name: 'editShippingInfo', query: {editShippingBean: encodedData}});
 		}
-	},
-	beforeRouteEnter: function(to, from, next) {
-		// 不正な画面遷移が発生したと判断
-		if(['inputShippingInfo', 'inputShippingInfoNoMember', 'editShippingInfo'].indexOf(from.name) == -1 || to.params.shippingBean === undefined) {
-            next(new Error('samples.ec01.exception.invalidTransition'));
-		} else {
-            next();
-        }
 	}
 }
 </script>

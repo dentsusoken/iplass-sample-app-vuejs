@@ -25,22 +25,23 @@
             <p class="h4">{{$t("samples.ec01.layout.shipping.title")}}</p>
         </div>
         <div class="col-12 d-block d-md-none bg-light pt-3 pr-4 clearfix">
-            <button id="toggle-btn" class="border-0 bg-transparent float-left" type="button" data-toggle="collapse" data-target="#cartTab"
-                aria-controls="cartTab" aria-expanded="false" aria-label="Toggle" v-on:click="toggleCart()">
+            <button
+id="toggle-btn" class="border-0 bg-transparent float-left" type="button" data-bs-toggle="collapse" data-bs-target="#cartTab"
+                aria-controls="cartTab" aria-expanded="false" aria-label="Toggle" @click="toggleCart()">
                 <span class="oi oi-cart"></span>
                 {{$t("samples.ec01.layout.shipping.viewCart")}}
-                <span v-bind:class="{'oi': true, 'oi-caret-bottom': !expanded, 'oi-caret-top' :expanded}"></span>
+                <span :class="{'oi': true, 'oi-caret-bottom': !expanded, 'oi-caret-top' :expanded}"></span>
             </button>
-            <p class="float-right">{{totalPrice}}{{$t("samples.ec01.all.yen")}}</p>
+            <p class="float-end">{{totalPrice}}{{$t("samples.ec01.all.yen")}}</p>
         </div>
-        <div class="col-12 col-md-6 bg-light collapse d-md-block offset-md-6 pt-md-5 custom-form-right-container" id="cartTab">
+        <div id="cartTab" class="col-12 col-md-6 bg-light collapse d-md-block offset-md-6 pt-md-5 custom-form-right-container">
             <div>
                 <table class="table custom-cart-table">
                     <tbody>
-                        <tr v-for="item in cartItems" v-bind:key="item.productId">
+                        <tr v-for="item in cartItems" :key="item.productId">
                             <td scope="row">
                                 <div style="width:80px; position:relative">
-                                    <img v-bind:src="imgUrl(productMap[item.productId].productImg)" class="rounded" v-bind:alt="productMap[item.productId].name" />
+                                    <img :src="imgUrl(productMap[item.productId].productImg)" class="rounded" :alt="productMap[item.productId].name" />
                                     <span class="badge badge-dark badge-pill">{{item.value}}</span>
                                 </div>
                             </td>
@@ -67,14 +68,14 @@
                         </tr>
                         <tr>
                             <td scope="row" class="w-25 text-left h4">{{$t("samples.ec01.layout.shipping.total")}}</td>
-                            <td class="w-75 font-weight-bold h4">{{totalPrice}}{{$t("samples.ec01.all.yen")}}</td>
+                            <td class="w-75 fw-bold h4">{{totalPrice}}{{$t("samples.ec01.all.yen")}}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
         <div class="col-12 col-md-6 pt-4 custom-form-left-container">
-            <router-view></router-view>
+            <RouterView />
             <div class="row layout-footer shipping-layout-footer">
                 <div class="col-12 text-light text-left bg-dark">Copyright（c）2018 MTP Demo Store all rights reserved.</div>
             </div>
@@ -84,12 +85,15 @@
 </template>
 
 <script>
-import $ from 'jquery'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../../styles/open-iconic-bootstrap.min.css'
 import '../../styles/bookstore.css'
 import {Consts} from '../../mixins/Consts'
+import mitt from 'mitt'
+
+// Event Busの設定
+const emitter = mitt();
 
 export default {
     name: 'ShippingLayout',
@@ -111,6 +115,12 @@ export default {
             return this.cartBean === undefined ? [] : this.cartBean.cartItems;
         }
     },
+    created: function() {
+        emitter.on('confirmShippingInfo.order.success',() => {
+        	this.cartBean = undefined;
+        })
+        this.loadContent();
+    },
     methods: {
         loadContent: function() {
             var url = this.apiShippingLayout();
@@ -126,12 +136,6 @@ export default {
         toggleCart: function(){
             this.expanded = !this.expanded;
         }
-    },
-    created: function() {
-        this.$bus.$on('confirmShippingInfo.order.success',() => {
-        	this.cartBean = undefined;
-        })
-        this.loadContent();
     }
 }
 </script>

@@ -24,7 +24,7 @@
         <div class="col-12">
             <div class="border-top"></div>
             <nav class="breadcrumb all-breadcrumb">
-                <router-link class="breadcrumb-item text-primary" v-bind:to="{name: 'top'}">{{$t("samples.ec01.all.breadcrumb.home")}}</router-link>
+                <router-link class="breadcrumb-item text-primary" :to="{name: 'top'}">{{$t("samples.ec01.all.breadcrumb.home")}}</router-link>
                 <span class="breadcrumb-item active">{{$t("samples.ec01.member.regist.title")}}</span>
             </nav>
         </div>
@@ -35,45 +35,45 @@
                     <div class="col-12">
                         <div>
                             <label for="userId" class="col-form-label label-hidden">{{$t("samples.ec01.member.regist.userId")}}</label>
-                            <input type="text" class="form-control border rounded input-hint-visible" name="userId" v-model="userBean.userId" v-bind:placeholder="$t('samples.ec01.member.regist.userId')">
-                            <small class="form-text text-danger"><template v-for="message in errorsMap.userId" v-bind:key="message">{{message}}<br/></template></small>
+                            <input v-model="userBean.userId" type="text" class="form-control border rounded input-hint-visible" name="userId" :placeholder="$t('samples.ec01.member.regist.userId')">
+                            <small class="form-text text-danger"><template v-for="message in errorsMap.userId" :key="message">{{message}}<br/></template></small>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 mt-3">
                         <div>
                             <label for="familyName" class="col-form-label label-hidden">{{$t("samples.ec01.member.regist.familyName")}}</label>
-                            <input type="text" class="form-control border rounded input-hint-visible" name="familyName" v-model="userBean.familyName" v-bind:placeholder="$t('samples.ec01.member.regist.familyName')">
-                            <small class="form-text text-danger"><template v-for="message in errorsMap.familyName" v-bind:key="message">{{message}}<br/></template></small>                      
+                            <input v-model="userBean.familyName" type="text" class="form-control border rounded input-hint-visible" name="familyName" :placeholder="$t('samples.ec01.member.regist.familyName')">
+                            <small class="form-text text-danger"><template v-for="message in errorsMap.familyName" :key="message">{{message}}<br/></template></small>                      
                         </div>
                     </div>
                     <div class="col-12 col-md-6 mt-3">
                         <div>
                             <label for="firstName" class="col-form-label label-hidden">{{$t("samples.ec01.member.regist.firstName")}}</label>
-                            <input type="text" class="form-control border rounded input-hint-visible" name="firstName" v-model="userBean.firstName" v-bind:placeholder="$t('samples.ec01.member.regist.firstName')">
-                            <small class="form-text text-danger"><template v-for="message in errorsMap.firstName" v-bind:key="message">{{message}}<br/></template></small>
+                            <input v-model="userBean.firstName" type="text" class="form-control border rounded input-hint-visible" name="firstName" :placeholder="$t('samples.ec01.member.regist.firstName')">
+                            <small class="form-text text-danger"><template v-for="message in errorsMap.firstName" :key="message">{{message}}<br/></template></small>
                         </div>
                     </div>
                     <template v-if="locale == 'ja' || locale === undefined">
                     <div class="col-12 col-md-6 mt-3">
                         <div>
                             <label for="familyNameKana" class="col-form-label label-hidden">{{$t("samples.ec01.member.regist.familyNameKana")}}</label>
-                            <input type="text" class="form-control border rounded input-hint-visible" name="familyNameKana" v-model="userBean.familyNameKana" v-bind:placeholder="$t('samples.ec01.member.regist.familyNameKana')">
-                            <small class="form-text text-danger"><template v-for="message in errorsMap.familyNameKana" v-bind:key="message">{{message}}<br/></template></small>
+                            <input v-model="userBean.familyNameKana" type="text" class="form-control border rounded input-hint-visible" name="familyNameKana" :placeholder="$t('samples.ec01.member.regist.familyNameKana')">
+                            <small class="form-text text-danger"><template v-for="message in errorsMap.familyNameKana" :key="message">{{message}}<br/></template></small>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 mt-3">
                         <div>
                             <label for="firstNameKana" class="col-form-label label-hidden">{{$t("samples.ec01.member.regist.firstNameKana")}}</label>
-                            <input type="text" class="form-control border rounded input-hint-visible" name="firstNameKana" v-model="userBean.firstNameKana" v-bind:placeholder="$t('samples.ec01.member.regist.firstNameKana')">
-                            <small class="form-text text-danger"><template v-for="message in errorsMap.firstNameKana" v-bind:key="message">{{message}}<br/></template></small>
+                            <input v-model="userBean.firstNameKana" type="text" class="form-control border rounded input-hint-visible" name="firstNameKana" :placeholder="$t('samples.ec01.member.regist.firstNameKana')">
+                            <small class="form-text text-danger"><template v-for="message in errorsMap.firstNameKana" :key="message">{{message}}<br/></template></small>
                         </div>
                     </div>
                     </template>
                     <div class="col-12 col-md-12 mt-3">
                         <div>
                             <label for="mail" class="col-form-label label-hidden">{{$t("samples.ec01.member.regist.mail")}}</label>
-                            <input type="text" class="form-control border rounded input-hint-visible" name="mail" v-model="userBean.mail" v-bind:placeholder="$t('samples.ec01.member.regist.mail')">
-                            <small class="form-text text-danger"><template v-for="message in errorsMap.mail" v-bind:key="message">{{message}}<br/></template></small>
+                            <input v-model="userBean.mail" type="text" class="form-control border rounded input-hint-visible" name="mail" :placeholder="$t('samples.ec01.member.regist.mail')">
+                            <small class="form-text text-danger"><template v-for="message in errorsMap.mail" :key="message">{{message}}<br/></template></small>
                         </div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                 </div>
                 <div class="form-group mt-4">
                     <div class="col-12 text-center">
-                        <button type="button" class="btn btn-dark" v-on:click="confirmMemberInfo()">{{$t("samples.ec01.member.regist.doRegist")}}</button>
+                        <button type="button" class="btn btn-dark" @click="confirmMemberInfo()">{{$t("samples.ec01.member.regist.doRegist")}}</button>
                     </div>
                 </div>
             <output-token ref="token"></output-token>
@@ -98,8 +98,8 @@ import OutputToken from '../token/OutputToken.vue'
 
 export default {
     name: 'Regist',
-    mixins: [Custom, Consts],
     components: {'outputToken': OutputToken},
+    mixins: [Custom, Consts],
     data: function() {
         return {
             userBean: {
@@ -137,7 +137,8 @@ export default {
                 .then((response) => {
                     var commandResult = response.data;
                     if (commandResult.status == 'SUCCESS') {
-                        this.$router.replace({name: 'registConfirm', params: {userBean: this.userBean}});
+                        var encodedData = encodeURIComponent(JSON.stringify(this.userBean));
+                        this.$router.replace({name: 'registConfirm', query: {userBean: encodedData}});
                     } else if (commandResult.status == 'ERROR') {
                         this.errorsMap = this.convertToErrorsMap(commandResult.result.errors);
                         this.$refs.token.reload();

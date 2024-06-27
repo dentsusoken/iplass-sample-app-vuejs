@@ -41,21 +41,21 @@ import ConfirmShippingInfo from '../components/shipping/ConfirmShippingInfo.vue'
 import OrderSuccess from '../components/shipping/OrderSuccess.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(tcPath + '/samples/ec01/#/'),
   routes: [
     {
-        path: '/', component: DefaultLayout, props: {},
+        path: '/', name: 'home', component: DefaultLayout, props: {},
         children: [
             { path: 'top', name: 'top', component: Top, props: {} },
             { path: 'news/newInfo', name: 'newInfo', component: NewInfo, props: route => ({ page: route.query.pageId }) },
-            { path: 'product/detail', name: 'detail', component: Detail, props: route => ({ productId: route.query.productId }) },
-            { path: 'product/category', name: 'category', component: Category, props: route => ({ categoryId: route.query.categoryId, page: route.query.page }) },
+            { path: 'product/detail', name: 'detail', component: Detail, props: true },
+            { path: 'product/category', name: 'category', component: Category, props: true },
             { path: 'member/login', name: 'login', component: Login, props: {} },
             { path: 'member/inputMemberInfo', name: 'regist', component: Regist, props: {} },
             { path: 'member/confirmMemberInfo', name: 'registConfirm', component: RegistConfirm, props: true },
             { path: 'member/registMemberSuccess', name: 'registSuccess', component: RegistSuccess, props: true },
             { path: 'search/fullTextSearch', name: 'fullTextSearch', component: FullTextSearch, props: {} },
-            { path: 'search/searchResult', name: 'searchResult', component: SearchResult, props: route => ({ keyword: route.query.keyword }) },
+            { path: 'search/searchResult', name: 'searchResult', component: SearchResult, props: true },
             { path: 'shop/tradeLaw', name: 'tradeLaw', component: TradeLaw, props: {} },
             { path: 'cart/cartInfo', name: 'cartInfo', component: CartInfo, props: {} },
             { path: 'inquiry/inquiry', name: 'inquiry', component: RegistInquiry, props: {} },
@@ -64,7 +64,7 @@ const router = createRouter({
         ]
     },
     {
-        path: '/shipping', component: ShippingLayout, props: {},
+        path: '/shipping', name: 'shipping', component: ShippingLayout, props: {},
         children: [
             { path: 'inputShippingInfo', name: 'inputShippingInfo', component: InputShippingInfo, props: {} },
             { path: 'inputShippingInfoNoMember', name: 'inputShippingInfoNoMember', component: InputShippingInfo, props: {} },

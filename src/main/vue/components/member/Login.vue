@@ -24,7 +24,7 @@
         <div class="col-12">
             <div class="border-top"></div>
             <nav class="breadcrumb all-breadcrumb">
-                <router-link class="breadcrumb-item text-primary" v-bind:to="{name: 'top'}">{{$t("samples.ec01.all.breadcrumb.home")}}</router-link>
+                <router-link class="breadcrumb-item text-primary" :to="{name: 'top'}">{{$t("samples.ec01.all.breadcrumb.home")}}</router-link>
                 <span class="breadcrumb-item active" >{{$t("samples.ec01.member.login.title")}}</span>
             </nav>
         </div>
@@ -35,26 +35,26 @@
                     <div class="col-12">
                         <div>
                             <label for="id" class="col-form-label label-hidden">{{$t("samples.ec01.member.login.userid")}}</label>
-                            <input type="text" name="id" class="form-control border rounded input-hint-visible" v-model="user.id" v-bind:placeholder="$t('samples.ec01.member.login.userid')">
+                            <input v-model="user.id" type="text" name="id" class="form-control border rounded input-hint-visible" :placeholder="$t('samples.ec01.member.login.userid')">
                         </div>
                     </div>
                     <div class="col-12 mt-3">
                         <div>
                             <label for="password" class="col-form-label label-hidden">{{$t("samples.ec01.member.login.password")}}</label>
-                            <input type="password" name="password" class="form-control border rounded input-hint-visible" v-model="user.password" v-bind:placeholder="$t('samples.ec01.member.login.password')">
+                            <input v-model="user.password" type="password" name="password" class="form-control border rounded input-hint-visible" :placeholder="$t('samples.ec01.member.login.password')">
                         </div>
                     </div>
                 </div>
                 <div class="form-group mt-5">
                     <div class="col-12 text-center">
-                        <button type="button" class="btn btn-dark" v-on:click="login()">{{$t("samples.ec01.member.login.doLogin")}}</button>
+                        <button type="button" class="btn btn-dark" @click="login()">{{$t("samples.ec01.member.login.doLogin")}}</button>
                     </div>
                 </div>
                 <div class="col-12 text-left">
                     <p>{{$t("samples.ec01.member.login.registMemberInfo")}}</p>
-                    <p><router-link class="text-dark" v-bind:to="{name: 'regist'}">{{$t("samples.ec01.member.login.registMember")}}</router-link></p>
+                    <p><router-link class="text-dark" :to="{name: 'regist'}">{{$t("samples.ec01.member.login.registMember")}}</router-link></p>
                     <p>{{$t("samples.ec01.member.login.payInfo")}}</p>
-                    <p><router-link class="text-dark" v-bind:to="{name: 'inputShippingInfoNoMember'}">{{$t("samples.ec01.member.login.pay")}}</router-link></p>
+                    <p><router-link class="text-dark" :to="{name: 'inputShippingInfoNoMember'}">{{$t("samples.ec01.member.login.pay")}}</router-link></p>
                 </div>
             <output-token ref="token"></output-token>
             </form>
@@ -70,14 +70,17 @@ import OutputToken from '../token/OutputToken.vue'
 
 export default {
     name: 'Login',
-    mixins: [Custom, Consts],
     components: {
         'outputToken': OutputToken
     },
+    mixins: [Custom, Consts],
     data: function() {
         return {
             user: {id: "", password: ""},
         }
+    },
+    mounted: function () {
+        this.initFormInputText('.custom-form');
     },
     methods: {
         login: function() {
@@ -99,9 +102,6 @@ export default {
             data[token.name] = token.value;
             return data;
         }
-    },
-    mounted: function () {
-        this.initFormInputText('.custom-form');
     }
 }
 </script>

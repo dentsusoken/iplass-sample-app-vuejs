@@ -22,14 +22,14 @@
 <div class="col-sm-12 col-md-9">
 	<div class="border-top mb-3"></div>
 	<div class="row">
-		<div class="col-12 col-md-4" v-for="product in productList" v-bind:key="product.oid">
+		<div v-for="product in productList" :key="product.oid" class="col-12 col-md-4">
 			<div class="card border-light border-0">
-				<router-link v-bind:to="{name: 'detail', query: {productId: product.oid}}" class="h-100">
-					<img class="card-img-top img-thumbnail img-fluid all-product-img" v-bind:src="imgUrl(product.productImg)" v-bind:alt="product.name">
+				<router-link :to="{name: 'detail', query: {productId: product.oid}}" class="h-100">
+					<img class="card-img-top img-thumbnail img-fluid all-product-img" :src="imgUrl(product.productImg)" :alt="product.name">
 				</router-link>
 				<div class="card-body pt-md-1 text-center">
 					<div>
-						<router-link v-bind:to="{name: 'detail', query: {productId: product.oid}}" class="card-link text-dark">{{product.name}}</router-link>
+						<router-link :to="{name: 'detail', query: {productId: product.oid}}" class="card-link text-dark">{{product.name}}</router-link>
 					</div>
 					<div class="all-price">{{product.price}}{{$t("samples.ec01.all.yen")}}</div>
 				</div>

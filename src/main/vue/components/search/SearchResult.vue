@@ -24,7 +24,7 @@
         <div class="col-12">
             <div class="border-top"></div>
             <nav class="breadcrumb all-breadcrumb">
-                <router-link class="breadcrumb-item text-primary" v-bind:to="{name: 'top'}">{{$t("samples.ec01.all.breadcrumb.home")}}</router-link>
+                <router-link class="breadcrumb-item text-primary" :to="{name: 'top'}">{{$t("samples.ec01.all.breadcrumb.home")}}</router-link>
                 <span class="breadcrumb-item active">{{$t("samples.ec01.search.keyword")}}</span>
             </nav>
         </div>
@@ -33,14 +33,14 @@
         <div class="col-12">
             <h4>{{$t("samples.ec01.search.result")}}{{keyword}}</h4>
         </div>
-        <div class="col-12 col-md-4" v-for="p in productList" v-bind:key="p.oid">
+        <div v-for="p in productList" :key="p.oid" class="col-12 col-md-4">
             <div class="card border-light border-0">
-                <router-link v-bind:to="{name: 'detail', query: {productId: p.oid}}" class="h-100">
-                    <img class="card-img-top img-thumbnail img-fluid all-product-img" v-bind:src="imgUrl(p.productImg)" v-bind:alt="p.name" />
+                <router-link :to="{name: 'detail', query: {productId: p.oid}}" class="h-100">
+                    <img class="card-img-top img-thumbnail img-fluid all-product-img" :src="imgUrl(p.productImg)" :alt="p.name" />
                 </router-link>
                 <div class="card-body pt-md-1 text-center">
                     <div>
-                        <router-link v-bind:to="{name: 'detail', query: {productId: p.oid}}" class="card-link text-dark">{{p.name}}</router-link>
+                        <router-link :to="{name: 'detail', query: {productId: p.oid}}" class="card-link text-dark">{{p.name}}</router-link>
                     </div>
                     <div class="all-price">{{p.price}}{{$t("samples.ec01.all.yen")}}</div>
                 </div>
@@ -56,11 +56,19 @@ import {Consts} from '../../mixins/Consts'
 export default {
     name: 'SearchResult',
     mixins: [Consts],
-    props: ['keyword'],
+    beforeRouteUpdate: function(to, from, next) {
+        this.keyword = to.query.keyword;
+        this.loadContent();
+        next();
+    },
     data: function() {
         return {
             productList: []
         }
+    },
+    created: function() {
+        this.keyword = this.$route.query.keyword;
+        this.loadContent();
     },
     methods: {
         loadContent: function() {
@@ -75,14 +83,6 @@ export default {
                     }
                 });   
         }
-    },
-    created: function() {
-        this.loadContent();
-    },
-    beforeRouteUpdate: function(to, from, next) {
-        this.keyword = to.query.keyword;
-        this.loadContent();
-        next();
     }
 }
 </script>

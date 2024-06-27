@@ -24,7 +24,7 @@
         <div class="col-12 d-none d-md-block">
             <span class="h4"> </span>
             <nav class="breadcrumb all-breadcrumb">
-                <router-link class="breadcrumb-item text-primary" v-bind:to="{name: 'top'}">{{$t("samples.ec01.all.breadcrumb.home")}}</router-link>
+                <router-link class="breadcrumb-item text-primary" :to="{name: 'top'}">{{$t("samples.ec01.all.breadcrumb.home")}}</router-link>
                 <span class="breadcrumb-item active">{{$t("samples.ec01.shipping.input.title")}}</span>
             </nav>
         </div>
@@ -34,60 +34,60 @@
         <div class="col-12 col-md-12 mt-3">
             <div>
                 <label for="mail" class="col-form-label label-hidden">{{$t("samples.ec01.shipping.input.mail")}}</label>
-                <input type="text" class="form-control border rounded input-hint-visible" name="mail" v-model="shippingBean.mail" v-bind:placeholder="$t('samples.ec01.shipping.input.mail')">
-                <small class="form-text text-danger"><template v-for="message in errorsMap.mail" v-bind:key="message">{{message}}<br/></template></small>
+                <input v-model="shippingBean.mail" type="text" class="form-control border rounded input-hint-visible" name="mail" :placeholder="$t('samples.ec01.shipping.input.mail')">
+                <small class="form-text text-danger"><template v-for="message in errorsMap.mail" :key="message">{{message}}<br/></template></small>
             </div>
         </div>
         <div class="col-12 col-md-6 mt-3">
             <div>
                 <label for="familyName" class="col-form-label label-hidden">{{$t("samples.ec01.shipping.input.familyName")}}</label>
-                <input type="text" class="form-control border rounded input-hint-visible" name="familyName" v-model="shippingBean.familyName" v-bind:placeholder="$t('samples.ec01.shipping.input.familyName')">
-                <small class="form-text text-danger"><template v-for="message in errorsMap.familyName" v-bind:key="message">{{message}}<br/></template></small>
+                <input v-model="shippingBean.familyName" type="text" class="form-control border rounded input-hint-visible" name="familyName" :placeholder="$t('samples.ec01.shipping.input.familyName')">
+                <small class="form-text text-danger"><template v-for="message in errorsMap.familyName" :key="message">{{message}}<br/></template></small>
             </div>
         </div>
         <div class="col-12 col-md-6 mt-3">
             <div>
                 <label for="firstName" class="col-form-label label-hidden">{{$t("samples.ec01.shipping.input.firstName")}}</label>
-                <input type="text" class="form-control border rounded input-hint-visible" name="firstName" v-model="shippingBean.firstName" v-bind:placeholder="$t('samples.ec01.shipping.input.firstName')">
-                <small class="form-text text-danger"><template v-for="message in errorsMap.firstName" v-bind:key="message">{{message}}<br/></template></small>
+                <input v-model="shippingBean.firstName" type="text" class="form-control border rounded input-hint-visible" name="firstName" :placeholder="$t('samples.ec01.shipping.input.firstName')">
+                <small class="form-text text-danger"><template v-for="message in errorsMap.firstName" :key="message">{{message}}<br/></template></small>
             </div>
         </div>
         <template v-if="locale == 'ja' || locale === undefined">
         <div class="col-12 col-md-6 mt-3">
             <div>
                 <label for="familyNameKana" class="col-form-label label-hidden">{{$t("samples.ec01.shipping.input.familyNameKana")}}</label>
-                <input type="text" class="form-control border rounded input-hint-visible" name="familyNameKana" v-model="shippingBean.familyNameKana" v-bind:placeholder="$t('samples.ec01.shipping.input.familyNameKana')">
-                <small class="form-text text-danger"><template v-for="message in errorsMap.familyNameKana" v-bind:key="message">{{message}}<br/></template></small>
+                <input v-model="shippingBean.familyNameKana" type="text" class="form-control border rounded input-hint-visible" name="familyNameKana" :placeholder="$t('samples.ec01.shipping.input.familyNameKana')">
+                <small class="form-text text-danger"><template v-for="message in errorsMap.familyNameKana" :key="message">{{message}}<br/></template></small>
             </div>
         </div>
         <div class="col-12 col-md-6 mt-3">
             <div>
                 <label for="firstNameKana" class="col-form-label label-hidden">{{$t("samples.ec01.shipping.input.firstNameKana")}}</label>
-                <input type="text" class="form-control border rounded input-hint-visible" name="firstNameKana" v-model="shippingBean.firstNameKana" v-bind:placeholder="$t('samples.ec01.shipping.input.firstNameKana')">
-                <small class="form-text text-danger"><template v-for="message in errorsMap.firstNameKana" v-bind:key="message">{{message}}<br/></template></small>
+                <input v-model="shippingBean.firstNameKana" type="text" class="form-control border rounded input-hint-visible" name="firstNameKana" :placeholder="$t('samples.ec01.shipping.input.firstNameKana')">
+                <small class="form-text text-danger"><template v-for="message in errorsMap.firstNameKana" :key="message">{{message}}<br/></template></small>
             </div>
         </div>
         </template>
         <div class="col-12 col-md-12 mt-3">
             <div>
                 <label for="address" class="col-form-label label-hidden">{{$t("samples.ec01.shipping.input.address")}}</label>
-                <input type="text" class="form-control border rounded input-hint-visible" name="address" v-model="shippingBean.address" v-bind:placeholder="$t('samples.ec01.shipping.input.address')">
-                <small class="form-text text-danger"><template v-for="message in errorsMap.address" v-bind:key="message">{{message}}<br/></template></small>
+                <input v-model="shippingBean.address" type="text" class="form-control border rounded input-hint-visible" name="address" :placeholder="$t('samples.ec01.shipping.input.address')">
+                <small class="form-text text-danger"><template v-for="message in errorsMap.address" :key="message">{{message}}<br/></template></small>
             </div>
         </div>
         <div class="col-12 col-md-12 mt-3">
             <div>
                 <label for="tel" class="col-form-label label-hidden">{{$t("samples.ec01.shipping.input.tel")}}</label>
-                <input type="text" class="form-control border rounded input-hint-visible" name="tel" v-model="shippingBean.tel" v-bind:placeholder="$t('samples.ec01.shipping.input.tel')">
-                <small class="form-text text-danger"><template v-for="message in errorsMap.tel" v-bind:key="message">{{message}}<br/></template></small>
+                <input v-model="shippingBean.tel" type="text" class="form-control border rounded input-hint-visible" name="tel" :placeholder="$t('samples.ec01.shipping.input.tel')">
+                <small class="form-text text-danger"><template v-for="message in errorsMap.tel" :key="message">{{message}}<br/></template></small>
             </div>
         </div>
         <div class="col-12 mt-4 text-center clearfix">
             <div class="float-md-right">
-                <button type="button" class="btn btn-dark btn-lg" v-on:click="confirmShippingInfo()">{{$t("samples.ec01.shipping.input.delivery")}}</button>
+                <button type="button" class="btn btn-dark btn-lg" @click="confirmShippingInfo()">{{$t("samples.ec01.shipping.input.delivery")}}</button>
             </div>
-            <div class="text-md-left mt-2">
-                <router-link class="btn btn-sm" v-bind:to="{name: 'cartInfo'}" role="button">&lt;
+            <div class="text-md-start mt-2">
+                <router-link class="btn btn-sm" :to="{name: 'cartInfo'}" role="button">&lt;
                 {{$t("samples.ec01.shipping.input.return")}}
                 </router-link>
             </div>
@@ -104,10 +104,10 @@ import OutputToken from '../token/OutputToken.vue'
 
 export default {
     name: 'InputShippingInfo',
-    mixins: [Custom, Consts],
     components: {
         'outputToken': OutputToken
     },
+    mixins: [Custom, Consts],
     props: ['editShippingBean'],
     data: function(){
         return {
@@ -122,6 +122,20 @@ export default {
             },
             errorsMap: {}
         }
+    },
+    created: function() {
+        var name = this.$router.currentRoute.name || this.$router.currentRoute.value.name;
+        if(name == "inputShippingInfoNoMember") {
+            this.loadContentNoMember();
+        } else if (name == "inputShippingInfo") {
+            this.loadContent();
+        } else if (name == "editShippingInfo") {
+            var decodedData = JSON.parse(decodeURIComponent(this.$route.query.editShippingBean));
+            this.shippingBean = decodedData;
+        }
+    },
+    mounted: function () {
+        this.initFormInputText('.custom-form');
     },
     methods: {
         loadContent: function() {
@@ -155,7 +169,8 @@ export default {
                 .then((response) => {
                     var commandResult = response.data;
                     if (commandResult.status == 'SUCCESS'){
-                        this.$router.replace({name: 'confirmShippingInfo', params: {shippingBean: this.shippingBean}});
+                        var encodedData = encodeURIComponent(JSON.stringify(this.shippingBean));
+                        this.$router.replace({name: 'confirmShippingInfo', query: {shippingBean: encodedData}});
                     } else if (commandResult.status == 'ERROR') {
                         this.errorsMap = this.convertToErrorsMap(commandResult.result.errors);
                         this.$refs.token.reload();
@@ -176,19 +191,6 @@ export default {
             data[token.name] = token.value;
             return data;
         }
-    },
-    created: function() {
-        var name = this.$router.currentRoute.name;
-        if(name == "inputShippingInfoNoMember") {
-            this.loadContentNoMember();
-        } else if (name == "inputShippingInfo") {
-            this.loadContent();
-        } else if (name == "editShippingInfo") {
-            this.shippingBean = this.editShippingBean;
-        }
-    },
-    mounted: function () {
-        this.initFormInputText('.custom-form');
     }
 }
 </script>

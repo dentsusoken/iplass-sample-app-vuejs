@@ -18,10 +18,11 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 import { createApp } from 'vue'
+import App from './App.vue'
 import { createI18n } from 'vue-i18n'
 import axios from 'axios'
 import Messages from "./scripts/iplass-wtp-messages"
-import router from "./scripts/routes"
+import router from './router'
 import mitt from 'mitt';
 
 // 外部引数
@@ -37,8 +38,19 @@ const i18n = createI18n({
   messages: Messages
 });
 
+// ルートナビゲーション中にエラーが検出されたときに呼び出されるコールバック
+router.onError((error) => {
+  router.replace({name: 'genericError', params: {'exception': error.message}});
+});
+
 // アプリケーションインスタンスの生成
-const app = createApp({
+const app = createApp(App, {
+  onExpand() {
+  },
+  created: function() {
+    // axiosにインターセプターを設定
+    this.setupAxiosErrorInterceptors();
+  },
   methods: {
     setupAxiosErrorInterceptors: function() {
       this.$http.interceptors.response.use((response) => {
@@ -53,16 +65,7 @@ const app = createApp({
         return Promise.reject(error);
       })
     }
-  },
-  created: function() {
-    // axiosにインターセプターを設定
-    this.setupAxiosErrorInterceptors();
   }
-});
-
-// ルートナビゲーション中にエラーが検出されたときに呼び出されるコールバック
-router.onError((error) => {
-  router.replace({name: 'genericError', params: {'exception': error.message}});
 });
 
 app.config.globalProperties.emitter = emitter;

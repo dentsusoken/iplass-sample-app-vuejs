@@ -25,11 +25,11 @@
 	<li class="page-item">
 	    <a class="page-link border-0 text-dark disabled" aria-label="Previous" v-if="currentPage - 1 < 0">
         	<span aria-hidden="true">&laquo;{{$t("samples.ec01.all.pagination.prev")}}</span>
-			<span class="sr-only">Previous</span>
+			<span class="visually-hidden">Previous</span>
 	    </a>
 	    <router-link class="page-link border-0 text-dark" v-bind:to="{path: paginationUrl + (currentPage - 1)}" aria-label="Previous" v-else>
 			<span aria-hidden="true">&laquo;{{$t("samples.ec01.all.pagination.prev")}}</span>
-			<span class="sr-only">Previous</span>
+			<span class="visually-hidden">Previous</span>
 		</router-link>
 	</li>
 <!-- ページ番号 -->
@@ -48,11 +48,11 @@
     <li class="page-item">
         <a class="page-link border-0 text-dark disabled" aria-label="Next" v-if="currentPage + 1 >= totalPage">
     		<span aria-hidden="true">{{$t("samples.ec01.all.pagination.next")}}</span>
-    		<span class="sr-only">Next</span>
+    		<span class="visually-hidden">Next</span>
         </a>
         <router-link class="page-link border-0 text-dark" v-bind:to="{path: paginationUrl + (currentPage + 1)}" aria-label="Next" v-else>
             <span aria-hidden="true">{{$t("samples.ec01.all.pagination.next")}}</span>
-    		<span class="sr-only">Next</span> 
+    		<span class="visually-hidden">Next</span> 
         </router-link>
     </li>
  </ul>

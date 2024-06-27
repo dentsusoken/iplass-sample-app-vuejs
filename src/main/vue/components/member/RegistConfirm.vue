@@ -24,8 +24,8 @@
         <div class="col-12">
             <div class="border-top"></div>
             <nav class="breadcrumb all-breadcrumb">
-                <router-link class="breadcrumb-item text-primary" v-bind:to="{name: 'top'}">{{$t("samples.ec01.all.breadcrumb.home")}}</router-link>
-                <router-link class="breadcrumb-item text-primary" v-bind:to="{name: 'inputMemberInfo'}">{{$t("samples.ec01.member.regist.title")}}</router-link>
+                <router-link class="breadcrumb-item text-primary" :to="{name: 'top'}">{{$t("samples.ec01.all.breadcrumb.home")}}</router-link>
+                <router-link class="breadcrumb-item text-primary" :to="{name: 'inputMemberInfo'}">{{$t("samples.ec01.member.regist.title")}}</router-link>
                 <span class="breadcrumb-item active">{{$t("samples.ec01.member.registConfirm.title")}}</span>
             </nav>
         </div>
@@ -45,48 +45,48 @@
                         <div class="card-body">
                             <div class="row mt-3 border-bottom">
                                 <div class="col-12 col-md-4">
-                                    <span class="text-muted font-weight-bold">{{$t("samples.ec01.member.regist.userId")}}</span>
+                                    <span class="text-muted fw-bold">{{$t("samples.ec01.member.regist.userId")}}</span>
                                 </div>
-                                <div class="col-12 col-md-8">{{userBean.userId}}</div>
+                                <div class="col-12 col-md-8">{{localUserBean.userId}}</div>
                             </div>
                             <div class="row mt-3 border-bottom">
                                 <div class="col-12 col-md-4">
-                                    <span class="text-muted  font-weight-bold">{{$t("samples.ec01.member.registConfirm.fullName")}}</span>
+                                    <span class="text-muted  fw-bold">{{$t("samples.ec01.member.registConfirm.fullName")}}</span>
                                 </div>
                                 <div class="col-12 col-md-3">
-                                    <span class="text-muted  font-weight-bold">{{$t("samples.ec01.member.regist.familyName")}}</span>
-                                    &nbsp;{{userBean.familyName}}
+                                    <span class="text-muted  fw-bold">{{$t("samples.ec01.member.regist.familyName")}}</span>
+                                    &nbsp;{{localUserBean.familyName}}
                                 </div>
                                 <div class="col-12 col-md-3">
-                                    <span class="text-muted  font-weight-bold">{{$t("samples.ec01.member.regist.firstName")}}</span>
-                                    &nbsp;{{userBean.firstName}}
+                                    <span class="text-muted  fw-bold">{{$t("samples.ec01.member.regist.firstName")}}</span>
+                                    &nbsp;{{localUserBean.firstName}}
                                 </div>
                             </div>
-                            <div class="row mt-3 border-bottom" v-if="locale == 'ja' || locale === undefined">
+                            <div v-if="locale == 'ja' || locale === undefined" class="row mt-3 border-bottom">
                                 <div class="col-12 col-md-4">
-                                    <span class="text-muted  font-weight-bold">{{$t("samples.ec01.member.registConfirm.fullNameKana")}}</span>
+                                    <span class="text-muted  fw-bold">{{$t("samples.ec01.member.registConfirm.fullNameKana")}}</span>
                                 </div>
                                 <div class="col-12 col-md-3">
-                                    <span class="text-muted  font-weight-bold">{{$t("samples.ec01.member.regist.familyNameKana")}}</span>
-                                    &nbsp;{{userBean.familyNameKana}}
+                                    <span class="text-muted  fw-bold">{{$t("samples.ec01.member.regist.familyNameKana")}}</span>
+                                    &nbsp;{{localUserBean.familyNameKana}}
                                 </div>
                                 <div class="col-12 col-md-3">
-                                    <span class="text-muted  font-weight-bold">{{$t("samples.ec01.member.regist.firstNameKana")}}</span>
-                                    &nbsp;{{userBean.firstNameKana}}
+                                    <span class="text-muted  fw-bold">{{$t("samples.ec01.member.regist.firstNameKana")}}</span>
+                                    &nbsp;{{localUserBean.firstNameKana}}
                                 </div>
                             </div>
                             <div class="row mt-3 border-bottom">
                                 <div class="col-12 col-md-4">
-                                    <span class="text-muted  font-weight-bold">{{$t("samples.ec01.member.regist.mail")}}</span>
+                                    <span class="text-muted  fw-bold">{{$t("samples.ec01.member.regist.mail")}}</span>
                                 </div>
-                                <div class="col-12 col-md-8">{{userBean.mail}}</div>
+                                <div class="col-12 col-md-8">{{localUserBean.mail}}</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="form-group mt-4">
                     <div class="col-12 text-center">
-                        <button type="button" class="btn btn-dark" v-on:click="registMemberInfo()">{{$t("samples.ec01.member.registConfirm.regist")}}</button>
+                        <button type="button" class="btn btn-dark" @click="registMemberInfo()">{{$t("samples.ec01.member.registConfirm.regist")}}</button>
                     </div>
                 </div>
             <output-token ref="token"></output-token>
@@ -103,10 +103,27 @@ import OutputToken from "../token/OutputToken.vue";
 
 export default {
   name: "RegistConfirm",
-  props: ["userBean"],
-  mixins: [Custom, Consts],
   components: {
     outputToken: OutputToken
+  },
+  mixins: [Custom, Consts],
+  beforeRouteUpdate: function(to, from, next) {
+    // 不正な画面遷移が発生したと判断
+    if(['regist'].indexOf(from.name) == -1 || to.params.userBean === undefined) {
+      next(new Error('samples.ec01.exception.invalidTransition'));
+    } else {
+      next();
+    }
+  },
+  props: {
+    userBean: {
+        type: Object,
+        required: true
+    },
+  },  
+  created: function() {
+    var decodedData = JSON.parse(decodeURIComponent(this.$route.query.userBean));
+    this.localUserBean = decodedData;
   },
   methods: {
     registMemberInfo: function() {
@@ -128,14 +145,6 @@ export default {
       var data = {};
       data[token.name] = token.value;
       return data;
-    }
-  },
-  beforeRouteEnter: function(to, from, next) {
-    // 不正な画面遷移が発生したと判断
-    if(['regist'].indexOf(from.name) == -1 || to.params.userBean === undefined) {
-      next(new Error('samples.ec01.exception.invalidTransition'));
-    } else {
-      next();
     }
   }
 };

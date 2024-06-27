@@ -36,6 +36,9 @@ export default {
             }
         }
     },
+    created: function() {
+        this.reload();
+    },
     methods: {
         // トークンを取得する
         get: function() {
@@ -54,9 +57,6 @@ export default {
                 } 
             });
         }
-    },
-    created: function() {
-        this.reload();
     }
 }
 </script>

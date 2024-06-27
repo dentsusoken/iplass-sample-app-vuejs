@@ -24,7 +24,7 @@
         <div class="col-12">
             <div class="border-top"></div>
             <nav class="breadcrumb all-breadcrumb">
-                <router-link class="breadcrumb-item text-primary" v-bind:to="{name: 'top'}">{{$t("samples.ec01.all.breadcrumb.home")}}</router-link>
+                <router-link class="breadcrumb-item text-primary" :to="{name: 'top'}">{{$t("samples.ec01.all.breadcrumb.home")}}</router-link>
                 <span class="breadcrumb-item active">{{$t("samples.ec01.layout.defaultLayout.SCTAInfo")}}</span>
             </nav>
         </div>
@@ -46,85 +46,85 @@
                 <div class="card col-12 bg-light">
                     <div class="card-body">
                         <div class="row mt-3 border-bottom">
-                            <div class="col-12 col-md-4 font-weight-bold">
+                            <div class="col-12 col-md-4 fw-bold">
                                 <span class="text-muted">{{$t("samples.ec01.shop.tradeLaw.dealer")}}</span>
                             </div>
                             <div class="col-12 col-md-8">{{tradeLaw.dealer}}</div>
                         </div>
                         <div class="row mt-3 border-bottom">
-                            <div class="col-12 col-md-4 font-weight-bold">
+                            <div class="col-12 col-md-4 fw-bold">
                                 <span class="text-muted">{{$t("samples.ec01.shop.tradeLaw.administrator")}}</span>
                             </div>
                             <div class="col-12 col-md-8">{{tradeLaw.administrator}}</div>
                         </div>
                         <div class="row mt-3 border-bottom">
-                            <div class="col-12 col-md-4 font-weight-bold">
+                            <div class="col-12 col-md-4 fw-bold">
                                 <span class="text-muted">{{$t("samples.ec01.shop.tradeLaw.postNo")}}</span>
                             </div>
                             <div class="col-12 col-md-8"><template v-for="postNo in tradeLaw.postNo">{{postNo}}&nbsp;</template></div>
                         </div>
                         <div class="row mt-3 border-bottom">
-                            <div class="col-12 col-md-4 font-weight-bold">
+                            <div class="col-12 col-md-4 fw-bold">
                                 <span class="text-muted">{{$t("samples.ec01.shop.tradeLaw.address")}}</span>
                             </div>
                             <div class="col-12 col-md-8"><template v-for="address in tradeLaw.address">{{address}}&nbsp;</template></div>
                         </div>
                         <div class="row mt-3 border-bottom">
-                            <div class="col-12 col-md-4 font-weight-bold">
+                            <div class="col-12 col-md-4 fw-bold">
                                 <span class="text-muted">{{$t("samples.ec01.shop.tradeLaw.tel")}}</span>
                             </div>
                             <div class="col-12 col-md-8"><template v-for="tel in tradeLaw.tel">{{tel}}&nbsp;</template></div>
                         </div>
                         <div class="row mt-3 border-bottom">
-                            <div class="col-12 col-md-4 font-weight-bold">
+                            <div class="col-12 col-md-4 fw-bold">
                                 <span class="text-muted">{{$t("samples.ec01.shop.tradeLaw.fax")}}</span>
                             </div>
                             <div class="col-12 col-md-8"><template v-for="fax in tradeLaw.fax">{{fax}}&nbsp;</template></div>
                         </div>
                         <div class="row mt-3 border-bottom">
-                            <div class="col-12 col-md-4 font-weight-bold">
+                            <div class="col-12 col-md-4 fw-bold">
                                 <span class="text-muted">{{$t("samples.ec01.shop.tradeLaw.mail")}}</span>
                             </div>
                             <div class="col-12 col-md-8">{{tradeLaw.mail}}</div>
                         </div>
                         <div class="row mt-3 border-bottom">
-                            <div class="col-12 col-md-4 font-weight-bold">
+                            <div class="col-12 col-md-4 fw-bold">
                                 <span class="text-muted">URL</span>
                             </div>
                             <div class="col-12 col-md-8">{{tradeLaw.url}}</div>
                         </div>
                         <div class="row mt-3 border-bottom">
-                            <div class="col-12 col-md-4 font-weight-bold">
+                            <div class="col-12 col-md-4 fw-bold">
                                 <span class="text-muted">{{$t("samples.ec01.shop.tradeLaw.feeRequired")}}</span>
                             </div>
                             <div class="col-12 col-md-8">{{tradeLaw.feeRequired}}</div>
                         </div>                      
                         <div class="row mt-3 border-bottom">
-                            <div class="col-12 col-md-4 font-weight-bold">
+                            <div class="col-12 col-md-4 fw-bold">
                                 <span class="text-muted">{{$t("samples.ec01.shop.tradeLaw.orderingMethod")}}</span>
                             </div>
                             <div class="col-12 col-md-8">{{tradeLaw.howToOrder}}</div>
                         </div>
                         <div class="row mt-3 border-bottom">
-                            <div class="col-12 col-md-4 font-weight-bold">
+                            <div class="col-12 col-md-4 fw-bold">
                                 <span class="text-muted">{{$t("samples.ec01.shop.tradeLaw.paymentMethod")}}</span>
                             </div>
                             <div class="col-12 col-md-8">{{tradeLaw.howToPayment}}</div>
                         </div>
                         <div class="row mt-3 border-bottom">
-                            <div class="col-12 col-md-4 font-weight-bold">
+                            <div class="col-12 col-md-4 fw-bold">
                                 <span class="text-muted">{{$t("samples.ec01.shop.tradeLaw.paymentDate")}}</span>
                             </div>
                             <div class="col-12 col-md-8">{{tradeLaw.paymentDeadline}}</div>
                         </div>
                         <div class="row mt-3 border-bottom">
-                            <div class="col-12 col-md-4 font-weight-bold">
+                            <div class="col-12 col-md-4 fw-bold">
                                 <span class="text-muted">{{$t("samples.ec01.shop.tradeLaw.deliveryTime")}}</span>
                             </div>
                             <div class="col-12 col-md-8">{{tradeLaw.deliveryTime}}</div>
                         </div>
                         <div class="row mt-3 border-bottom">
-                            <div class="col-12 col-md-4 font-weight-bold">
+                            <div class="col-12 col-md-4 fw-bold">
                                 <span class="text-muted">{{$t("samples.ec01.shop.tradeLaw.exchanged")}}</span>
                             </div>
                             <div class="col-12 col-md-8">{{tradeLaw.exchanged}}</div>
@@ -134,7 +134,7 @@
             </div>
             <div class="mt-5">
                 <div class="col-12 mt-5 text-center">
-                <router-link class="btn btn-dark" v-bind:to="{name: 'top'}">{{$t("samples.ec01.shop.tradeLaw.back")}}</router-link>
+                <router-link class="btn btn-dark" :to="{name: 'top'}">{{$t("samples.ec01.shop.tradeLaw.back")}}</router-link>
                 </div>
             </div>
         </div>
@@ -154,6 +154,9 @@ export default {
             tradeLaw: {}
         }
     },
+    created: function() {
+        this.loadContent();
+    },
     methods: {
         loadContent: function() {
             var url = this.apiTradeLaw();
@@ -168,9 +171,6 @@ export default {
                     }
                 });
         }
-    },
-    created: function() {
-        this.loadContent();
     }
 }
 </script>

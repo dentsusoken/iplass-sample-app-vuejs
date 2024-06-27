@@ -24,7 +24,7 @@
         <div class="col-12">
             <div class="border-top"></div>
             <nav class="breadcrumb all-breadcrumb">
-                <router-link class="breadcrumb-item text-primary" v-bind:to="{name: 'top'}">{{$t("samples.ec01.all.breadcrumb.home")}}</router-link>
+                <router-link class="breadcrumb-item text-primary" :to="{name: 'top'}">{{$t("samples.ec01.all.breadcrumb.home")}}</router-link>
                 <span class="breadcrumb-item active">{{$t("samples.ec01.newinfo.title")}}</span>
             </nav>
         </div>
@@ -34,7 +34,7 @@
             <h4 class="card-title">{{$t("samples.ec01.newinfo.title")}}</h4>
             <div class="card border-0">
                 <div class="card-body">
-                    <p class="card-text border-bottom" v-for="news in newsInfoList" v-bind:key="news.oid">{{news.showDate}}&nbsp;{{news.content}}</p>
+                    <p v-for="news in newsInfoList" :key="news.oid" class="card-text border-bottom">{{news.showDate}}&nbsp;{{news.content}}</p>
                 </div>
             </div>
         </div>
@@ -56,12 +56,29 @@ export default {
     name: 'NewInfo',
     components: {'pagination': Pagination},
     mixins: [Consts],
+    beforeRouteUpdate: function(to, from, next) {
+        // eslint-disable-next-line vue/no-mutating-props
+        this.page = to.query.page;
+        this.loadContent();
+        next();
+    },
     props: ['page'],
     data: function() {
         return {
             pagination: {},
             newsInfoList: []
         }
+    },
+    computed: {
+        pageIndex : function() {
+            return this.page === undefined ? 0 : this.page;
+        },
+        paginationUrl: function() {
+            return this.newInfoUrl();
+        }
+    },
+    created: function() {
+        this.loadContent();
     },
     methods: {
         loadContent: function() {
@@ -76,22 +93,6 @@ export default {
                         console.log(response);
                     }
                 });
-        }
-    },
-    created: function() {
-        this.loadContent();
-    },
-    beforeRouteUpdate: function(to, from, next) {
-        this.page = to.query.page;
-        this.loadContent();
-        next();
-    },
-    computed: {
-        pageIndex : function() {
-            return this.page === undefined ? 0 : this.page;
-        },
-        paginationUrl: function() {
-            return this.newInfoUrl();
         }
     }
 }

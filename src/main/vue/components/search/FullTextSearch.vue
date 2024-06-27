@@ -24,28 +24,30 @@
         <div class="col-12">
             <div class="border-top"></div>
             <nav class="breadcrumb all-breadcrumb">
-                <router-link class="breadcrumb-item text-primary" v-bind:to="{name: 'top'}">{{$t("samples.ec01.all.breadcrumb.home")}}</router-link>
+                <router-link class="breadcrumb-item text-primary" :to="{name: 'top'}">{{$t("samples.ec01.all.breadcrumb.home")}}</router-link>
                 <span class="breadcrumb-item active">{{$t("samples.ec01.search.title")}}</span>
             </nav>
         </div>
     </div>
-    <div class="row" id="searchResultDiv">
+    <div id="searchResultDiv" class="row">
         <div class="col-12">
             <h4>{{$t("samples.ec01.search.title")}}</h4>
             <div class="input-group col-12">
-                <input type="text" class="form-control" v-model="productName" placeholder="Search for...">
-                <div class="dropdown float-right">
-                    <button class="btn btn-outline-dark dropdown-toggle" type="button" id="categoryList" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" category-item-selected="all">{{$t("samples.ec01.product.category.title")}}</button>
+                <input v-model="productName" @keydown.enter="fullTextSearch" type="text" class="form-control" placeholder="Search for...">
+                <div class="dropdown float-end">
+                    <button id="categoryList" class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" category-item-selected="all">
+                        {{ selectedCategory.name }}
+                    </button>
                     <div class="dropdown-menu" aria-labelledby="categoryList">
-                        <a class="dropdown-item" href="javascript:void(0);" v-on:click="dropdownSelect" category-item-value="all">{{$t("samples.ec01.product.category.all")}}</a>
+                        <a class="dropdown-item" href="javascript:void(0);" @click="dropdownSelect('all')">{{$t("samples.ec01.product.category.all")}}</a>
                         <div class="dropdown-divider"></div>
-                        <template v-for="c in categoryList" v-bind:key="c.oid">
-                        <a class="dropdown-item" href="javascript:void(0);" v-on:click="dropdownSelect" v-bind:category-item-value="c.oid">{{c.name}}</a>
-                        </template>
+                        <a v-for="c in categoryList" :key="c.oid" class="dropdown-item" href="javascript:void(0);" @click="dropdownSelect(c)">
+                            {{ c.name }}
+                        </a>
                     </div>
                 </div>
                 <span class="input-group-btn pl-2">
-                    <button class="btn btn-secondary" type="button" v-on:click="fullTextSearch()">
+                    <button class="btn btn-secondary" type="button" @click="fullTextSearch()">
                         <span class="oi oi-magnifying-glass" title="search" aria-hidden="true"></span>
                     </button>
                 </span>
@@ -61,6 +63,7 @@
 <script>
 import {Consts} from '../../mixins/Consts'
 import $ from 'jquery'
+import emitter from '../../eventBus';
 
 export default {
     name: 'FullTextSearch',
@@ -70,20 +73,24 @@ export default {
                 productName: "",
                 categoryList: [],
                 fullSearchResult: "",
-                helpMessage: ""
+                helpMessage: "",
+                selectedCategory: { oid: 'all', name: this.$t("samples.ec01.product.category.all") }
             }
     },
     computed: {
-      categoryOid: function() {
-        return $("#categoryList").attr("category-item-selected");
-      }
+        categoryOid: function() {
+            return this.selectedCategory.oid;
+        }
+    },
+    created: function() {
+        this.loadCategoryList();
     },
     methods: {
         loadCategoryList: function() {
-            this.$bus.$on('fullTextSearch.categoryList.response', (categoryList) => {
+            emitter.on('fullTextSearch.categoryList.response', (categoryList) => {
                 this.categoryList = categoryList;
             });
-            this.$bus.$emit('fullTextSearch.categoryList.request');
+            emitter.emit('fullTextSearch.categoryList.request');
         },
         fullTextSearch: function() {
             if (this.productName == "") {
@@ -115,10 +122,14 @@ export default {
                     }
                 });
         },
-        dropdownSelect: function(event) {
-            var t = $(event.target);
-            var v = t.attr("category-item-value");
-            $("#categoryList").text(t.html()).attr("category-item-selected", v);
+        dropdownSelect(category) {
+            if (typeof category === 'string') {
+                // "all" を選択した場合
+                this.selectedCategory = { oid: 'all', name: this.$t("samples.ec01.product.category.all") };
+            } else {
+                // カテゴリを選択した場合
+                this.selectedCategory = category;
+            }
         },
         ListSearchResult: function(entities, productName){
             var yen = this.$t('samples.ec01.all.yen');
@@ -148,9 +159,6 @@ export default {
             }
             return html;
         }
-    },
-    created: function() {
-        this.loadCategoryList();
     }
 }
 </script>

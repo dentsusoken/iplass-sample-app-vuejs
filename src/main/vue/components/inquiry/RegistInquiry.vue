@@ -24,7 +24,7 @@
         <div class="col-12">
             <div class="border-top"></div>
             <nav class="breadcrumb all-breadcrumb">
-                <router-link class="breadcrumb-item text-primary" v-bind:to="{name: 'top'}">{{$t("samples.ec01.all.breadcrumb.home")}}</router-link>
+                <router-link class="breadcrumb-item text-primary" :to="{name: 'top'}">{{$t("samples.ec01.all.breadcrumb.home")}}</router-link>
                 <span class="breadcrumb-item active">{{$t("samples.ec01.inquiry.regist.title")}}</span>
             </nav>
         </div>
@@ -35,51 +35,51 @@
                     <div class="col-12 col-md-6 mt-3">
                         <div>
                             <label for="familyName" class="col-form-label label-hidden">{{$t("samples.ec01.inquiry.regist.familyName")}}</label>
-                            <input type="text" class="form-control border rounded input-hint-visible" name="familyName" v-model="inquiryBean.familyName" v-bind:placeholder="$t('samples.ec01.inquiry.regist.familyName')">
-                            <small class="form-text text-danger"><template v-for="message in errorsMap.familyName" v-bind:key="message">{{message}}<br/></template></small>
+                            <input v-model="inquiryBean.familyName" type="text" class="form-control border rounded input-hint-visible" name="familyName" :placeholder="$t('samples.ec01.inquiry.regist.familyName')">
+                            <small class="form-text text-danger"><template v-for="message in errorsMap.familyName" :key="message">{{message}}<br/></template></small>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 mt-3">
                         <div>
                             <label for="firstName" class="col-form-label label-hidden">{{$t("samples.ec01.inquiry.regist.firstName")}}</label>
-                            <input type="text" class="form-control border rounded input-hint-visible" name="firstName" v-model="inquiryBean.firstName" v-bind:placeholder="$t('samples.ec01.inquiry.regist.firstName')">
-                            <small class="form-text text-danger"><template v-for="message in errorsMap.firstName" v-bind:key="message">{{message}}<br/></template></small>
+                            <input v-model="inquiryBean.firstName" type="text" class="form-control border rounded input-hint-visible" name="firstName" :placeholder="$t('samples.ec01.inquiry.regist.firstName')">
+                            <small class="form-text text-danger"><template v-for="message in errorsMap.firstName" :key="message">{{message}}<br/></template></small>
                         </div>
                     </div>
                     <template v-if="locale == 'ja' || locale === undefined">
                     <div class="col-12 col-md-6 mt-3">
                         <div>
                             <label for="familyNameKana" class="col-form-label label-hidden">{{$t("samples.ec01.inquiry.regist.familyNameKana")}}</label>
-                            <input type="text" class="form-control border rounded input-hint-visible" name="familyNameKana" v-model="inquiryBean.familyNameKana" v-bind:placeholder="$t('samples.ec01.inquiry.regist.familyNameKana')">
-                            <small class="form-text text-danger"><template v-for="message in errorsMap.familyNameKana" v-bind:key="message">{{message}}<br/></template></small>
+                            <input v-model="inquiryBean.familyNameKana" type="text" class="form-control border rounded input-hint-visible" name="familyNameKana" :placeholder="$t('samples.ec01.inquiry.regist.familyNameKana')">
+                            <small class="form-text text-danger"><template v-for="message in errorsMap.familyNameKana" :key="message">{{message}}<br/></template></small>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 mt-3">
                         <div>
                             <label for="firstNameKana" class="col-form-label label-hidden">{{$t("samples.ec01.inquiry.regist.firstNameKana")}}</label>
-                            <input type="text" class="form-control border rounded input-hint-visible" name="firstNameKana" v-model="inquiryBean.firstNameKana" v-bind:placeholder="$t('samples.ec01.inquiry.regist.firstNameKana')">
-                            <small class="form-text text-danger"><template v-for="message in errorsMap.firstNameKana" v-bind:key="message">{{message}}<br/></template></small>
+                            <input v-model="inquiryBean.firstNameKana" type="text" class="form-control border rounded input-hint-visible" name="firstNameKana" :placeholder="$t('samples.ec01.inquiry.regist.firstNameKana')">
+                            <small class="form-text text-danger"><template v-for="message in errorsMap.firstNameKana" :key="message">{{message}}<br/></template></small>
                         </div>
                     </div>
                     </template>
                     <div class="col-12 col-md-12 mt-3">
                         <div>
                             <label for="mail" class="col-form-label label-hidden">{{$t("samples.ec01.inquiry.regist.mail")}}</label>
-                            <input type="text" class="form-control border rounded input-hint-visible" name="mail" v-model="inquiryBean.mail" v-bind:placeholder="$t('samples.ec01.inquiry.regist.mail')">
-                            <small class="form-text text-danger"><template v-for="message in errorsMap.mail" v-bind:key="message">{{message}}<br/></template></small>
+                            <input v-model="inquiryBean.mail" type="text" class="form-control border rounded input-hint-visible" name="mail" :placeholder="$t('samples.ec01.inquiry.regist.mail')">
+                            <small class="form-text text-danger"><template v-for="message in errorsMap.mail" :key="message">{{message}}<br/></template></small>
                         </div>
                     </div>
                     <div class="col-12 col-md-12 mt-3">
                         <div>
                             <label for="content" class="col-form-label label-hidden">{{$t("samples.ec01.inquiry.regist.content")}}</label>
-                            <textarea class="form-control" name="content" rows="5" v-model="inquiryBean.content" v-bind:placeholder="$t('samples.ec01.inquiry.regist.content')"></textarea>
-                            <small class="form-text text-danger"><template v-for="message in errorsMap.content" v-bind:key="message">{{message}}<br/></template></small>
+                            <textarea v-model="inquiryBean.content" class="form-control" name="content" rows="5" :placeholder="$t('samples.ec01.inquiry.regist.content')"></textarea>
+                            <small class="form-text text-danger"><template v-for="message in errorsMap.content" :key="message">{{message}}<br/></template></small>
                         </div>
                     </div>
                 </div>
                 <div class="form-group mt-4">
                     <div class="col-12 text-center">
-                        <button type="button" class="btn btn-dark" v-on:click="doInquiry()">{{$t("samples.ec01.inquiry.regist.doRegist")}}</button>
+                        <button type="button" class="btn btn-dark" @click="doInquiry()">{{$t("samples.ec01.inquiry.regist.doRegist")}}</button>
                     </div>
                 </div>
                 <output-token ref="token"></output-token>
@@ -96,15 +96,18 @@ import OutputToken from '../token/OutputToken.vue'
 
 export default {
     name: 'RegistInquiry',
-    mixins: [Custom, Consts],
     components: {
         'outputToken': OutputToken
     },
+    mixins: [Custom, Consts],
     data: function() {
         return {
             inquiryBean: {},
             errorsMap: {}
         }
+    },
+    mounted: function(){
+        this.initFormInputText('.custom-form');
     },
     methods: {
         doInquiry: function() {
@@ -134,9 +137,6 @@ export default {
             data[token.name] = token.value;
             return data;
         }
-    },
-    mounted: function(){
-        this.initFormInputText('.custom-form');
     }
 }
 </script>

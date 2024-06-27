@@ -24,7 +24,7 @@
         <div class="col-12">
             <div class="border-top"></div>
             <nav class="breadcrumb all-breadcrumb">
-                <router-link class="breadcrumb-item text-primary" v-bind:to="{name: 'top'}">{{$t("samples.ec01.all.breadcrumb.home")}}</router-link>
+                <router-link class="breadcrumb-item text-primary" :to="{name: 'top'}">{{$t("samples.ec01.all.breadcrumb.home")}}</router-link>
                 <span class="breadcrumb-item active">{{$t("samples.ec01.inquiry.regist.title")}}</span>
                 <span class="breadcrumb-item active">{{$t("samples.ec01.inquiry.registSuccess.title")}}</span>
             </nav>
@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div class="col-12 mt-5 text-center">
-                <router-link class="btn btn-dark" v-bind:to="{name: 'top'}" replace>{{$t("samples.ec01.inquiry.registSuccess.return")}}</router-link>
+                <router-link class="btn btn-dark" :to="{name: 'top'}" replace>{{$t("samples.ec01.inquiry.registSuccess.return")}}</router-link>
             </div>
         </div>
     </div>
@@ -52,15 +52,15 @@
 <script>
 export default {
     name: 'RegistInquirySuccess',
-    props: ['status'],
-    beforeRouteEnter: function(to, from, next) {
+    beforeRouteUpdate: function(to, from, next) {
         // 不正な画面遷移が発生したと判断
 		if(['inquiry'].indexOf(from.name) == -1 || to.params.status !="SUCCESS") {
 			next(new Error('samples.ec01.exception.invalidTransition'));
 		} else {
             next();
         }
-	}
+	},
+    props: ['status']
 };
 </script>
 

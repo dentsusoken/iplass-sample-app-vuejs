@@ -24,18 +24,18 @@
         <div class="col-12">
             <div class="border-top"></div>
             <nav class="breadcrumb all-breadcrumb">
-                <router-link class="breadcrumb-item text-primary" v-bind:to="{name: 'top'}">{{$t("samples.ec01.all.breadcrumb.home")}}</router-link> 
-                <span class="breadcrumb-item active">{{productInfo.name}}</span>
+                <router-link class="breadcrumb-item text-primary" :to="{name: 'top'}">{{$t("samples.ec01.all.breadcrumb.home")}}</router-link> 
+                <span class="breadcrumb-item active" :id="productId">{{productInfo.name}}</span>
             </nav>
         </div>
     </div>
-    <div class="row text-center text-md-left">
+    <div class="row text-center text-md-start">
         <div class="col-sm-12 col-md-5">
-            <img v-bind:src="imgUrl(productInfo.productImg)" class="img-thumbnail w-100">
+            <img :src="imgUrl(productInfo.productImg)" class="img-thumbnail w-100">
         </div>
         <div class="col-sm-12 col-md-7">
             <h4>{{productInfo.name}}</h4>
-            <p class="font-weight-bold">{{$t("samples.ec01.product.detail.price")}}： 
+            <p class="fw-bold">{{$t("samples.ec01.product.detail.price")}}： 
                 <span class="all-price">{{productInfo.price}}{{$t("samples.ec01.all.yen")}}</span>
                 （{{$t("samples.ec01.product.detail.priceWithoutTax")}}
                 {{priceWithoutTax}}{{$t("samples.ec01.all.yen")}}）
@@ -43,16 +43,16 @@
             <p v-html="regInfo"></p>
             <!-- 商品サブ情報 -->
             <p class="h5">
-                <template v-for="sub in subInfoList" v-bind:key="sub.oid">
-                    <span class="badge badge-info" v-bind:title="sub.description">{{sub.name}}</span>&nbsp;
+                <template v-for="sub in subInfoList" :key="sub.oid">
+                    <span class="badge badge-info" :title="sub.description">{{sub.name}}</span>&nbsp;
                 </template>
             </p>
-            <div v-bind:class="{'d-none': alreadyAdded}">
-                <button type="button" class="btn btn-outline-dark my-2" v-on:click="inputCartInfo(productId);">{{$t("samples.ec01.product.detail.addToCart")}}</button>
+            <div :class="{'d-none': alreadyAdded}">
+                <button type="button" class="btn btn-outline-dark my-2" @click="inputCartInfo(productId);">{{$t("samples.ec01.product.detail.addToCart")}}</button>
             </div>
-            <div cart-data="viewCart" v-bind:class="{'d-none': !alreadyAdded}">
-                <router-link class="btn btn-dark my-2" v-bind:to="{name: 'cartInfo'}">{{$t("samples.ec01.product.detail.viewCart")}}</router-link>
-                <router-link class="btn btn-outline-dark my-2" v-bind:to="{name: 'top'}">{{$t("samples.ec01.product.detail.continueShopping")}}</router-link>
+            <div cart-data="viewCart" :class="{'d-none': !alreadyAdded}">
+                <router-link class="btn btn-dark my-2" :to="{name: 'cartInfo'}">{{$t("samples.ec01.product.detail.viewCart")}}</router-link>
+                <router-link class="btn btn-outline-dark my-2" :to="{name: 'top'}">{{$t("samples.ec01.product.detail.continueShopping")}}</router-link>
             </div>
         </div>
     </div>
@@ -66,14 +66,14 @@
         <div class="col-12 mt-4">
             <h4>{{$t("samples.ec01.product.detail.recommend")}}</h4>
             <div class="row">
-                <div class="col-12 col-md-4" v-for="product in productList" v-bind:key="product.oid">
+                <div v-for="product in productList" :key="product.oid" class="col-12 col-md-4">
                     <div class="card border-light border-0">
-                        <router-link v-bind:to="{name: 'detail', query: {productId: product.oid}}" class="h-100">
-                            <img class="card-img-top img-thumbnail img-fluid all-product-img" v-bind:src="imgUrl(product.productImg)" v-bind:alt="product.name">
+                        <router-link :to="{name: 'detail', query: {productId: product.oid}}" class="h-100">
+                            <img class="card-img-top img-thumbnail img-fluid all-product-img" :src="imgUrl(product.productImg)" :alt="product.name">
                         </router-link>
                         <div class="card-body pt-md-1 text-center">
                             <div>
-                                <router-link v-bind:to="{name: 'detail', query: {productId: product.oid}}" class="card-link text-dark">{{product.name}}</router-link>
+                                <router-link :to="{name: 'detail', query: {productId: product.oid}}" class="card-link text-dark">{{product.name}}</router-link>
                             </div>
                             <div class="all-price">
                                 {{product.price}}{{$t("samples.ec01.all.yen")}}
@@ -89,11 +89,18 @@
 
 <script>
 import {Consts} from '../../mixins/Consts'
+import emitter from '../../eventBus';
 
 export default {
     name: 'Detail',
     mixins: [Consts],
-    props: ['productId'],
+    beforeRouteUpdate: function(to, from, next){
+        this.productId = to.query.productId;
+        this.loadContent();
+        // カートの中を見るなどのボタンを非表示
+        this.alreadyAdded = false;
+        next();
+    },
     data: function(){
         return {
             alreadyAdded: false,
@@ -101,6 +108,22 @@ export default {
             subInfoList: {},
             productList: {},
         }
+    },
+    computed: {
+        regInfo: function(){
+            if(this.productInfo.regInfo === undefined){
+                return "";
+            } else {
+                return this.productInfo.regInfo.replace(/\r\n/g,'<BR>').replace(/\n/g,'<BR>').replace(/\r/g,'<BR>').replace(/\s/g,'&nbsp;');
+            }
+        },
+        priceWithoutTax: function(){
+            return Math.round(parseInt(this.productInfo.priceWithoutTax));
+        }
+    },
+    created : function(){
+        this.productId = this.$route.query.productId;
+        this.loadContent();
     },
     methods: {
         loadContent: function() {
@@ -130,7 +153,7 @@ export default {
                         // カートの中を見るなどのボタンの表示
                         this.alreadyAdded = true;
                         // カートに入れた商品件数の更新
-                        this.$bus.$emit("cart.totalAmount.refresh", totalAmount)
+                        emitter.emit("cart.totalAmount.refresh", totalAmount)
                     }
                 })
                 .catch((error) => {
@@ -141,28 +164,6 @@ export default {
                     }
                 });
         }
-    },
-    computed: {
-        regInfo: function(){
-            if(this.productInfo.regInfo === undefined){
-                return "";
-            } else {
-                return this.productInfo.regInfo.replace(/\r\n/g,'<BR>').replace(/\n/g,'<BR>').replace(/\r/g,'<BR>').replace(/\s/g,'&nbsp;');
-            }
-        },
-        priceWithoutTax: function(){
-            return Math.round(parseInt(this.productInfo.priceWithoutTax));
-        }
-    },
-    created : function(){
-        this.loadContent();
-    },
-    beforeRouteUpdate: function(to, from, next){
-        this.productId = to.query.productId;
-        this.loadContent();
-        // カートの中を見るなどのボタンを非表示
-        this.alreadyAdded = false;
-        next();
     }
 }
 </script>

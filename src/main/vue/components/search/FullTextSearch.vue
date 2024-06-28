@@ -24,7 +24,9 @@
         <div class="col-12">
             <div class="border-top"></div>
             <nav class="breadcrumb all-breadcrumb">
-                <router-link class="breadcrumb-item text-primary" :to="{name: 'top'}">{{$t("samples.ec01.all.breadcrumb.home")}}</router-link>
+                <router-link class="breadcrumb-item text-primary" :to="{name: 'top'}">
+                    {{$t("samples.ec01.all.breadcrumb.home")}}
+                </router-link>
                 <span class="breadcrumb-item active">{{$t("samples.ec01.search.title")}}</span>
             </nav>
         </div>
@@ -39,7 +41,9 @@
                         {{ selectedCategory.name }}
                     </button>
                     <div class="dropdown-menu" aria-labelledby="categoryList">
-                        <a class="dropdown-item" href="javascript:void(0);" @click="dropdownSelect('all')">{{$t("samples.ec01.product.category.all")}}</a>
+                        <a class="dropdown-item" href="javascript:void(0);" @click="dropdownSelect('all')">
+                            {{$t("samples.ec01.product.category.all")}}
+                        </a>
                         <div class="dropdown-divider"></div>
                         <a v-for="c in categoryList" :key="c.oid" class="dropdown-item" href="javascript:void(0);" @click="dropdownSelect(c)">
                             {{ c.name }}
@@ -47,68 +51,89 @@
                     </div>
                 </div>
                 <span class="input-group-btn pl-2">
-                    <button class="btn btn-secondary" type="button" @click="fullTextSearch()">
+                    <button class="btn btn-secondary" type="button" @click="fullTextSearch">
                         <span class="oi oi-magnifying-glass" title="search" aria-hidden="true"></span>
                     </button>
                 </span>
             </div>
-            <div class="input-group col-12">
-                <small class="form-text text-danger" v-html="helpMessage"></small>
+        </div>
+    </div>
+    <div v-if="fullSearchResult.length > 0">
+        <div id="searchResultDiv" class="row">
+	        <div class="col-12 mb-2">
+	        	<h4>{{ this.$t('samples.ec01.search.result') + productName }}</h4>
+	        </div>
+            <div v-for="result in fullSearchResult" :key="result.oid" class="col-12 col-md-4">
+                <div class="card border-light border-0">
+                    <a :href="result.detailUrl" class="h-100">
+                        <img class="card-img-top img-thumbnail img-fluid all-product-img" :src="result.imageUrl" :alt="result.name">
+                    </a>
+                    <div class="card-body pt-md-1 text-center">
+                        <div>
+                            <a :href="result.detailUrl" class="card-link text-dark">{{ result.name }}</a>
+                        </div>
+                        <div class="all-price">
+                            <span>{{ result.price }}</span>{{ yen }}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
+    <div v-else class="col-12">
+        <small class="form-text text-danger">{{ helpMessage }}</small>
     </div>
 </div>
 </template>
 
 <script>
 import {Consts} from '../../mixins/Consts'
-import $ from 'jquery'
-import emitter from '../../eventBus';
+import emitter from '../../eventBus'
 
 export default {
     name: 'FullTextSearch',
     mixins: [Consts],
-    data: function() {
-            return {
-                productName: "",
-                categoryList: [],
-                fullSearchResult: "",
-                helpMessage: "",
-                selectedCategory: { oid: 'all', name: this.$t("samples.ec01.product.category.all") }
-            }
+    data() {
+        return {
+            productName: '',
+            categoryList: [],
+            fullSearchResult: [],
+            helpMessage: '',
+            selectedCategory: { oid: 'all', name: this.$t("samples.ec01.product.category.all") }
+        };
     },
     computed: {
-        categoryOid: function() {
+        categoryOid() {
             return this.selectedCategory.oid;
         }
     },
-    created: function() {
+    created() {
         this.loadCategoryList();
     },
     methods: {
-        loadCategoryList: function() {
+        loadCategoryList() {
             emitter.on('fullTextSearch.categoryList.response', (categoryList) => {
                 this.categoryList = categoryList;
             });
             emitter.emit('fullTextSearch.categoryList.request');
         },
-        fullTextSearch: function() {
-            if (this.productName == "") {
+        fullTextSearch() {
+            if (this.productName === '') {
                 this.helpMessage = this.$t('samples.ec01.search.nokeyword');
                 return false;
             }
             var url = this.apiFulltextSearch();
-            var data = {productName: this.productName, categoryOid: this.categoryOid};
+            var data = { productName: this.productName, categoryOid: this.categoryOid };
             this.$http.post(url, data)
                 .then((response) => {
                     var commandResult = response.data;              
                     if(commandResult.status == 'SUCCESS') {
                         if(commandResult.defaultResult != null && commandResult.defaultResult.length > 0){
-                            this.fullSearchResult = this.ListSearchResult(commandResult.defaultResult, this.productName);
-                            $('#searchResultDiv').html(this.fullSearchResult);
-                        }
-                        else{
+                            this.fullSearchResult = this.transformSearchResults(commandResult.defaultResult, this.productName);
+                            this.helpMessage = '';
+                        } else {
                             this.helpMessage = this.$t('samples.ec01.search.keyword') + this.productName + ", " + this.$t('samples.ec01.search.noResult');
+                            this.fullSearchResult = [];
                         }
                     } else {
                         console.log(response);
@@ -131,33 +156,14 @@ export default {
                 this.selectedCategory = category;
             }
         },
-        ListSearchResult: function(entities, productName){
-            var yen = this.$t('samples.ec01.all.yen');
-            var html =  "<div class=\"col-12 mb-2\">";
-                html += "	<h4>" + this.$t('samples.ec01.search.result') + productName + "</h4>";
-                html += "</div>";
-            for(var i =0; i < entities.length; i++){
-                var name = entities[i].name;
-                var price = isNaN(entities[i].price)? "" : entities[i].price;
-                var imageUrl = this.imgUrl(entities[i].productImg);
-                var detailUrl = "#/product/detail?productId=" + entities[i].oid;
-                html += "<div class=\"col-12 col-md-4\">";
-                html += "	<div class=\"card border-light border-0\">";
-                html += "	    <a href=\"" + detailUrl + "\" class=\"h-100\">";
-                html += "	       <img class=\"card-img-top img-thumbnail img-fluid all-product-img\" src=" + imageUrl + " alt=\"" + name + "\">";
-                html += "	    </a>";
-                html += "	    <div class=\"card-body pt-md-1 text-center\">";
-                html += "	       <div>";
-                html += "	           <a href=\""+ detailUrl +"\" class=\"card-link text-dark\">" + name + "</a>";
-                html += "	        </div>";
-                html += "	        <div class=\"all-price\">";
-                html += "              <span>" + price + "</span>" + yen;
-                html += "	        </div>";
-                html += "	    </div>";
-                html += "	</div>";
-                html += "</div>";
-            }
-            return html;
+        transformSearchResults(entities, productName) {
+            return entities.map(entity => ({
+                oid: entity.oid,
+                name: entity.name,
+                price: isNaN(entity.price) ? '' : entity.price,
+                imageUrl: this.imgUrl(entity.productImg),
+                detailUrl: `#/product/detail?productId=${entity.oid}`
+            }));
         }
     }
 }

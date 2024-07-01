@@ -56,22 +56,22 @@ import {Consts} from '../../mixins/Consts'
 export default {
     name: 'SearchResult',
     mixins: [Consts],
-    beforeRouteUpdate: function(to, from, next) {
+    beforeRouteUpdate(to, from, next) {
         this.keyword = to.query.keyword;
         this.loadContent();
         next();
     },
-    data: function() {
+    data() {
         return {
             productList: []
         }
     },
-    created: function() {
+    created() {
         this.keyword = this.$route.query.keyword;
         this.loadContent();
     },
     methods: {
-        loadContent: function() {
+        loadContent() {
             var url = this.apiDoSearch();
             var data = {productName: this.keyword};
             this.$http.post(url, data)

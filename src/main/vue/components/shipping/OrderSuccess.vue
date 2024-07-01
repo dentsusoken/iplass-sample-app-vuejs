@@ -51,7 +51,7 @@
 <script>
 export default {
     name: 'OrderSuccess',
-    beforeRouteUpdate: function(to, from, next) {
+    beforeRouteUpdate(to, from, next) {
         // 不正な画面遷移が発生したと判断
 		if(['confirmShippingInfo'].indexOf(from.name) == -1 || to.params.status != 'SUCCESS') {
             next(new Error('samples.ec01.exception.invalidTransition'));

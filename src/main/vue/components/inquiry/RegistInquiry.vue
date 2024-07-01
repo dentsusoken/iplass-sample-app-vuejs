@@ -100,17 +100,17 @@ export default {
         'outputToken': OutputToken
     },
     mixins: [Custom, Consts],
-    data: function() {
+    data() {
         return {
             inquiryBean: {},
             errorsMap: {}
         }
     },
-    mounted: function(){
+    mounted(){
         this.initFormInputText('.custom-form');
     },
     methods: {
-        doInquiry: function() {
+        doInquiry() {
             var url = this.apiDoInquiry();
             var data = this.populatePostData();
             this.$http.post(url, data)
@@ -124,7 +124,7 @@ export default {
                     }
                 });
         },
-        populatePostData: function() {
+        populatePostData() {
             var token = this.$refs.token.get();
             var data = {
                 familyName: this.inquiryBean.familyName,

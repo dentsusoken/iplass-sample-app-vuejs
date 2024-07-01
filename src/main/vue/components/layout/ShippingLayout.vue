@@ -98,7 +98,7 @@ const emitter = mitt();
 export default {
     name: 'ShippingLayout',
     mixins: [Consts],
-    data: function() {
+    data() {
         return {
             expanded: false,
             cartBean: {
@@ -108,21 +108,21 @@ export default {
         }
     },
     computed: {
-        totalPrice: function() {
+        totalPrice() {
             return this.cartBean === undefined ? "" : this.cartBean.totalPrice;
         },
-        cartItems: function(){
+        cartItems(){
             return this.cartBean === undefined ? [] : this.cartBean.cartItems;
         }
     },
-    created: function() {
+    created() {
         emitter.on('confirmShippingInfo.order.success',() => {
         	this.cartBean = undefined;
         })
         this.loadContent();
     },
     methods: {
-        loadContent: function() {
+        loadContent() {
             var url = this.apiShippingLayout();
             this.$http.get(url)
                 .then((response) => {
@@ -133,7 +133,7 @@ export default {
                     }
                 });  
         },
-        toggleCart: function(){
+        toggleCart(){
             this.expanded = !this.expanded;
         }
     }

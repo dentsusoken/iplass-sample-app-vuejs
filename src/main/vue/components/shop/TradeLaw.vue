@@ -148,17 +148,17 @@ import {Consts} from '../../mixins/Consts'
 export default {
     name: 'TradeLaw',
     mixins: [Consts],
-    data: function() {
+    data() {
         return {
             shopInfo: {},
             tradeLaw: {}
         }
     },
-    created: function() {
+    created() {
         this.loadContent();
     },
     methods: {
-        loadContent: function() {
+        loadContent() {
             var url = this.apiTradeLaw();
             this.$http.get(url)
                 .then((response) => {

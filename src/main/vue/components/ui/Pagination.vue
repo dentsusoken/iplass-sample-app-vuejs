@@ -64,10 +64,10 @@ export default {
     name: 'Pagination',
     props: ['pagination', 'paginationUrl'],
     computed: {
-        currentPage: function() {
+        currentPage() {
             return this.pagination === undefined ? 0 : this.pagination.currentPage;
         },
-        totalPage: function() {
+        totalPage() {
             return this.pagination === undefined ? 0 : this.pagination.totalPage;
         }
     }

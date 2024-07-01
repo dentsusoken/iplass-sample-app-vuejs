@@ -109,7 +109,7 @@ export default {
     },
     mixins: [Custom, Consts],
     props: ['editShippingBean'],
-    data: function(){
+    data(){
         return {
             shippingBean: {
                 mail: "",
@@ -123,7 +123,7 @@ export default {
             errorsMap: {}
         }
     },
-    created: function() {
+    created() {
         var name = this.$router.currentRoute.name || this.$router.currentRoute.value.name;
         if(name == "inputShippingInfoNoMember") {
             this.loadContentNoMember();
@@ -134,11 +134,11 @@ export default {
             this.shippingBean = decodedData;
         }
     },
-    mounted: function () {
+    mounted () {
         this.initFormInputText('.custom-form');
     },
     methods: {
-        loadContent: function() {
+        loadContent() {
             var url = this.apiInputShippingInfo();
             this.$http.get(url)
                 .then((response) => {
@@ -151,7 +151,7 @@ export default {
                     }
                 });             
         },
-        loadContentNoMember: function() {
+        loadContentNoMember() {
             var url = this.apiInputShippingInfoNoMember();
             this.$http.get(url)
                 .then((response) => {
@@ -162,7 +162,7 @@ export default {
                     }
                 }); 
         },
-        confirmShippingInfo: function() {
+        confirmShippingInfo() {
             var url = this.apiConfirmShippingInfo();
             var data = this.populatePostData();
             this.$http.post(url, data)
@@ -177,7 +177,7 @@ export default {
                     }
                 });
         },
-        populatePostData: function() {
+        populatePostData() {
             var token = this.$refs.token.get();
             var data = {                
                 mail: this.shippingBean.mail,

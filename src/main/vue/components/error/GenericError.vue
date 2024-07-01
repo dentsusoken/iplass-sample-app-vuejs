@@ -73,7 +73,7 @@
 export default {
     name: 'GenericError',
     props: ['exception'],
-    created: function() {
+    created() {
         console.log(this.exception);
     }
 }

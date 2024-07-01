@@ -56,32 +56,32 @@ export default {
     name: 'NewInfo',
     components: {'pagination': Pagination},
     mixins: [Consts],
-    beforeRouteUpdate: function(to, from, next) {
+    beforeRouteUpdate(to, from, next) {
         // eslint-disable-next-line vue/no-mutating-props
         this.page = to.query.page;
         this.loadContent();
         next();
     },
     props: ['page'],
-    data: function() {
+    data() {
         return {
             pagination: {},
             newsInfoList: []
         }
     },
     computed: {
-        pageIndex : function() {
+        pageIndex () {
             return this.page === undefined ? 0 : this.page;
         },
-        paginationUrl: function() {
+        paginationUrl() {
             return this.newInfoUrl();
         }
     },
-    created: function() {
+    created() {
         this.loadContent();
     },
     methods: {
-        loadContent: function() {
+        loadContent() {
             var url = this.apiNewInfo(this.pageIndex);
             this.$http.get(url)
                 .then((response) => {

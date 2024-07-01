@@ -94,14 +94,14 @@ import emitter from '../../eventBus';
 export default {
     name: 'Detail',
     mixins: [Consts],
-    beforeRouteUpdate: function(to, from, next){
+    beforeRouteUpdate(to, from, next){
         this.productId = to.query.productId;
         this.loadContent();
         // カートの中を見るなどのボタンを非表示
         this.alreadyAdded = false;
         next();
     },
-    data: function(){
+    data(){
         return {
             alreadyAdded: false,
             productInfo: {},
@@ -110,23 +110,23 @@ export default {
         }
     },
     computed: {
-        regInfo: function(){
+        regInfo(){
             if(this.productInfo.regInfo === undefined){
                 return "";
             } else {
                 return this.productInfo.regInfo.replace(/\r\n/g,'<BR>').replace(/\n/g,'<BR>').replace(/\r/g,'<BR>').replace(/\s/g,'&nbsp;');
             }
         },
-        priceWithoutTax: function(){
+        priceWithoutTax(){
             return Math.round(parseInt(this.productInfo.priceWithoutTax));
         }
     },
-    created : function(){
+    created (){
         this.productId = this.$route.query.productId;
         this.loadContent();
     },
     methods: {
-        loadContent: function() {
+        loadContent() {
             var url = this.apiDetail(this.productId);
             this.$http.get(url)
                 .then((response) => {
@@ -141,7 +141,7 @@ export default {
                     }
                 });
         },
-        inputCartInfo: function(productId) {
+        inputCartInfo(productId) {
             var url = this.apiInputCartInfo();
             var data = {productId: this.productId};
             var config = {contentType: 'application/json', headers: {'X-Requested-With': 'XMLHttpRequest'}};

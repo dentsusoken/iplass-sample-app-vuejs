@@ -18,40 +18,51 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import $ from 'jquery'
 export const Custom = {
     methods: {
-        //入力フォームのテキストボックスに入力ヒント用ラベルの表示と非表示を制御するスクリプト 
-        initFormInputText: function (form) {
-            $(form).find("input[type='text'],input[type='password'],textarea").keyup(function() {
-                var t = $(this);
-                var l = t.parent().children("label");
-                var text = t.val();
-                if (text.length > 0) {
-                    t.removeClass("input-hint-visible").addClass("input-hint-hidden");
-                    l.removeClass("label-hidden").addClass("label-visible");
-                }
-                else {
-                    t.removeClass("input-hint-hidden").addClass("input-hint-visible");
-                    l.removeClass("label-visible").addClass("label-hidden");
-                }
-            }).trigger("keyup");
+        // 入力フォームのテキストボックスに入力ヒント用ラベルの表示と非表示を制御するスクリプト
+        initFormInputText(selector) {
+            const forms = document.querySelectorAll(selector);
+            forms.forEach(form => {
+                const inputs = form.querySelectorAll("input[type='text'], input[type='password'], textarea");
+                inputs.forEach(input => {
+                    const label = input.parentElement.querySelector("label");
+
+                    const updateLabelVisibility = () => {
+                        const text = input.value;
+                        if (text.length > 0) {
+                            input.classList.remove("input-hint-visible");
+                            input.classList.add("input-hint-hidden");
+                            label.classList.remove("label-hidden");
+                            label.classList.add("label-visible");
+                        } else {
+                            input.classList.remove("input-hint-hidden");
+                            input.classList.add("input-hint-visible");
+                            label.classList.remove("label-visible");
+                            label.classList.add("label-hidden");
+                        }
+                    };
+
+                    input.addEventListener('keyup', updateLabelVisibility);
+                    updateLabelVisibility();
+                });
+            });
         },
         // BeanValidationが生成したエラーリストをMapに変換する
-        convertToErrorsMap: function(errors) {
-            var errorsMap = {};
-            if (errors === undefined || errors.length > 0) {
-                for (var i = 0; i < errors.length; i++) {
-                    var key = errors[i].propertyPath;
-                    var val = errors[i].errorMessages;
+        convertToErrorsMap(errors) {
+            const errorsMap = {};
+            if (errors && errors.length > 0) {
+                errors.forEach(error => {
+                    const key = error.propertyPath;
+                    const val = error.errorMessages;
                     errorsMap[key] = val;
-                }
+                });
             }
             return errorsMap;
         }
     },
     computed: {
-        locale: function() {
+        locale() {
             return this.$i18n.locale;
         }
     }

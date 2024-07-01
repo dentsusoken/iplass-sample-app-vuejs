@@ -107,7 +107,7 @@ export default {
     outputToken: OutputToken
   },
   mixins: [Custom, Consts],
-  beforeRouteUpdate: function(to, from, next) {
+  beforeRouteUpdate(to, from, next) {
     // 不正な画面遷移が発生したと判断
     if(['regist'].indexOf(from.name) == -1 || to.params.userBean === undefined) {
       next(new Error('samples.ec01.exception.invalidTransition'));
@@ -121,12 +121,12 @@ export default {
         required: true
     },
   },  
-  created: function() {
+  created() {
     var decodedData = JSON.parse(decodeURIComponent(this.$route.query.userBean));
     this.localUserBean = decodedData;
   },
   methods: {
-    registMemberInfo: function() {
+    registMemberInfo() {
       var url = this.apiRegistMemberInfo();
       var data = this.populatePostData();
       this.$http.post(url, data)
@@ -140,7 +140,7 @@ export default {
           }
         });
     },
-    populatePostData: function() {
+    populatePostData() {
       var token = this.$refs.token.get();
       var data = {};
       data[token.name] = token.value;

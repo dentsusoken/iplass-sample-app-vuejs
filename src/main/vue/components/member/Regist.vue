@@ -100,7 +100,7 @@ export default {
     name: 'Regist',
     components: {'outputToken': OutputToken},
     mixins: [Custom, Consts],
-    data: function() {
+    data() {
         return {
             userBean: {
                 userId: "", 
@@ -114,7 +114,7 @@ export default {
             errorsMap: {}
         }
     },
-    created: function() {
+    created() {
         var url = this.apiInputMemberInfo();
         this.$http.get(url)
 			.then((response) => {
@@ -126,11 +126,11 @@ export default {
 				}
 			});
     },
-    mounted: function(){
+    mounted(){
         this.initFormInputText('.custom-form');
     },
     methods: {
-        confirmMemberInfo: function() {
+        confirmMemberInfo() {
             var url = this.apiConfirmMemberInfo();
             var data = this.populatePostData();
             this.$http.post(url, data)
@@ -145,7 +145,7 @@ export default {
                     }
                 });
         },
-        populatePostData: function(){
+        populatePostData(){
             var data = {
                 userId: this.userBean.userId, 
                 familyName: this.userBean.familyName, 

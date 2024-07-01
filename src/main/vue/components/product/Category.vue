@@ -81,14 +81,14 @@ export default {
     name: 'Category',
     components: {'pagination': Pagination},
     mixins: [Consts],
-    beforeRouteUpdate: function(to, from, next) {
+    beforeRouteUpdate(to, from, next) {
         this.categoryId = to.query.categoryId;
         this.page = to.query.page;
         this.loadCategoryList();
         this.loadContent();
         next();
     },
-    data: function() {
+    data() {
         return {
             categoryName: "",
             categoryList: [],
@@ -98,28 +98,28 @@ export default {
         }
     },
     computed: {
-        categoryNameLocale: function() {
+        categoryNameLocale() {
             // カテゴリが選択されてない場合
             if(this.categoryName == 'all'){
                 this.categoryName = this.$t('samples.ec01.product.category.all');
             }
             return this.categoryName;
         },
-        pageIndex: function() {
+        pageIndex() {
             return this.page === undefined ? 0 : this.page;
         },
-        paginationUrl: function() {
+        paginationUrl() {
             return this.categoryUrl(this.categoryId);
         }
     },
-    created: function() {
+    created() {
         this.categoryId = this.$route.query.categoryId;
         this.page = this.$route.query.page;
         this.loadCategoryList();
         this.loadContent();
     },
     methods: {
-        loadContent : function() {
+        loadContent () {
             var url = this.apiCategory(this.categoryId, this.pageIndex);
             this.$http.get(url)
                 .then((response) => {
@@ -134,7 +134,7 @@ export default {
                     }
                 });
         },
-        loadCategoryList: function() {
+        loadCategoryList() {
             emitter.on('category.categoryList.response', (categoryList) => {
                 this.categoryList = categoryList;
             });

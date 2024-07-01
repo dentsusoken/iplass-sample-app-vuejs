@@ -29,7 +29,7 @@
             </nav>
         </div>
     </div>
-    <div v-if="cartBean === undefined || cartBean.cartItems.length == 0" class="row cart-table">
+    <div v-if="!cartBean || cartBean.cartItems.length == 0" class="row cart-table">
         <div class="col-12 text-left">
             <p>{{$t("samples.ec01.cart.info.emptyMsg.p1")}}</p>
             <p>{{$t("samples.ec01.cart.info.emptyMsg.p2")}}<router-link class="text-dark" :to="{name: 'top'}">{{$t("samples.ec01.cart.info.emptyMsg.p3")}}</router-link></p>
@@ -114,13 +114,12 @@
 
 <script>
 import {Consts} from '../../mixins/Consts'
-import $ from 'jquery'
 import emitter from '../../eventBus';
 
 export default {
     name: 'CartInfo',
     mixins: [Consts],
-    data: function() {
+    data() {
         return {
             cartBean: {
                 cartItems: [],
@@ -129,11 +128,11 @@ export default {
             productMap: {}
         }
     },
-    created: function() {
+    created() {
         this.loadContent();
     },
     methods: {
-        loadContent: function() {
+        loadContent() {
             var url = this.apiCartInfo();
             this.$http.get(url)
                 .then((response) => {
@@ -144,12 +143,11 @@ export default {
                     }
                 });
         },
-        updateCart: function() {
-            var err = false;
-            $('input[type=text][cart-data=value]').each(function(){
-                var str = this.value;
-                if(isNaN(str) || !/^[1-9]\d*|0$/.test(str)) {
-                    err = true;
+        updateCart() {
+            let err = false;
+            this.cartBean.cartItems.forEach(item => {
+                if (isNaN(item.value) || !/^[1-9]\d*|0$/.test(item.value)) {
+                    err = true
                 }
             });
             if (err){
@@ -168,17 +166,15 @@ export default {
                     }
                 });
         },
-        populateCartUpdateData: function() {
-            var data = {};
-            $('input[type=hidden][cart-data=productId]').each(function(){
-                data[this.name] = this.value;
-            })
-            $('input[type=text][cart-data=value]').each(function(){
-                data[this.name] = this.value;
+        populateCartUpdateData() {
+            const data = {};
+            this.cartBean.cartItems.forEach((item, i) => {
+                data[`cartItems[${i}].productId`] = item.productId
+                data[`cartItems[${i}].value`] = item.value
             })
             return data;
         },
-        deleteCartItem: function(productId) {
+        deleteCartItem(productId) {
             var url = this.apiDeleteCartInfo(productId);
             var data = {deleteId: productId};
             this.$http.post(url, data)

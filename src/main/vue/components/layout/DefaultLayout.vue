@@ -153,7 +153,7 @@ import emitter from '../../eventBus'
 export default {
     name: 'DefaultLayout',
     mixins: [Consts],
-    data: function() {
+    data() {
         return {
             totalAmount: "",
             categoryList: [],
@@ -161,7 +161,7 @@ export default {
             keyword: ''
         }
     },
-    created: function() {
+    created() {
         // カートに入れた商品件数の更新
         emitter.on('cart.totalAmount.refresh', (totalAmount) => {
             this.totalAmount = totalAmount;
@@ -176,7 +176,7 @@ export default {
         this.loadContent();
     },
     methods: {
-        loadContent: function() {
+        loadContent() {
             var url = this.apiDefaultLayout();
             this.$http.get(url)
                 .then((response) => {
@@ -189,7 +189,7 @@ export default {
                     }
                 });  
         },
-        search: function() {
+        search() {
             this.$router.replace({name: 'searchResult', query: {keyword: this.keyword}});
         }
     }

@@ -19,7 +19,7 @@
  */
 
 export const Consts = {
-    data: function () {
+    data () {
         return {
             tcPath: tcPath,
             path: {
@@ -55,86 +55,86 @@ export const Consts = {
         };
     },
     methods: {
-        imgUrl: function(productImg) {
+        imgUrl(productImg) {
             if (this.tcPath === undefined || productImg === undefined) {
                 return "";
             } else {
                 return this.path.productImg + productImg.lobId;
             }
         },
-        categoryUrl: function(categoryId) {
+        categoryUrl(categoryId) {
             return this.path.category + categoryId + '&page=';
         },
-        newInfoUrl: function(){
+        newInfoUrl(){
             return this.path.newInfo;
         },
-        apiDefaultLayout: function() {
+        apiDefaultLayout() {
             return this.apiPath.defaultLayout;
         },
-        apiShippingLayout: function() {
+        apiShippingLayout() {
             return this.apiPath.shippingLayout;
         },
-        apiTop: function() {
+        apiTop() {
             return this.apiPath.top;
         },
-        apiCartInfo: function() {
+        apiCartInfo() {
             return this.apiPath.cartInfo;
         },
-        apiInputCartInfo: function(productId) {
+        apiInputCartInfo(productId) {
             return this.apiPath.inputCartInfo;
         },
-        apiUpdateCartInfo: function() {
+        apiUpdateCartInfo() {
             return this.apiPath.updateCartInfo;
         },
-        apiDeleteCartInfo: function(productId) {
+        apiDeleteCartInfo(productId) {
             return this.apiPath.deleteCartInfo + productId;
         },
-        apiDoInquiry: function() {
+        apiDoInquiry() {
             return this.apiPath.doInquiry;
         },
-        apiDoLogin: function() {
+        apiDoLogin() {
             return this.apiPath.doLogin;
         },
-        apiInputMemberInfo: function() {
+        apiInputMemberInfo() {
             return this.apiPath.inputMemberInfo;
         },
-        apiConfirmMemberInfo: function() {
+        apiConfirmMemberInfo() {
             return this.apiPath.confirmMemberInfo;
         },
-        apiRegistMemberInfo: function() {
+        apiRegistMemberInfo() {
             return this.apiPath.registMemberInfo;
         },
-        apiNewInfo: function(pageIndex) {
+        apiNewInfo(pageIndex) {
             return this.apiPath.newInfo + pageIndex;
         },
-        apiCategory: function(categoryId, pageIndex) {
+        apiCategory(categoryId, pageIndex) {
             return this.apiPath.category + categoryId + '&page=' + pageIndex;
         },
-        apiDetail: function(productId) {
+        apiDetail(productId) {
             return this.apiPath.detail + productId;
         },
-        apiFulltextSearch: function() {
+        apiFulltextSearch() {
             return this.apiPath.fulltextSearch;
         },
-        apiDoSearch: function() {
+        apiDoSearch() {
             return this.apiPath.doSearch;
         },
-        apiInputShippingInfo: function() {
+        apiInputShippingInfo() {
             return this.apiPath.inputShippingInfo;
         },
-        apiInputShippingInfoNoMember: function() {
+        apiInputShippingInfoNoMember() {
             return this.apiPath.inputShippingInfoNoMember;
         },
-        apiConfirmShippingInfo: function() {
+        apiConfirmShippingInfo() {
             return this.apiPath.confirmShippingInfo;
         },
-        apiDoOrder: function() {
+        apiDoOrder() {
             return this.apiPath.doOrder;
         },
-        apiTradeLaw: function() {
+        apiTradeLaw() {
             return this.apiPath.tradeLaw;
         },
-        apiOutputToken: function() {
+        apiOutputToken() {
             return this.apiPath.token;
         }
     }

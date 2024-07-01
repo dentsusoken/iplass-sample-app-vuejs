@@ -47,12 +47,12 @@ router.onError((error) => {
 const app = createApp(App, {
   onExpand() {
   },
-  created: function() {
+  created() {
     // axiosにインターセプターを設定
     this.setupAxiosErrorInterceptors();
   },
   methods: {
-    setupAxiosErrorInterceptors: function() {
+    setupAxiosErrorInterceptors() {
       this.$http.interceptors.response.use((response) => {
         return response;
       }, (error) => {

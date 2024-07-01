@@ -74,16 +74,16 @@ export default {
         'outputToken': OutputToken
     },
     mixins: [Custom, Consts],
-    data: function() {
+    data() {
         return {
             user: {id: "", password: ""},
         }
     },
-    mounted: function () {
+    mounted () {
         this.initFormInputText('.custom-form');
     },
     methods: {
-        login: function() {
+        login() {
             var url = this.apiDoLogin();
             var data = this.populatePostData();
             this.$http.post(url, data)
@@ -96,7 +96,7 @@ export default {
                     }
                 });
         },
-        populatePostData: function() {
+        populatePostData() {
             var token = this.$refs.token.get();
             var data = {id: this.user.id, password: this.user.password};
             data[token.name] = token.value;

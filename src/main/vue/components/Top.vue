@@ -45,12 +45,12 @@ import {Consts} from '../mixins/Consts'
 export default {
 	name: 'Top',
 	mixins: [Consts],
-    data: function() {
+    data() {
         return {
             productList : []
         }
 	},
-	created: function() {
+	created() {
 		var url = this.apiTop();
 		this.$http.get(url)
 			.then((response) => {

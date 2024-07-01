@@ -28,7 +28,7 @@ import {Consts} from '../../mixins/Consts'
 export default {
     name: 'OutputToken',
     mixins: [Consts],
-    data: function() {
+    data() {
         return {
             token: {
                 name: "",
@@ -36,16 +36,16 @@ export default {
             }
         }
     },
-    created: function() {
+    created() {
         this.reload();
     },
     methods: {
         // トークンを取得する
-        get: function() {
+        get() {
             return this.token;
         },
         // トークンをリロードする
-        reload: function() {
+        reload() {
             var url = this.apiOutputToken();
             var data = {};
             this.$http.post(url, data)

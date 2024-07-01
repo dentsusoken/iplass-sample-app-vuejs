@@ -101,7 +101,7 @@ export default {
       		required: true
 		},
 	},
-	data: function () {
+	data () {
 		return {
 			localShippingBean: {
 				mail: '',
@@ -114,12 +114,12 @@ export default {
 			},
 		};
 	},
-	created: function() {
+	created() {
 		var decodedData = JSON.parse(decodeURIComponent(this.$route.query.shippingBean));
 		this.localShippingBean = decodedData;
 	},
 	methods: {
-		doOrder: function() {
+		doOrder() {
             var url = this.apiDoOrder();
             var data = this.populatePostData();
             this.$http.post(url, data)
@@ -133,13 +133,13 @@ export default {
 					}
                 });
 		},
-		populatePostData: function() {
+		populatePostData() {
 			var token = this.$refs.token.get();
 			var data = {};
 			data[token.name] = token.value;
 			return data;
 		},
-		editShippingInfo: function() {
+		editShippingInfo() {
 			var encodedData = encodeURIComponent(JSON.stringify(this.localShippingBean));
 			this.$router.replace({name: 'editShippingInfo', query: {editShippingBean: encodedData}});
 		}

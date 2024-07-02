@@ -1,432 +1,432 @@
 {
-    "en": {
-        "samples": {
-            "ec01": {
-                "all": {
-                    "breadcrumb": {
-                        "home": "Home"
-                    },
-                    "pagination": {
-                        "next": "Next",
-                        "prev": "Prev"
-                    },
-                    "yen": "Yen"
-                },
-                "cart": {
-                    "info": {
-                        "checkOut": "Check out",
-                        "emptyMsg": {
-                            "p1": "Your cart is currently empty.",
-                            "p2": "If you want to continue shopping,",
-                            "p3": "click here."
-                        },
-                        "notNum": "Please enter a number.",
-                        "price": "Price",
-                        "product": "Product",
-                        "quantity": "Quantity",
-                        "refresh": "Refresh",
-                        "remove": "Remove",
-                        "return": "Return to Shopping",
-                        "subtotal": "Subtotal",
-                        "title": "Cart",
-                        "total": "Total"
-                    }
-                },
-                "error": {
-                    "entityDataNotFound": {
-                        "msg": "The target data may have already been deleted."
-                    },
-                    "entityValidation": {
-                        "msg": "Input error occured."
-                    },
-                    "loginFailed": {
-                        "msg": "Incorrect password or email address."
-                    },
-                    "return": "Return to home",
-                    "sessionValueNotFound": {
-                        "msg": "Session timeout may have occurred."
-                    },
-                    "system": {
-                        "msg": "An unexpected error has occurred. Please contact the site administrator."
-                    },
-                    "title": "ERROR",
-                    "token": {
-                        "msg": "Illegal screen transition occurred. ( When pressing the \"back button\" of the browser during series of  processing, may not be able to continue processing. )"
-                    },
-                    "userExists": {
-                        "msg": "User you are trying to register has already been registered."
-                    }
-                },
-                "inquiry": {
-                    "regist": {
-                        "content": "The content of the inquiry※",
-                        "doRegist": "Send the inquiry content",
-                        "familyName": "Family name※",
-                        "familyNameKana": "Family name (Katakana)",
-                        "firstName": "First Name※",
-                        "firstNameKana": "First name (Katakana)",
-                        "mail": "mail※",
-                        "title": "Inquiry"
-                    },
-                    "registSuccess": {
-                        "msg": {
-                            "p1": "Thank you for your inquiry.",
-                            "p2": "We will contact you with your email address."
-                        },
-                        "return": "Return to home",
-                        "title": "Inquiry registration completed"
-                    }
-                },
-                "layout": {
-                    "defaultLayout": {
-                        "SCTAInfo": "The notation for law of specified commercial transactions",
-                        "cart": "Cart",
-                        "checkOut": "Check out",
-                        "home": "Home",
-                        "inquiry": "Inquiry",
-                        "news": "News",
-                        "search": "Search"
-                    },
-                    "shipping": {
-                        "fee": "Shipping fee",
-                        "subtotal": "Subtotal",
-                        "title": "Enter shipping information",
-                        "total": "Total",
-                        "viewCart": "View cart",
-                        "yen": "Yen"
-                    }
-                },
-                "member": {
-                    "login": {
-                        "doLogin": "Login",
-                        "password": "Password",
-                        "pay": "Go to payment",
-                        "payInfo": "■To order without member registration",
-                        "registMember": "Regist a member",
-                        "registMemberInfo": "■I am not a member yet.",
-                        "title": "User Login",
-                        "userid": "User ID"
-                    },
-                    "regist": {
-                        "doRegist": "Agree and Regist",
-                        "familyName": "Family name※",
-                        "familyNameKana": "Family name (Katakana)",
-                        "firstName": "First Name※",
-                        "firstNameKana": "First name (Katakana)",
-                        "mail": "mail※",
-                        "title": "Regist customer information",
-                        "userId": "User ID※"
-                    },
-                    "registConfirm": {
-                        "fullName": "Full name※",
-                        "fullNameKana": "Full name (Katakana)",
-                        "regist": "Regist",
-                        "registMsg": {
-                            "p1": "Please enter the following items. 「※」mark is mandatory fields.",
-                            "p2": "After entering, please click the bottom \"Regist\" button."
-                        },
-                        "title": "Confirm customer information"
-                    },
-                    "registSuccess": {
-                        "return": "Return to home",
-                        "successMsg": {
-                            "p1": "Thank you for your registration.",
-                            "p2": "Please confirm the password in the email that we will send you later."
-                        },
-                        "title": "Register customer info successfully"
-                    }
-                },
-                "newinfo": {
-                    "title": "New information"
-                },
-                "product": {
-                    "category": {
-                        "all": "All items",
-                        "title": "Category"
-                    },
-                    "detail": {
-                        "addToCart": "Add to Cart",
-                        "continueShopping": "Continue Shopping",
-                        "jsError": "Error occured.",
-                        "price": "Price",
-                        "priceWithoutTax": "Without tax",
-                        "recommend": "Recommend",
-                        "viewCart": "View Cart"
-                    }
-                },
-                "search": {
-                    "jsError": "Error occured.",
-                    "keyword": "keyword",
-                    "noResult": "search result : 0 items",
-                    "nokeyword": "Please enter the keyword.",
-                    "result": "Search result : ",
-                    "title": "Search"
-                },
-                "shipping": {
-                    "confirm": {
-                        "addressInfo": "Shipping address",
-                        "edit": "Edit",
-                        "fullName": "Full name※",
-                        "fullNameKana": "Full name (Katakana)",
-                        "order": "Order",
-                        "return": "Return to shipping address",
-                        "title": "Confirm shipping address"
-                    },
-                    "input": {
-                        "address": "address※",
-                        "delivery": "Ship to this address",
-                        "familyName": "Family name※",
-                        "familyNameKana": "Family name (Katakana)",
-                        "firstName": "First name※",
-                        "firstNameKana": "First name (Katakana)",
-                        "mail": "mail※",
-                        "return": "Return to cart",
-                        "tel": "Tel※",
-                        "title": "Enter shipping information"
-                    },
-                    "success": {
-                        "msg": {
-                            "p1": "Thank you for your order.",
-                            "p2": "We hope to receive your continued patronage in the future."
-                        },
-                        "return": "Return to home",
-                        "title": "Order completed"
-                    }
-                },
-                "shop": {
-                    "tradeLaw": {
-                        "address": "Location",
-                        "administrator": "Operation director",
-                        "back": "Back to home",
-                        "dealer": "Distributor",
-                        "deliveryTime": "Delivery time",
-                        "exchanged": "About returning goods and exchange",
-                        "fax": "FAX number",
-                        "feeRequired": "Expenses without commodity price",
-                        "mail": "Email address",
-                        "orderingMethod": "Ordering method",
-                        "paymentDate": "Payment date",
-                        "paymentMethod": "Payment method",
-                        "postNo": "Postal code",
-                        "tel": "Phone number"
-                    }
-                }
-            }
+  "en": {
+    "samples": {
+      "ec01": {
+        "all": {
+          "breadcrumb": {
+            "home": "Home"
+          },
+          "pagination": {
+            "next": "Next",
+            "prev": "Prev"
+          },
+          "yen": "Yen"
+        },
+        "cart": {
+          "info": {
+            "checkOut": "Check out",
+            "emptyMsg": {
+              "p1": "Your cart is currently empty.",
+              "p2": "If you want to continue shopping,",
+              "p3": "click here."
+            },
+            "notNum": "Please enter a number.",
+            "price": "Price",
+            "product": "Product",
+            "quantity": "Quantity",
+            "refresh": "Refresh",
+            "remove": "Remove",
+            "return": "Return to Shopping",
+            "subtotal": "Subtotal",
+            "title": "Cart",
+            "total": "Total"
+          }
+        },
+        "error": {
+          "entityDataNotFound": {
+            "msg": "The target data may have already been deleted."
+          },
+          "entityValidation": {
+            "msg": "Input error occured."
+          },
+          "loginFailed": {
+            "msg": "Incorrect password or email address."
+          },
+          "return": "Return to home",
+          "sessionValueNotFound": {
+            "msg": "Session timeout may have occurred."
+          },
+          "system": {
+            "msg": "An unexpected error has occurred. Please contact the site administrator."
+          },
+          "title": "ERROR",
+          "token": {
+            "msg": "Illegal screen transition occurred. ( When pressing the \"back button\" of the browser during series of  processing, may not be able to continue processing. )"
+          },
+          "userExists": {
+            "msg": "User you are trying to register has already been registered."
+          }
+        },
+        "inquiry": {
+          "regist": {
+            "content": "The content of the inquiry※",
+            "doRegist": "Send the inquiry content",
+            "familyName": "Family name※",
+            "familyNameKana": "Family name (Katakana)",
+            "firstName": "First Name※",
+            "firstNameKana": "First name (Katakana)",
+            "mail": "mail※",
+            "title": "Inquiry"
+          },
+          "registSuccess": {
+            "msg": {
+              "p1": "Thank you for your inquiry.",
+              "p2": "We will contact you with your email address."
+            },
+            "return": "Return to home",
+            "title": "Inquiry registration completed"
+          }
+        },
+        "layout": {
+          "defaultLayout": {
+            "SCTAInfo": "The notation for law of specified commercial transactions",
+            "cart": "Cart",
+            "checkOut": "Check out",
+            "home": "Home",
+            "inquiry": "Inquiry",
+            "news": "News",
+            "search": "Search"
+          },
+          "shipping": {
+            "fee": "Shipping fee",
+            "subtotal": "Subtotal",
+            "title": "Enter shipping information",
+            "total": "Total",
+            "viewCart": "View cart",
+            "yen": "Yen"
+          }
+        },
+        "member": {
+          "login": {
+            "doLogin": "Login",
+            "password": "Password",
+            "pay": "Go to payment",
+            "payInfo": "■To order without member registration",
+            "registMember": "Regist a member",
+            "registMemberInfo": "■I am not a member yet.",
+            "title": "User Login",
+            "userid": "User ID"
+          },
+          "regist": {
+            "doRegist": "Agree and Regist",
+            "familyName": "Family name※",
+            "familyNameKana": "Family name (Katakana)",
+            "firstName": "First Name※",
+            "firstNameKana": "First name (Katakana)",
+            "mail": "mail※",
+            "title": "Regist customer information",
+            "userId": "User ID※"
+          },
+          "registConfirm": {
+            "fullName": "Full name※",
+            "fullNameKana": "Full name (Katakana)",
+            "regist": "Regist",
+            "registMsg": {
+              "p1": "Please enter the following items. 「※」mark is mandatory fields.",
+              "p2": "After entering, please click the bottom \"Regist\" button."
+            },
+            "title": "Confirm customer information"
+          },
+          "registSuccess": {
+            "return": "Return to home",
+            "successMsg": {
+              "p1": "Thank you for your registration.",
+              "p2": "Please confirm the password in the email that we will send you later."
+            },
+            "title": "Register customer info successfully"
+          }
+        },
+        "newinfo": {
+          "title": "New information"
+        },
+        "product": {
+          "category": {
+            "all": "All items",
+            "title": "Category"
+          },
+          "detail": {
+            "addToCart": "Add to Cart",
+            "continueShopping": "Continue Shopping",
+            "jsError": "Error occured.",
+            "price": "Price",
+            "priceWithoutTax": "Without tax",
+            "recommend": "Recommend",
+            "viewCart": "View Cart"
+          }
+        },
+        "search": {
+          "jsError": "Error occured.",
+          "keyword": "keyword",
+          "noResult": "search result : 0 items",
+          "nokeyword": "Please enter the keyword.",
+          "result": "Search result : ",
+          "title": "Search"
+        },
+        "shipping": {
+          "confirm": {
+            "addressInfo": "Shipping address",
+            "edit": "Edit",
+            "fullName": "Full name※",
+            "fullNameKana": "Full name (Katakana)",
+            "order": "Order",
+            "return": "Return to shipping address",
+            "title": "Confirm shipping address"
+          },
+          "input": {
+            "address": "address※",
+            "delivery": "Ship to this address",
+            "familyName": "Family name※",
+            "familyNameKana": "Family name (Katakana)",
+            "firstName": "First name※",
+            "firstNameKana": "First name (Katakana)",
+            "mail": "mail※",
+            "return": "Return to cart",
+            "tel": "Tel※",
+            "title": "Enter shipping information"
+          },
+          "success": {
+            "msg": {
+              "p1": "Thank you for your order.",
+              "p2": "We hope to receive your continued patronage in the future."
+            },
+            "return": "Return to home",
+            "title": "Order completed"
+          }
+        },
+        "shop": {
+          "tradeLaw": {
+            "address": "Location",
+            "administrator": "Operation director",
+            "back": "Back to home",
+            "dealer": "Distributor",
+            "deliveryTime": "Delivery time",
+            "exchanged": "About returning goods and exchange",
+            "fax": "FAX number",
+            "feeRequired": "Expenses without commodity price",
+            "mail": "Email address",
+            "orderingMethod": "Ordering method",
+            "paymentDate": "Payment date",
+            "paymentMethod": "Payment method",
+            "postNo": "Postal code",
+            "tel": "Phone number"
+          }
         }
-    },
-    "ja": {
-        "samples": {
-            "ec01": {
-                "all": {
-                    "breadcrumb": {
-                        "home": "ホーム"
-                    },
-                    "pagination": {
-                        "next": "次へ",
-                        "prev": "前へ"
-                    },
-                    "yen": "円"
-                },
-                "cart": {
-                    "info": {
-                        "checkOut": "お会計",
-                        "emptyMsg": {
-                            "p1": "カートが空になっています。",
-                            "p2": "買い物を続けたい場合、",
-                            "p3": "戻る。"
-                        },
-                        "notNum": "数字を入力してください。",
-                        "price": "単価",
-                        "product": "商品",
-                        "quantity": "数量",
-                        "refresh": "カートを更新",
-                        "remove": "削除",
-                        "return": "戻る",
-                        "subtotal": "小計",
-                        "title": "カートの中",
-                        "total": "合計"
-                    }
-                },
-                "error": {
-                    "entityDataNotFound": {
-                        "msg": "対象のデータが既に削除された可能性があります。"
-                    },
-                    "entityValidation": {
-                        "msg": "入力エラーです。"
-                    },
-                    "loginFailed": {
-                        "msg": "メールアドレスもしくはパスワードが正しくありません。"
-                    },
-                    "return": "ホームに戻る",
-                    "sessionValueNotFound": {
-                        "msg": "セッションタイムアウトが発生した可能性があります。"
-                    },
-                    "system": {
-                        "msg": "予期しないエラーが発生しました。サイト管理者にお問合わせくだい。"
-                    },
-                    "title": "エラー",
-                    "token": {
-                        "msg": "不正な画面遷移が発生しました。(一連の登録処理中にブラウザの戻るボタン等を押下してしまいますと正常に処理を継続できない場合があります。)"
-                    },
-                    "userExists": {
-                        "msg": "登録しようとしているユーザは、すでに登録されております。"
-                    }
-                },
-                "inquiry": {
-                    "regist": {
-                        "content": "お問合せ内容※",
-                        "doRegist": "上記の内容で問い合わせをする",
-                        "familyName": "姓※",
-                        "familyNameKana": "セイ※",
-                        "firstName": "名※",
-                        "firstNameKana": "メイ※",
-                        "mail": "メールアドレス※",
-                        "title": "お問合せ"
-                    },
-                    "registSuccess": {
-                        "msg": {
-                            "p1": "お問合せ、ありがとうございました。",
-                            "p2": "入力されたメールアドレスにご連絡させて頂きます。"
-                        },
-                        "return": "ホームに戻る",
-                        "title": "お問合せ登録完了"
-                    }
-                },
-                "layout": {
-                    "defaultLayout": {
-                        "SCTAInfo": "特定商取引に関する表記",
-                        "cart": "カート",
-                        "checkOut": "お会計",
-                        "home": "ホーム",
-                        "inquiry": "お問い合わせ",
-                        "news": "ニュース",
-                        "search": "検索"
-                    },
-                    "shipping": {
-                        "fee": "送料",
-                        "subtotal": "商品合計",
-                        "title": "配送先情報入力",
-                        "total": "合計",
-                        "viewCart": "カゴの中を見る ",
-                        "yen": "円"
-                    }
-                },
-                "member": {
-                    "login": {
-                        "doLogin": "ログイン",
-                        "password": "パスワード",
-                        "pay": "購入手続きへ進む",
-                        "payInfo": "■会員登録をせずに購入手続きへ進む",
-                        "registMember": "会員登録をする",
-                        "registMemberInfo": "■まだ会員登録されていないお客様 ",
-                        "title": "ログイン",
-                        "userid": "ユーザID"
-                    },
-                    "regist": {
-                        "doRegist": "会員規約に同意して登録",
-                        "familyName": "姓※",
-                        "familyNameKana": "セイ※",
-                        "firstName": "名※",
-                        "firstNameKana": "メイ※",
-                        "mail": "メールアドレス※",
-                        "title": "会員情報入力",
-                        "userId": "ユーザID※"
-                    },
-                    "registConfirm": {
-                        "fullName": "お名前※",
-                        "fullNameKana": "お名前（フリガナ）※",
-                        "regist": "登録",
-                        "registMsg": {
-                            "p1": "下記項目にご入力ください。「※」印は入力必須項目です。",
-                            "p2": "入力後、一番下の「登録」ボタンをクリックしてください。"
-                        },
-                        "title": "会員情報確認"
-                    },
-                    "registSuccess": {
-                        "return": "ホームに戻る",
-                        "successMsg": {
-                            "p1": "ご登録ありがとうございました。",
-                            "p2": "入力されたメールアドレスにパスワードが記載されたメールを送信しましたのでご確認下さい。"
-                        },
-                        "title": "会員情報登録完了"
-                    }
-                },
-                "newinfo": {
-                    "title": "新着情報"
-                },
-                "product": {
-                    "category": {
-                        "all": "すべて",
-                        "title": "カテゴリ"
-                    },
-                    "detail": {
-                        "addToCart": "カートに入れる",
-                        "continueShopping": "買い物を続ける",
-                        "jsError": "エラーが発生しました。",
-                        "price": "価格",
-                        "priceWithoutTax": "税抜",
-                        "recommend": "おすすめ",
-                        "viewCart": "カートの中を見る"
-                    }
-                },
-                "search": {
-                    "jsError": "エラーが発生しました。",
-                    "keyword": "キーワード",
-                    "noResult": "検索結果：0件",
-                    "nokeyword": "キーワードを入力してください。",
-                    "result": "検索結果：",
-                    "title": "検索"
-                },
-                "shipping": {
-                    "confirm": {
-                        "addressInfo": "配送先",
-                        "edit": "編集",
-                        "fullName": "お名前※",
-                        "fullNameKana": "お名前(フリガナ)",
-                        "order": "注文する",
-                        "return": "配送先入力画面に戻る",
-                        "title": "配送先確認"
-                    },
-                    "input": {
-                        "address": "住所※",
-                        "delivery": "上記の届き先に送る",
-                        "familyName": "姓※",
-                        "familyNameKana": "セイ※",
-                        "firstName": "名※",
-                        "firstNameKana": "メイ※",
-                        "mail": "メールアドレス※",
-                        "return": "カートの中画面に戻る",
-                        "tel": "電話番号※",
-                        "title": "配送先情報入力"
-                    },
-                    "success": {
-                        "msg": {
-                            "p1": "ご購入いただき、ありがとうございました。",
-                            "p2": "今後ともご愛顧賜りますようよろしくお願い申し上げます。"
-                        },
-                        "return": "ホーム画面に戻る",
-                        "title": "ご注文完了"
-                    }
-                },
-                "shop": {
-                    "tradeLaw": {
-                        "address": "所在地",
-                        "administrator": "運営責任者",
-                        "back": "ホームに戻る",
-                        "dealer": "販売業者",
-                        "deliveryTime": "引き渡し時期",
-                        "exchanged": "返品・交換について",
-                        "fax": "FAX番号",
-                        "feeRequired": "商品代金以外の必要料金",
-                        "mail": "メールアドレス",
-                        "orderingMethod": "注文方法",
-                        "paymentDate": "支払期限",
-                        "paymentMethod": "支払方法",
-                        "postNo": "郵便番号",
-                        "tel": "電話番号"
-                    }
-                }
-            }
+      }
+    }
+  },
+  "ja": {
+    "samples": {
+      "ec01": {
+        "all": {
+          "breadcrumb": {
+            "home": "ホーム"
+          },
+          "pagination": {
+            "next": "次へ",
+            "prev": "前へ"
+          },
+          "yen": "円"
+        },
+        "cart": {
+          "info": {
+            "checkOut": "お会計",
+            "emptyMsg": {
+              "p1": "カートが空になっています。",
+              "p2": "買い物を続けたい場合、",
+              "p3": "戻る。"
+            },
+            "notNum": "数字を入力してください。",
+            "price": "単価",
+            "product": "商品",
+            "quantity": "数量",
+            "refresh": "カートを更新",
+            "remove": "削除",
+            "return": "戻る",
+            "subtotal": "小計",
+            "title": "カートの中",
+            "total": "合計"
+          }
+        },
+        "error": {
+          "entityDataNotFound": {
+            "msg": "対象のデータが既に削除された可能性があります。"
+          },
+          "entityValidation": {
+            "msg": "入力エラーです。"
+          },
+          "loginFailed": {
+            "msg": "メールアドレスもしくはパスワードが正しくありません。"
+          },
+          "return": "ホームに戻る",
+          "sessionValueNotFound": {
+            "msg": "セッションタイムアウトが発生した可能性があります。"
+          },
+          "system": {
+            "msg": "予期しないエラーが発生しました。サイト管理者にお問合わせくだい。"
+          },
+          "title": "エラー",
+          "token": {
+            "msg": "不正な画面遷移が発生しました。(一連の登録処理中にブラウザの戻るボタン等を押下してしまいますと正常に処理を継続できない場合があります。)"
+          },
+          "userExists": {
+            "msg": "登録しようとしているユーザは、すでに登録されております。"
+          }
+        },
+        "inquiry": {
+          "regist": {
+            "content": "お問合せ内容※",
+            "doRegist": "上記の内容で問い合わせをする",
+            "familyName": "姓※",
+            "familyNameKana": "セイ※",
+            "firstName": "名※",
+            "firstNameKana": "メイ※",
+            "mail": "メールアドレス※",
+            "title": "お問合せ"
+          },
+          "registSuccess": {
+            "msg": {
+              "p1": "お問合せ、ありがとうございました。",
+              "p2": "入力されたメールアドレスにご連絡させて頂きます。"
+            },
+            "return": "ホームに戻る",
+            "title": "お問合せ登録完了"
+          }
+        },
+        "layout": {
+          "defaultLayout": {
+            "SCTAInfo": "特定商取引に関する表記",
+            "cart": "カート",
+            "checkOut": "お会計",
+            "home": "ホーム",
+            "inquiry": "お問い合わせ",
+            "news": "ニュース",
+            "search": "検索"
+          },
+          "shipping": {
+            "fee": "送料",
+            "subtotal": "商品合計",
+            "title": "配送先情報入力",
+            "total": "合計",
+            "viewCart": "カゴの中を見る ",
+            "yen": "円"
+          }
+        },
+        "member": {
+          "login": {
+            "doLogin": "ログイン",
+            "password": "パスワード",
+            "pay": "購入手続きへ進む",
+            "payInfo": "■会員登録をせずに購入手続きへ進む",
+            "registMember": "会員登録をする",
+            "registMemberInfo": "■まだ会員登録されていないお客様 ",
+            "title": "ログイン",
+            "userid": "ユーザID"
+          },
+          "regist": {
+            "doRegist": "会員規約に同意して登録",
+            "familyName": "姓※",
+            "familyNameKana": "セイ※",
+            "firstName": "名※",
+            "firstNameKana": "メイ※",
+            "mail": "メールアドレス※",
+            "title": "会員情報入力",
+            "userId": "ユーザID※"
+          },
+          "registConfirm": {
+            "fullName": "お名前※",
+            "fullNameKana": "お名前（フリガナ）※",
+            "regist": "登録",
+            "registMsg": {
+              "p1": "下記項目にご入力ください。「※」印は入力必須項目です。",
+              "p2": "入力後、一番下の「登録」ボタンをクリックしてください。"
+            },
+            "title": "会員情報確認"
+          },
+          "registSuccess": {
+            "return": "ホームに戻る",
+            "successMsg": {
+              "p1": "ご登録ありがとうございました。",
+              "p2": "入力されたメールアドレスにパスワードが記載されたメールを送信しましたのでご確認下さい。"
+            },
+            "title": "会員情報登録完了"
+          }
+        },
+        "newinfo": {
+          "title": "新着情報"
+        },
+        "product": {
+          "category": {
+            "all": "すべて",
+            "title": "カテゴリ"
+          },
+          "detail": {
+            "addToCart": "カートに入れる",
+            "continueShopping": "買い物を続ける",
+            "jsError": "エラーが発生しました。",
+            "price": "価格",
+            "priceWithoutTax": "税抜",
+            "recommend": "おすすめ",
+            "viewCart": "カートの中を見る"
+          }
+        },
+        "search": {
+          "jsError": "エラーが発生しました。",
+          "keyword": "キーワード",
+          "noResult": "検索結果：0件",
+          "nokeyword": "キーワードを入力してください。",
+          "result": "検索結果：",
+          "title": "検索"
+        },
+        "shipping": {
+          "confirm": {
+            "addressInfo": "配送先",
+            "edit": "編集",
+            "fullName": "お名前※",
+            "fullNameKana": "お名前(フリガナ)",
+            "order": "注文する",
+            "return": "配送先入力画面に戻る",
+            "title": "配送先確認"
+          },
+          "input": {
+            "address": "住所※",
+            "delivery": "上記の届き先に送る",
+            "familyName": "姓※",
+            "familyNameKana": "セイ※",
+            "firstName": "名※",
+            "firstNameKana": "メイ※",
+            "mail": "メールアドレス※",
+            "return": "カートの中画面に戻る",
+            "tel": "電話番号※",
+            "title": "配送先情報入力"
+          },
+          "success": {
+            "msg": {
+              "p1": "ご購入いただき、ありがとうございました。",
+              "p2": "今後ともご愛顧賜りますようよろしくお願い申し上げます。"
+            },
+            "return": "ホーム画面に戻る",
+            "title": "ご注文完了"
+          }
+        },
+        "shop": {
+          "tradeLaw": {
+            "address": "所在地",
+            "administrator": "運営責任者",
+            "back": "ホームに戻る",
+            "dealer": "販売業者",
+            "deliveryTime": "引き渡し時期",
+            "exchanged": "返品・交換について",
+            "fax": "FAX番号",
+            "feeRequired": "商品代金以外の必要料金",
+            "mail": "メールアドレス",
+            "orderingMethod": "注文方法",
+            "paymentDate": "支払期限",
+            "paymentMethod": "支払方法",
+            "postNo": "郵便番号",
+            "tel": "電話番号"
+          }
         }
-    } 
+      }
+    }
+  }
 }

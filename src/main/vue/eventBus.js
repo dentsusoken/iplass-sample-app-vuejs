@@ -1,6 +1,6 @@
-import mitt from 'mitt';
+import mitt from 'mitt'
 
 // Event Busの設定
-const emitter = mitt();
+const emitter = mitt()
 
-export default emitter;
+export default emitter

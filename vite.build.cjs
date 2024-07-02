@@ -18,7 +18,6 @@ const fontsPath = path.join(stylesPath, 'fonts');
 const jsFile = path.join(buildOutputDir, 'build.js');
 const scriptsDest = path.join(scriptsPath, 'build.js');
 fs.copyFileSync(jsFile, scriptsDest);
-console.log(`build.js を ${scriptsPath} にコピーしました。`);
 
 // fonts ディレクトリ内のファイルをコピーする
 const fontsDir = path.join(buildOutputDir, 'fonts');
@@ -27,11 +26,9 @@ fs.readdirSync(fontsDir).forEach(file => {
     if (file.endsWith('.css')) {
         const destPath = path.join(stylesPath, file); // styles にコピー
         fs.copyFileSync(srcPath, destPath);
-        //console.log(`${file} を ${stylesPath} にコピーしました。`);
     } else {
         const destPath = path.join(fontsPath, file); // fonts ディレクトリにコピー
         fs.copyFileSync(srcPath, destPath);
-        //console.log(`${file} を ${fontsPath} にコピーしました。`);
     }
 });
 

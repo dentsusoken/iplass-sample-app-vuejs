@@ -15,7 +15,6 @@
     "@popperjs/core": "^2.11.8",
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
-    "create-vite": "^5.2.3",
     "mitt": "^3.0.1",
     "vue": "^3.4.27",
     "vue-i18n": "^9.13.1",
@@ -27,7 +26,6 @@
     "@vue/eslint-config-prettier": "^9.0.0",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.26.0",
-    "fast-glob": "^3.3.2",
     "prettier": "^3.2.5",
     "vite": "^5.2.12"
   }

@@ -12,6 +12,16 @@ module.exports = {
     ecmaVersion: 'latest'
   },
   rules: {
-    "vue/multi-word-component-names": "off"
+    'vue/multi-word-component-names': 'off',
+    'vue/valid-template-root': 'off'
+  },
+  env: {
+    browser: true,
+    node: true,
+    es2023: true
+  },
+  globals: {
+    lang: 'readonly',
+    tcPath: 'readonly'
   }
 }

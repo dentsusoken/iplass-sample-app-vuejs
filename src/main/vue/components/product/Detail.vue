@@ -24,9 +24,9 @@
       <div class="col-12">
         <div class="border-top"></div>
         <nav class="breadcrumb all-breadcrumb">
-          <router-link class="breadcrumb-item text-primary" :to="{ name: 'top' }">{{
-            $t('samples.ec01.all.breadcrumb.home')
-          }}</router-link>
+          <router-link class="breadcrumb-item text-primary" :to="{ name: 'top' }">
+            {{ $t('samples.ec01.all.breadcrumb.home') }}
+          </router-link>
           <span :id="productId" class="breadcrumb-item active">{{ productInfo.name }}</span>
         </nav>
       </div>
@@ -40,16 +40,15 @@
         <p class="fw-bold">
           {{ $t('samples.ec01.product.detail.price') }}：
           <span class="all-price">{{ productInfo.price }}{{ $t('samples.ec01.all.yen') }}</span>
-          （{{ $t('samples.ec01.product.detail.priceWithoutTax') }} {{ priceWithoutTax
-          }}{{ $t('samples.ec01.all.yen') }}）
+          （{{ $t('samples.ec01.product.detail.priceWithoutTax') }} {{ priceWithoutTax }}
+          {{ $t('samples.ec01.all.yen') }}）
         </p>
         <!-- eslint-disable-next-line vue/no-v-html -->
         <p v-html="regInfo"></p>
         <!-- 商品サブ情報 -->
         <p class="h5">
           <template v-for="sub in subInfoList" :key="sub.oid">
-            <span class="badge badge-info" :title="sub.description">{{ sub.name }}</span
-            >&nbsp;
+            <span class="badge badge-info" :title="sub.description"> {{ sub.name }} </span>&nbsp;
           </template>
         </p>
         <div :class="{ 'd-none': alreadyAdded }">
@@ -58,12 +57,12 @@
           </button>
         </div>
         <div cart-data="viewCart" :class="{ 'd-none': !alreadyAdded }">
-          <router-link class="btn btn-dark my-2" :to="{ name: 'cartInfo' }">{{
-            $t('samples.ec01.product.detail.viewCart')
-          }}</router-link>
-          <router-link class="btn btn-outline-dark my-2" :to="{ name: 'top' }">{{
-            $t('samples.ec01.product.detail.continueShopping')
-          }}</router-link>
+          <router-link class="btn btn-dark my-2" :to="{ name: 'cartInfo' }">
+            {{ $t('samples.ec01.product.detail.viewCart') }}
+          </router-link>
+          <router-link class="btn btn-outline-dark my-2" :to="{ name: 'top' }">
+            {{ $t('samples.ec01.product.detail.continueShopping') }}
+          </router-link>
         </div>
       </div>
     </div>
@@ -95,8 +94,9 @@
                   <router-link
                     :to="{ name: 'detail', query: { productId: product.oid } }"
                     class="card-link text-dark"
-                    >{{ product.name }}</router-link
                   >
+                    {{ product.name }}
+                  </router-link>
                 </div>
                 <div class="all-price">{{ product.price }}{{ $t('samples.ec01.all.yen') }}</div>
               </div>

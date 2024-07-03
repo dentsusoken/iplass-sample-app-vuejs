@@ -24,9 +24,9 @@
       <div class="col-12 d-none d-md-block">
         <span class="h4"> </span>
         <nav class="breadcrumb all-breadcrumb">
-          <router-link class="breadcrumb-item text-primary" :to="{ name: 'top' }">{{
-            $t('samples.ec01.all.breadcrumb.home')
-          }}</router-link>
+          <router-link class="breadcrumb-item text-primary" :to="{ name: 'top' }">
+            {{ $t('samples.ec01.all.breadcrumb.home') }}
+          </router-link>
           <span class="breadcrumb-item active">{{ $t('samples.ec01.shipping.input.title') }}</span>
         </nav>
       </div>
@@ -35,9 +35,9 @@
       </div>
       <div class="col-12 col-md-12 mt-3">
         <div>
-          <label for="mail" class="col-form-label label-hidden">{{
-            $t('samples.ec01.shipping.input.mail')
-          }}</label>
+          <label for="mail" class="col-form-label label-hidden">
+            {{ $t('samples.ec01.shipping.input.mail') }}
+          </label>
           <input
             v-model="shippingBean.mail"
             type="text"
@@ -45,17 +45,18 @@
             name="mail"
             :placeholder="$t('samples.ec01.shipping.input.mail')"
           />
-          <small class="form-text text-danger"
-            ><template v-for="message in errorsMap.mail" :key="message"
-              >{{ message }}<br /></template
-          ></small>
+          <small class="form-text text-danger">
+            <template v-for="message in errorsMap.mail" :key="message">
+              {{ message }}<br />
+            </template>
+          </small>
         </div>
       </div>
       <div class="col-12 col-md-6 mt-3">
         <div>
-          <label for="familyName" class="col-form-label label-hidden">{{
-            $t('samples.ec01.shipping.input.familyName')
-          }}</label>
+          <label for="familyName" class="col-form-label label-hidden">
+            {{ $t('samples.ec01.shipping.input.familyName') }}
+          </label>
           <input
             v-model="shippingBean.familyName"
             type="text"
@@ -63,17 +64,18 @@
             name="familyName"
             :placeholder="$t('samples.ec01.shipping.input.familyName')"
           />
-          <small class="form-text text-danger"
-            ><template v-for="message in errorsMap.familyName" :key="message"
-              >{{ message }}<br /></template
-          ></small>
+          <small class="form-text text-danger">
+            <template v-for="message in errorsMap.familyName" :key="message">
+              {{ message }}<br />
+            </template>
+          </small>
         </div>
       </div>
       <div class="col-12 col-md-6 mt-3">
         <div>
-          <label for="firstName" class="col-form-label label-hidden">{{
-            $t('samples.ec01.shipping.input.firstName')
-          }}</label>
+          <label for="firstName" class="col-form-label label-hidden">
+            {{ $t('samples.ec01.shipping.input.firstName') }}
+          </label>
           <input
             v-model="shippingBean.firstName"
             type="text"
@@ -81,18 +83,19 @@
             name="firstName"
             :placeholder="$t('samples.ec01.shipping.input.firstName')"
           />
-          <small class="form-text text-danger"
-            ><template v-for="message in errorsMap.firstName" :key="message"
-              >{{ message }}<br /></template
-          ></small>
+          <small class="form-text text-danger">
+            <template v-for="message in errorsMap.firstName" :key="message">
+              {{ message }}<br />
+            </template>
+          </small>
         </div>
       </div>
       <template v-if="locale == 'ja' || locale === undefined">
         <div class="col-12 col-md-6 mt-3">
           <div>
-            <label for="familyNameKana" class="col-form-label label-hidden">{{
-              $t('samples.ec01.shipping.input.familyNameKana')
-            }}</label>
+            <label for="familyNameKana" class="col-form-label label-hidden">
+              {{ $t('samples.ec01.shipping.input.familyNameKana') }}
+            </label>
             <input
               v-model="shippingBean.familyNameKana"
               type="text"
@@ -100,17 +103,18 @@
               name="familyNameKana"
               :placeholder="$t('samples.ec01.shipping.input.familyNameKana')"
             />
-            <small class="form-text text-danger"
-              ><template v-for="message in errorsMap.familyNameKana" :key="message"
-                >{{ message }}<br /></template
-            ></small>
+            <small class="form-text text-danger">
+              <template v-for="message in errorsMap.familyNameKana" :key="message">
+                {{ message }}<br />
+              </template>
+            </small>
           </div>
         </div>
         <div class="col-12 col-md-6 mt-3">
           <div>
-            <label for="firstNameKana" class="col-form-label label-hidden">{{
-              $t('samples.ec01.shipping.input.firstNameKana')
-            }}</label>
+            <label for="firstNameKana" class="col-form-label label-hidden">
+              {{ $t('samples.ec01.shipping.input.firstNameKana') }}
+            </label>
             <input
               v-model="shippingBean.firstNameKana"
               type="text"
@@ -118,18 +122,19 @@
               name="firstNameKana"
               :placeholder="$t('samples.ec01.shipping.input.firstNameKana')"
             />
-            <small class="form-text text-danger"
-              ><template v-for="message in errorsMap.firstNameKana" :key="message"
-                >{{ message }}<br /></template
-            ></small>
+            <small class="form-text text-danger">
+              <template v-for="message in errorsMap.firstNameKana" :key="message">
+                {{ message }}<br />
+              </template>
+            </small>
           </div>
         </div>
       </template>
       <div class="col-12 col-md-12 mt-3">
         <div>
-          <label for="address" class="col-form-label label-hidden">{{
-            $t('samples.ec01.shipping.input.address')
-          }}</label>
+          <label for="address" class="col-form-label label-hidden">
+            {{ $t('samples.ec01.shipping.input.address') }}
+          </label>
           <input
             v-model="shippingBean.address"
             type="text"
@@ -137,17 +142,18 @@
             name="address"
             :placeholder="$t('samples.ec01.shipping.input.address')"
           />
-          <small class="form-text text-danger"
-            ><template v-for="message in errorsMap.address" :key="message"
-              >{{ message }}<br /></template
-          ></small>
+          <small class="form-text text-danger">
+            <template v-for="message in errorsMap.address" :key="message">
+              {{ message }}<br />
+            </template>
+          </small>
         </div>
       </div>
       <div class="col-12 col-md-12 mt-3">
         <div>
-          <label for="tel" class="col-form-label label-hidden">{{
-            $t('samples.ec01.shipping.input.tel')
-          }}</label>
+          <label for="tel" class="col-form-label label-hidden">
+            {{ $t('samples.ec01.shipping.input.tel') }}
+          </label>
           <input
             v-model="shippingBean.tel"
             type="text"
@@ -155,9 +161,11 @@
             name="tel"
             :placeholder="$t('samples.ec01.shipping.input.tel')"
           />
-          <small class="form-text text-danger"
-            ><template v-for="message in errorsMap.tel" :key="message">{{ message }}<br /></template
-          ></small>
+          <small class="form-text text-danger">
+            <template v-for="message in errorsMap.tel" :key="message">
+              {{ message }}<br />
+            </template>
+          </small>
         </div>
       </div>
       <div class="col-12 mt-4 text-center clearfix">
@@ -167,8 +175,8 @@
           </button>
         </div>
         <div class="text-md-start mt-2">
-          <router-link class="btn btn-sm" :to="{ name: 'cartInfo' }" role="button"
-            >&lt;
+          <router-link class="btn btn-sm" :to="{ name: 'cartInfo' }" role="button">
+            &lt;
             {{ $t('samples.ec01.shipping.input.return') }}
           </router-link>
         </div>

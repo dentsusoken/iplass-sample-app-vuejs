@@ -62,9 +62,9 @@
                 </router-link>
               </li>
               <li class="nav-item">
-                <router-link class="btn btn-lg text-dark" :to="{ name: 'login' }">{{
-                  $t('samples.ec01.layout.defaultLayout.checkOut')
-                }}</router-link>
+                <router-link class="btn btn-lg text-dark" :to="{ name: 'login' }">
+                  {{ $t('samples.ec01.layout.defaultLayout.checkOut') }}
+                </router-link>
               </li>
             </ul>
           </div>
@@ -107,9 +107,9 @@
           <div id="collapsibleNavId" class="collapse">
             <ul class="list-group mt-2 d-block d-md-none">
               <li class="list-group-item border-0">
-                <a class="nav-link text-dark fw-bold" href="#/">{{
-                  $t('samples.ec01.layout.defaultLayout.home')
-                }}</a>
+                <a class="nav-link text-dark fw-bold" href="#/">
+                  {{ $t('samples.ec01.layout.defaultLayout.home') }}
+                </a>
               </li>
               <li class="list-group-item border-0">
                 <router-link
@@ -126,8 +126,9 @@
                 <router-link
                   class="nav-link text-dark"
                   :to="{ name: 'category', query: { categoryId: category.oid } }"
-                  >{{ category.name }}</router-link
                 >
+                  {{ category.name }}
+                </router-link>
               </li>
             </ul>
           </div>
@@ -143,14 +144,16 @@
               <router-link
                 :to="{ name: 'top' }"
                 class="list-group-item list-group-item-action fw-bold border-top"
-                >{{ $t('samples.ec01.layout.defaultLayout.home') }}</router-link
               >
+                {{ $t('samples.ec01.layout.defaultLayout.home') }}
+              </router-link>
               <template v-for="category in categoryList" :key="category.oid">
                 <router-link
                   :to="{ name: 'category', query: { categoryId: category.oid } }"
                   class="list-group-item list-group-item-action"
-                  >{{ category.name }}</router-link
                 >
+                  {{ category.name }}
+                </router-link>
               </template>
             </div>
           </div>
@@ -164,24 +167,24 @@
         <ul class="list-group">
           <li class="list-group-item border-0 fw-bold py-3">Links</li>
           <li class="list-group-item border-0 py-3">
-            <router-link :to="{ name: 'newInfo' }" class="text-dark">{{
-              $t('samples.ec01.layout.defaultLayout.news')
-            }}</router-link>
+            <router-link :to="{ name: 'newInfo' }" class="text-dark">
+              {{ $t('samples.ec01.layout.defaultLayout.news') }}
+            </router-link>
           </li>
           <li class="list-group-item border-0 py-3">
-            <router-link :to="{ name: 'fullTextSearch' }" class="text-dark">{{
-              $t('samples.ec01.layout.defaultLayout.search')
-            }}</router-link>
+            <router-link :to="{ name: 'fullTextSearch' }" class="text-dark">
+              {{ $t('samples.ec01.layout.defaultLayout.search') }}
+            </router-link>
           </li>
           <li class="list-group-item border-0 py-3">
-            <router-link :to="{ name: 'inquiry' }" class="text-dark">{{
-              $t('samples.ec01.layout.defaultLayout.inquiry')
-            }}</router-link>
+            <router-link :to="{ name: 'inquiry' }" class="text-dark">
+              {{ $t('samples.ec01.layout.defaultLayout.inquiry') }}
+            </router-link>
           </li>
           <li class="list-group-item border-0 py-3">
-            <router-link :to="{ name: 'tradeLaw' }" class="text-dark">{{
-              $t('samples.ec01.layout.defaultLayout.SCTAInfo')
-            }}</router-link>
+            <router-link :to="{ name: 'tradeLaw' }" class="text-dark">
+              {{ $t('samples.ec01.layout.defaultLayout.SCTAInfo') }}
+            </router-link>
           </li>
         </ul>
       </div>

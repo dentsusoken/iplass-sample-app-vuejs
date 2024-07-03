@@ -47,9 +47,9 @@
           <a class="page-link border-0 text-dark bg-light">{{ i + 1 }}</a>
         </li>
         <li v-else-if="i < 3 || i > totalPage - 3" :key="'normal-' + i" class="page-item">
-          <router-link class="page-link border-0 text-dark" :to="{ path: paginationUrl + i }">{{
-            i + 1
-          }}</router-link>
+          <router-link class="page-link border-0 text-dark" :to="{ path: paginationUrl + i }">
+            {{ i + 1 }}
+          </router-link>
         </li>
         <li v-else-if="i == 3" :key="'ellipsis-' + i" class="page-item">
           <a class="page-link border-0 text-dark">......</a>

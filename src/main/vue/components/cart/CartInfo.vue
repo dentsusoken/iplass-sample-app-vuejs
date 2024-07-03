@@ -24,9 +24,9 @@
       <div class="col-12">
         <div class="border-top"></div>
         <nav class="breadcrumb all-breadcrumb">
-          <router-link class="breadcrumb-item text-primary" :to="{ name: 'top' }">{{
-            $t('samples.ec01.all.breadcrumb.home')
-          }}</router-link>
+          <router-link class="breadcrumb-item text-primary" :to="{ name: 'top' }">
+            {{ $t('samples.ec01.all.breadcrumb.home') }}
+          </router-link>
           <span class="breadcrumb-item active">{{ $t('samples.ec01.cart.info.title') }}</span>
         </nav>
       </div>
@@ -35,10 +35,10 @@
       <div class="col-12 text-left">
         <p>{{ $t('samples.ec01.cart.info.emptyMsg.p1') }}</p>
         <p>
-          {{ $t('samples.ec01.cart.info.emptyMsg.p2')
-          }}<router-link class="text-dark" :to="{ name: 'top' }">{{
-            $t('samples.ec01.cart.info.emptyMsg.p3')
-          }}</router-link>
+          {{ $t('samples.ec01.cart.info.emptyMsg.p2') }}
+          <router-link class="text-dark" :to="{ name: 'top' }">
+            {{ $t('samples.ec01.cart.info.emptyMsg.p3') }}
+          </router-link>
         </p>
       </div>
     </div>
@@ -81,8 +81,9 @@
                     href="#"
                     role="button"
                     @click.prevent="deleteCartItem(item.productId)"
-                    >{{ $t('samples.ec01.cart.info.remove') }}</a
                   >
+                    {{ $t('samples.ec01.cart.info.remove') }}
+                  </a>
                 </p>
               </div>
             </div>
@@ -129,8 +130,8 @@
       <div class="row mt-3">
         <div class="col-md-12 text-center text-md-end">
           <p class="fw-bold">
-            {{ $t('samples.ec01.cart.info.total') }}：&nbsp; {{ cartBean.totalPrice
-            }}{{ $t('samples.ec01.all.yen') }}
+            {{ $t('samples.ec01.cart.info.total') }}：&nbsp; {{ cartBean.totalPrice }}
+            {{ $t('samples.ec01.all.yen') }}
           </p>
           <button type="button" class="btn btn-outline-dark" @click="updateCart()">
             <span
@@ -147,9 +148,9 @@
     </form>
     <div v-if="cartBean !== undefined && cartBean.cartItems.length > 0" class="row mt-3">
       <div class="col-md-12 text-center text-md-end">
-        <router-link class="btn btn-dark btn-lg" :to="{ name: 'login' }" role="button">{{
-          $t('samples.ec01.cart.info.checkOut')
-        }}</router-link>
+        <router-link class="btn btn-dark btn-lg" :to="{ name: 'login' }" role="button">
+          {{ $t('samples.ec01.cart.info.checkOut') }}
+        </router-link>
       </div>
     </div>
   </div>

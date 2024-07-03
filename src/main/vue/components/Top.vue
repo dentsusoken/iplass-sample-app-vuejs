@@ -36,8 +36,9 @@
               <router-link
                 :to="{ name: 'detail', query: { productId: product.oid } }"
                 class="card-link text-dark"
-                >{{ product.name }}</router-link
               >
+                {{ product.name }}
+              </router-link>
             </div>
             <div class="all-price">{{ product.price }}{{ $t('samples.ec01.all.yen') }}</div>
           </div>

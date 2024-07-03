@@ -24,18 +24,18 @@
       <div class="col-12 d-none d-md-block">
         <span class="h4"> </span>
         <nav class="breadcrumb all-breadcrumb">
-          <router-link class="breadcrumb-item text-primary" :to="{ name: 'top' }">{{
-            $t('samples.ec01.all.breadcrumb.home')
-          }}</router-link>
+          <router-link class="breadcrumb-item text-primary" :to="{ name: 'top' }">
+            {{ $t('samples.ec01.all.breadcrumb.home') }}
+          </router-link>
           <a
             class="breadcrumb-item text-primary"
             href="_blank"
             @click.prevent="editShippingInfo()"
             >{{ $t('samples.ec01.shipping.input.title') }}</a
           >
-          <span class="breadcrumb-item active">{{
-            $t('samples.ec01.shipping.confirm.title')
-          }}</span>
+          <span class="breadcrumb-item active">
+            {{ $t('samples.ec01.shipping.confirm.title') }}
+          </span>
         </nav>
       </div>
       <div class="col-12 col-md-12">

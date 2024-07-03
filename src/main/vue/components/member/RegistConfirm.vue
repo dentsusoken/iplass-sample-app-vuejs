@@ -24,15 +24,15 @@
       <div class="col-12">
         <div class="border-top"></div>
         <nav class="breadcrumb all-breadcrumb">
-          <router-link class="breadcrumb-item text-primary" :to="{ name: 'top' }">{{
-            $t('samples.ec01.all.breadcrumb.home')
-          }}</router-link>
-          <router-link class="breadcrumb-item text-primary" :to="{ name: 'inputMemberInfo' }">{{
-            $t('samples.ec01.member.regist.title')
-          }}</router-link>
-          <span class="breadcrumb-item active">{{
-            $t('samples.ec01.member.registConfirm.title')
-          }}</span>
+          <router-link class="breadcrumb-item text-primary" :to="{ name: 'top' }">
+            {{ $t('samples.ec01.all.breadcrumb.home') }}
+          </router-link>
+          <router-link class="breadcrumb-item text-primary" :to="{ name: 'inputMemberInfo' }">
+            {{ $t('samples.ec01.member.regist.title') }}
+          </router-link>
+          <span class="breadcrumb-item active">
+            {{ $t('samples.ec01.member.registConfirm.title') }}
+          </span>
         </nav>
       </div>
       <div class="col-12">
@@ -51,55 +51,55 @@
               <div class="card-body">
                 <div class="row mt-3 border-bottom">
                   <div class="col-12 col-md-4">
-                    <span class="text-muted fw-bold">{{
-                      $t('samples.ec01.member.regist.userId')
-                    }}</span>
+                    <span class="text-muted fw-bold">
+                      {{ $t('samples.ec01.member.regist.userId') }}
+                    </span>
                   </div>
                   <div class="col-12 col-md-8">{{ localUserBean.userId }}</div>
                 </div>
                 <div class="row mt-3 border-bottom">
                   <div class="col-12 col-md-4">
-                    <span class="text-muted fw-bold">{{
-                      $t('samples.ec01.member.registConfirm.fullName')
-                    }}</span>
+                    <span class="text-muted fw-bold">
+                      {{ $t('samples.ec01.member.registConfirm.fullName') }}
+                    </span>
                   </div>
                   <div class="col-12 col-md-3">
-                    <span class="text-muted fw-bold">{{
-                      $t('samples.ec01.member.regist.familyName')
-                    }}</span>
+                    <span class="text-muted fw-bold">
+                      {{ $t('samples.ec01.member.regist.familyName') }}
+                    </span>
                     &nbsp;{{ localUserBean.familyName }}
                   </div>
                   <div class="col-12 col-md-3">
-                    <span class="text-muted fw-bold">{{
-                      $t('samples.ec01.member.regist.firstName')
-                    }}</span>
+                    <span class="text-muted fw-bold">
+                      {{ $t('samples.ec01.member.regist.firstName') }}
+                    </span>
                     &nbsp;{{ localUserBean.firstName }}
                   </div>
                 </div>
                 <div v-if="locale == 'ja' || locale === undefined" class="row mt-3 border-bottom">
                   <div class="col-12 col-md-4">
-                    <span class="text-muted fw-bold">{{
-                      $t('samples.ec01.member.registConfirm.fullNameKana')
-                    }}</span>
+                    <span class="text-muted fw-bold">
+                      {{ $t('samples.ec01.member.registConfirm.fullNameKana') }}
+                    </span>
                   </div>
                   <div class="col-12 col-md-3">
-                    <span class="text-muted fw-bold">{{
-                      $t('samples.ec01.member.regist.familyNameKana')
-                    }}</span>
+                    <span class="text-muted fw-bold">
+                      {{ $t('samples.ec01.member.regist.familyNameKana') }}
+                    </span>
                     &nbsp;{{ localUserBean.familyNameKana }}
                   </div>
                   <div class="col-12 col-md-3">
-                    <span class="text-muted fw-bold">{{
-                      $t('samples.ec01.member.regist.firstNameKana')
-                    }}</span>
+                    <span class="text-muted fw-bold">
+                      {{ $t('samples.ec01.member.regist.firstNameKana') }}
+                    </span>
                     &nbsp;{{ localUserBean.firstNameKana }}
                   </div>
                 </div>
                 <div class="row mt-3 border-bottom">
                   <div class="col-12 col-md-4">
-                    <span class="text-muted fw-bold">{{
-                      $t('samples.ec01.member.regist.mail')
-                    }}</span>
+                    <span class="text-muted fw-bold">
+                      {{ $t('samples.ec01.member.regist.mail') }}
+                    </span>
                   </div>
                   <div class="col-12 col-md-8">{{ localUserBean.mail }}</div>
                 </div>

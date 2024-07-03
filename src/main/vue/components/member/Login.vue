@@ -24,9 +24,9 @@
       <div class="col-12">
         <div class="border-top"></div>
         <nav class="breadcrumb all-breadcrumb">
-          <router-link class="breadcrumb-item text-primary" :to="{ name: 'top' }">{{
-            $t('samples.ec01.all.breadcrumb.home')
-          }}</router-link>
+          <router-link class="breadcrumb-item text-primary" :to="{ name: 'top' }">
+            {{ $t('samples.ec01.all.breadcrumb.home') }}
+          </router-link>
           <span class="breadcrumb-item active">{{ $t('samples.ec01.member.login.title') }}</span>
         </nav>
       </div>
@@ -36,9 +36,9 @@
           <div class="form-group row">
             <div class="col-12">
               <div>
-                <label for="id" class="col-form-label label-hidden">{{
-                  $t('samples.ec01.member.login.userid')
-                }}</label>
+                <label for="id" class="col-form-label label-hidden">
+                  {{ $t('samples.ec01.member.login.userid') }}
+                </label>
                 <input
                   v-model="user.id"
                   type="text"
@@ -50,9 +50,9 @@
             </div>
             <div class="col-12 mt-3">
               <div>
-                <label for="password" class="col-form-label label-hidden">{{
-                  $t('samples.ec01.member.login.password')
-                }}</label>
+                <label for="password" class="col-form-label label-hidden">
+                  {{ $t('samples.ec01.member.login.password') }}
+                </label>
                 <input
                   v-model="user.password"
                   type="password"
@@ -73,15 +73,15 @@
           <div class="col-12 text-left">
             <p>{{ $t('samples.ec01.member.login.registMemberInfo') }}</p>
             <p>
-              <router-link class="text-dark" :to="{ name: 'regist' }">{{
-                $t('samples.ec01.member.login.registMember')
-              }}</router-link>
+              <router-link class="text-dark" :to="{ name: 'regist' }">
+                {{ $t('samples.ec01.member.login.registMember') }}
+              </router-link>
             </p>
             <p>{{ $t('samples.ec01.member.login.payInfo') }}</p>
             <p>
-              <router-link class="text-dark" :to="{ name: 'inputShippingInfoNoMember' }">{{
-                $t('samples.ec01.member.login.pay')
-              }}</router-link>
+              <router-link class="text-dark" :to="{ name: 'inputShippingInfoNoMember' }">
+                {{ $t('samples.ec01.member.login.pay') }}
+              </router-link>
             </p>
           </div>
           <output-token ref="token"></output-token>

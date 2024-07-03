@@ -24,9 +24,9 @@
       <div class="col-12">
         <div class="border-top"></div>
         <nav class="breadcrumb all-breadcrumb">
-          <router-link class="breadcrumb-item text-primary" :to="{ name: 'top' }">{{
-            $t('samples.ec01.all.breadcrumb.home')
-          }}</router-link>
+          <router-link class="breadcrumb-item text-primary" :to="{ name: 'top' }">
+            {{ $t('samples.ec01.all.breadcrumb.home') }}
+          </router-link>
           <span :id="categoryId" class="breadcrumb-item active">{{ categoryNameLocale }}</span>
         </nav>
       </div>
@@ -80,8 +80,9 @@
               <router-link
                 :to="{ name: 'detail', query: { productId: p.oid } }"
                 class="card-link text-dark"
-                >{{ p.name }}</router-link
               >
+                {{ p.name }}
+              </router-link>
             </div>
             <div class="all-price">{{ p.price }}{{ $t('samples.ec01.all.yen') }}</div>
           </div>

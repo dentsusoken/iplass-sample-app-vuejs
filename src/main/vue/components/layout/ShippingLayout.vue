@@ -67,8 +67,8 @@
                   <p class="cate">{{ productMap[item.productId].category.name }}</p>
                 </td>
                 <td class="w-25 text-right">
-                  {{ productMap[item.productId].price * item.value
-                  }}{{ $t('samples.ec01.all.yen') }}
+                  {{ productMap[item.productId].price * item.value }}
+                  {{ $t('samples.ec01.all.yen') }}
                 </td>
               </tr>
             </tbody>

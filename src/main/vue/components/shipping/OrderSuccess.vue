@@ -23,9 +23,9 @@
     <div class="col-12 d-none d-md-block">
       <span class="h4"> </span>
       <nav class="breadcrumb all-breadcrumb">
-        <router-link class="breadcrumb-item text-primary" :to="{ name: 'top' }">{{
-          $t('samples.ec01.all.breadcrumb.home')
-        }}</router-link>
+        <router-link class="breadcrumb-item text-primary" :to="{ name: 'top' }">
+          {{ $t('samples.ec01.all.breadcrumb.home') }}
+        </router-link>
         <span class="breadcrumb-item active">{{ $t('samples.ec01.shipping.input.title') }}</span>
         <span class="breadcrumb-item active">{{ $t('samples.ec01.shipping.confirm.title') }}</span>
         <span class="breadcrumb-item active">{{ $t('samples.ec01.shipping.success.title') }}</span>
@@ -44,9 +44,9 @@
     </div>
     <div class="col-12 mt-4 text-center clearfix">
       <div class="float-md-right">
-        <router-link class="btn btn-dark" :to="{ name: 'top' }" replace>{{
-          $t('samples.ec01.shipping.success.return')
-        }}</router-link>
+        <router-link class="btn btn-dark" :to="{ name: 'top' }" replace>
+          {{ $t('samples.ec01.shipping.success.return') }}
+        </router-link>
       </div>
     </div>
   </div>

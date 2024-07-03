@@ -24,12 +24,12 @@
       <div class="col-12">
         <div class="border-top"></div>
         <nav class="breadcrumb all-breadcrumb">
-          <router-link class="breadcrumb-item text-primary" :to="{ name: 'top' }">{{
-            $t('samples.ec01.all.breadcrumb.home')
-          }}</router-link>
-          <span class="breadcrumb-item active">{{
-            $t('samples.ec01.layout.defaultLayout.SCTAInfo')
-          }}</span>
+          <router-link class="breadcrumb-item text-primary" :to="{ name: 'top' }">
+            {{ $t('samples.ec01.all.breadcrumb.home') }}
+          </router-link>
+          <span class="breadcrumb-item active">
+            {{ $t('samples.ec01.layout.defaultLayout.SCTAInfo') }}
+          </span>
         </nav>
       </div>
       <div class="col-12">
@@ -57,9 +57,9 @@
               </div>
               <div class="row mt-3 border-bottom">
                 <div class="col-12 col-md-4 fw-bold">
-                  <span class="text-muted">{{
-                    $t('samples.ec01.shop.tradeLaw.administrator')
-                  }}</span>
+                  <span class="text-muted">
+                    {{ $t('samples.ec01.shop.tradeLaw.administrator') }}
+                  </span>
                 </div>
                 <div class="col-12 col-md-8">{{ tradeLaw.administrator }}</div>
               </div>
@@ -154,9 +154,9 @@
         </div>
         <div class="mt-5">
           <div class="col-12 mt-5 text-center">
-            <router-link class="btn btn-dark" :to="{ name: 'top' }">{{
-              $t('samples.ec01.shop.tradeLaw.back')
-            }}</router-link>
+            <router-link class="btn btn-dark" :to="{ name: 'top' }">
+              {{ $t('samples.ec01.shop.tradeLaw.back') }}
+            </router-link>
           </div>
         </div>
       </div>

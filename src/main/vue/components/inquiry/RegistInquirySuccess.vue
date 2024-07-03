@@ -24,13 +24,13 @@
       <div class="col-12">
         <div class="border-top"></div>
         <nav class="breadcrumb all-breadcrumb">
-          <router-link class="breadcrumb-item text-primary" :to="{ name: 'top' }">{{
-            $t('samples.ec01.all.breadcrumb.home')
-          }}</router-link>
+          <router-link class="breadcrumb-item text-primary" :to="{ name: 'top' }">
+            {{ $t('samples.ec01.all.breadcrumb.home') }}
+          </router-link>
           <span class="breadcrumb-item active">{{ $t('samples.ec01.inquiry.regist.title') }}</span>
-          <span class="breadcrumb-item active">{{
-            $t('samples.ec01.inquiry.registSuccess.title')
-          }}</span>
+          <span class="breadcrumb-item active">
+            {{ $t('samples.ec01.inquiry.registSuccess.title') }}
+          </span>
         </nav>
       </div>
       <div class="col-12">
@@ -46,9 +46,9 @@
           </div>
         </div>
         <div class="col-12 mt-5 text-center">
-          <router-link class="btn btn-dark" :to="{ name: 'top' }" replace>{{
-            $t('samples.ec01.inquiry.registSuccess.return')
-          }}</router-link>
+          <router-link class="btn btn-dark" :to="{ name: 'top' }" replace>
+            {{ $t('samples.ec01.inquiry.registSuccess.return') }}
+          </router-link>
         </div>
       </div>
     </div>

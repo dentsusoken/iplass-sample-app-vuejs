@@ -119,10 +119,6 @@
 import { Custom } from '../../mixins/Custom'
 import OutputToken from '../token/OutputToken.vue'
 import { Consts } from '../../mixins/Consts'
-import mitt from 'mitt'
-
-// Event Busの設定
-const emitter = mitt()
 
 export default {
   name: 'ConfirmShippingInfo',
@@ -173,7 +169,7 @@ export default {
         var commandResult = response.data
         if (commandResult.status == 'SUCCESS') {
           this.$router.replace({ name: 'orderSuccess', params: { status: commandResult.status } })
-          emitter.emit('confirmShippingInfo.order.success')
+          this.$emitter.emit('confirmShippingInfo.order.success')
         } else if (commandResult.status == 'ERROR') {
           this.$refs.token.reload()
         }

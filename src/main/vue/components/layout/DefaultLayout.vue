@@ -203,7 +203,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import '../../styles/open-iconic-bootstrap.min.css'
 import '../../styles/bookstore.css'
 import { Consts } from '../../mixins/Consts'
-import emitter from '../../eventBus'
 
 export default {
   name: 'DefaultLayout',
@@ -218,15 +217,15 @@ export default {
   },
   created() {
     // カートに入れた商品件数の更新
-    emitter.on('cart.totalAmount.refresh', (totalAmount) => {
+    this.$emitter.on('cart.totalAmount.refresh', (totalAmount) => {
       this.totalAmount = totalAmount
     })
     // カテゴリリストを子インスタンスに渡す
-    emitter.on('category.categoryList.request', () => {
-      emitter.emit('category.categoryList.response', this.categoryList)
+    this.$emitter.on('category.categoryList.request', () => {
+      this.$emitter.emit('category.categoryList.response', this.categoryList)
     })
-    emitter.on('fullTextSearch.categoryList.request', () => {
-      emitter.emit('fullTextSearch.categoryList.response', this.categoryList)
+    this.$emitter.on('fullTextSearch.categoryList.request', () => {
+      this.$emitter.emit('fullTextSearch.categoryList.response', this.categoryList)
     })
     this.loadContent()
   },

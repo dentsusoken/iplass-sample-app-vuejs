@@ -97,8 +97,7 @@
                 <a :href="result.detailUrl" class="card-link text-dark">{{ result.name }}</a>
               </div>
               <div class="all-price">
-                <span>{{ result.price }}</span
-                >{{ yen }}
+                <span>{{ result.price }}</span>{{ yen }}
               </div>
             </div>
           </div>
@@ -113,7 +112,6 @@
 
 <script>
 import { Consts } from '../../mixins/Consts'
-import emitter from '../../eventBus'
 
 export default {
   name: 'FullTextSearch',
@@ -137,10 +135,10 @@ export default {
   },
   methods: {
     loadCategoryList() {
-      emitter.on('fullTextSearch.categoryList.response', (categoryList) => {
+      this.$emitter.on('fullTextSearch.categoryList.response', (categoryList) => {
         this.categoryList = categoryList
       })
-      emitter.emit('fullTextSearch.categoryList.request')
+      this.$emitter.emit('fullTextSearch.categoryList.request')
     },
     fullTextSearch() {
       if (this.productName === '') {

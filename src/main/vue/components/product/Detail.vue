@@ -110,7 +110,6 @@
 
 <script>
 import { Consts } from '../../mixins/Consts'
-import emitter from '../../eventBus'
 
 export default {
   name: 'Detail',
@@ -181,7 +180,7 @@ export default {
             // カートの中を見るなどのボタンの表示
             this.alreadyAdded = true
             // カートに入れた商品件数の更新
-            emitter.emit('cart.totalAmount.refresh', totalAmount)
+            this.$emitter.emit('cart.totalAmount.refresh', totalAmount)
           }
         })
         .catch((error) => {

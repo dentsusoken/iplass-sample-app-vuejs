@@ -158,7 +158,6 @@
 
 <script>
 import { Consts } from '../../mixins/Consts'
-import emitter from '../../eventBus'
 
 export default {
   name: 'CartInfo',
@@ -204,7 +203,7 @@ export default {
         if (commandResult.status == 'SUCCESS') {
           this.cartBean = commandResult.cartBean
           // カートに入れた商品件数の更新
-          emitter.emit('cart.totalAmount.refresh', this.cartBean.totalAmount)
+          this.$emitter.emit('cart.totalAmount.refresh', this.cartBean.totalAmount)
         }
       })
     },
@@ -224,7 +223,7 @@ export default {
         if (commandResult.status == 'SUCCESS') {
           this.cartBean = commandResult.cartBean
           // カートに入れた商品件数の更新
-          emitter.emit('cart.totalAmount.refresh', this.cartBean.totalAmount)
+          this.$emitter.emit('cart.totalAmount.refresh', this.cartBean.totalAmount)
         }
       })
     }

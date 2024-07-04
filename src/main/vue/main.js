@@ -70,7 +70,7 @@ const app = createApp(App, {
   }
 })
 
-app.config.globalProperties.emitter = emitter
+app.config.globalProperties.$emitter = emitter
 
 // Axiosの設定
 app.config.globalProperties.$http = axios.create({

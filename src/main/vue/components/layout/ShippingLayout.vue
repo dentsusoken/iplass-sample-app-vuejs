@@ -118,10 +118,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import '../../styles/open-iconic-bootstrap.min.css'
 import '../../styles/bookstore.css'
 import { Consts } from '../../mixins/Consts'
-import mitt from 'mitt'
-
-// Event Busの設定
-const emitter = mitt()
 
 export default {
   name: 'ShippingLayout',
@@ -144,7 +140,7 @@ export default {
     }
   },
   created() {
-    emitter.on('confirmShippingInfo.order.success', () => {
+    this.$emitter.on('confirmShippingInfo.order.success', () => {
       this.cartBean = undefined
     })
     this.loadContent()

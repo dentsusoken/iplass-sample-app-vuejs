@@ -104,7 +104,6 @@
 <script>
 import Pagination from '../ui/Pagination.vue'
 import { Consts } from '../../mixins/Consts'
-import emitter from '../../eventBus'
 
 export default {
   name: 'Category',
@@ -166,10 +165,10 @@ export default {
       })
     },
     loadCategoryList() {
-      emitter.on('category.categoryList.response', (categoryList) => {
+      this.$emitter.on('category.categoryList.response', (categoryList) => {
         this.categoryList = categoryList
       })
-      emitter.emit('category.categoryList.request')
+      this.$emitter.emit('category.categoryList.request')
     }
   }
 }

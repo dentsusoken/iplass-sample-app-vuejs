@@ -113,6 +113,7 @@
               </button>
             </div>
           </div>
+          <output-token ref="token"></output-token>
         </form>
       </div>
     </div>
@@ -122,10 +123,13 @@
 <script>
 import { Custom } from '../../mixins/Custom'
 import { Consts } from '../../mixins/Consts'
-import { tokenService } from '../utils/tokenService'
+import OutputToken from '../token/OutputToken.vue'
 
 export default {
   name: 'RegistConfirm',
+  components: {
+    outputToken: OutputToken
+  },
   mixins: [Custom, Consts],
   beforeRouteUpdate(to, from, next) {
     // 不正な画面遷移が発生したと判断
@@ -141,42 +145,28 @@ export default {
       required: true
     }
   },
-  data() {
-    return {
-      localUserBean: {},
-      token: {
-        name: '',
-        value: ''
-      },
-      result: null
-    }
-  },
   created() {
-    const decodedData = JSON.parse(decodeURIComponent(this.$route.query.userBean))
+    var decodedData = JSON.parse(decodeURIComponent(this.$route.query.userBean))
     this.localUserBean = decodedData
   },
   methods: {
-    async registMemberInfo() {
-      const url = this.apiRegistMemberInfo()
-      const data = this.populatePostData()
-      const headers = {
-        ...tokenService.getTokenHeader()
-      }
-      const response = await this.$http.post(url, data, { headers })
-      const commandResult = response.data
-      if (commandResult.status == 'SUCCESS') {
-        this.$router.replace({ name: 'registSuccess', params: { status: commandResult.status } })
-      } else if (commandResult.status == 'ERROR') {
-        this.result = commandResult.result
-        const newToken = await tokenService.fetchToken(this.apiOutputToken())
-        if (newToken) {
-          this.token = newToken
+    registMemberInfo() {
+      var url = this.apiRegistMemberInfo()
+      var data = this.populatePostData()
+      this.$http.post(url, data).then((response) => {
+        var commandResult = response.data
+        if (commandResult.status == 'SUCCESS') {
+          this.$router.replace({ name: 'registSuccess', params: { status: commandResult.status } })
+        } else if (commandResult.status == 'ERROR') {
+          this.result = commandResult.result
+          this.$ref.token.reload()
         }
-      }
+      })
     },
     populatePostData() {
-      const data = {}
-      data[this.token.name] = this.token.value
+      var token = this.$refs.token.get()
+      var data = {}
+      data[token.name] = token.value
       return data
     }
   }

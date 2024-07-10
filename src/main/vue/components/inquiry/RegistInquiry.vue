@@ -158,6 +158,7 @@
               </button>
             </div>
           </div>
+          <output-token ref="token"></output-token>
         </form>
       </div>
     </div>
@@ -167,45 +168,40 @@
 <script>
 import { Custom } from '../../mixins/Custom'
 import { Consts } from '../../mixins/Consts'
-import { tokenService } from '../utils/tokenService'
+import OutputToken from '../token/OutputToken.vue'
 
 export default {
   name: 'RegistInquiry',
+  components: {
+    outputToken: OutputToken
+  },
   mixins: [Custom, Consts],
   data() {
     return {
       inquiryBean: {},
-      errorsMap: {},
-      token: {
-        name: '',
-        value: ''
-      }
+      errorsMap: {}
     }
   },
   mounted() {
     this.initFormInputText('.custom-form')
   },
   methods: {
-    async doInquiry() {
-      const url = this.apiDoInquiry()
-      const data = this.populatePostData()
-      const headers = {
-        ...tokenService.getTokenHeader()
-      }
-      const response = await this.$http.post(url, data, { headers })
-      const commandResult = response.data
-      if (commandResult.status == 'SUCCESS') {
-        this.$router.replace({ name: 'inquirySuccess', params: { status: commandResult.status } })
-      } else if (commandResult.status == 'ERROR') {
-        this.errorsMap = this.convertToErrorsMap(commandResult.result.errors)
-        const newToken = await tokenService.fetchToken(this.apiOutputToken())
-        if (newToken) {
-          this.token = newToken
+    doInquiry() {
+      var url = this.apiDoInquiry()
+      var data = this.populatePostData()
+      this.$http.post(url, data).then((response) => {
+        var commandResult = response.data
+        if (commandResult.status == 'SUCCESS') {
+          this.$router.replace({ name: 'inquirySuccess', params: { status: commandResult.status } })
+        } else if (commandResult.status == 'ERROR') {
+          this.errorsMap = this.convertToErrorsMap(commandResult.result.errors)
+          this.$refs.token.reload()
         }
-      }
+      })
     },
     populatePostData() {
-      const data = {
+      var token = this.$refs.token.get()
+      var data = {
         familyName: this.inquiryBean.familyName,
         firstName: this.inquiryBean.firstName,
         familyNameKana: this.inquiryBean.familyNameKana,
@@ -213,7 +209,7 @@ export default {
         mail: this.inquiryBean.mail,
         content: this.inquiryBean.content
       }
-      data[this.token.name] = this.token.value
+      data[token.name] = token.value
       return data
     }
   }

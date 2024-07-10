@@ -160,6 +160,7 @@
               </button>
             </div>
           </div>
+          <output-token ref="token"></output-token>
         </form>
       </div>
     </div>
@@ -169,10 +170,11 @@
 <script>
 import { Custom } from '../../mixins/Custom'
 import { Consts } from '../../mixins/Consts'
-import { tokenService } from '../utils/tokenService'
+import OutputToken from '../token/OutputToken.vue'
 
 export default {
   name: 'Regist',
+  components: { outputToken: OutputToken },
   mixins: [Custom, Consts],
   data() {
     return {
@@ -185,17 +187,13 @@ export default {
         mail: ''
       },
       memberAgree: {},
-      errorsMap: {},
-      token: {
-        name: '',
-        value: ''
-      }
+      errorsMap: {}
     }
   },
   created() {
-    const url = this.apiInputMemberInfo()
+    var url = this.apiInputMemberInfo()
     this.$http.get(url).then((response) => {
-      const commandResult = response.data
+      var commandResult = response.data
       if (commandResult.status == 'SUCCESS') {
         this.memberAgree = commandResult.memberAgree
       } else {
@@ -207,27 +205,22 @@ export default {
     this.initFormInputText('.custom-form')
   },
   methods: {
-    async confirmMemberInfo() {
-      const url = this.apiConfirmMemberInfo()
-      const data = this.populatePostData()
-      const headers = {
-        ...tokenService.getTokenHeader()
-      }
-      const response = await this.$http.post(url, data, { headers })
-      const commandResult = response.data
-      if (commandResult.status == 'SUCCESS') {
-        const encodedData = encodeURIComponent(JSON.stringify(this.userBean))
-        this.$router.replace({ name: 'registConfirm', query: { userBean: encodedData } })
-      } else if (commandResult.status == 'ERROR') {
-        this.errorsMap = this.convertToErrorsMap(commandResult.result.errors)
-        const newToken = await tokenService.fetchToken(this.apiOutputToken())
-        if (newToken) {
-          this.token = newToken
+    confirmMemberInfo() {
+      var url = this.apiConfirmMemberInfo()
+      var data = this.populatePostData()
+      this.$http.post(url, data).then((response) => {
+        var commandResult = response.data
+        if (commandResult.status == 'SUCCESS') {
+          var encodedData = encodeURIComponent(JSON.stringify(this.userBean))
+          this.$router.replace({ name: 'registConfirm', query: { userBean: encodedData } })
+        } else if (commandResult.status == 'ERROR') {
+          this.errorsMap = this.convertToErrorsMap(commandResult.result.errors)
+          this.$refs.token.reload()
         }
-      }
+      })
     },
     populatePostData() {
-      const data = {
+      var data = {
         userId: this.userBean.userId,
         familyName: this.userBean.familyName,
         firstName: this.userBean.firstName,
@@ -235,7 +228,8 @@ export default {
         firstNameKana: this.userBean.firstNameKana,
         mail: this.userBean.mail
       }
-      data[this.token.name] = this.token.value
+      var token = this.$refs.token.get()
+      data[token.name] = token.value
       return data
     }
   }

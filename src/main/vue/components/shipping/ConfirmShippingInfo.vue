@@ -111,16 +111,20 @@
         </div>
       </div>
     </div>
+    <output-token ref="token"></output-token>
   </form>
 </template>
 
 <script>
 import { Custom } from '../../mixins/Custom'
+import OutputToken from '../token/OutputToken.vue'
 import { Consts } from '../../mixins/Consts'
-import { tokenService } from '../utils/tokenService'
 
 export default {
   name: 'ConfirmShippingInfo',
+  components: {
+    outputToken: OutputToken
+  },
   mixins: [Custom, Consts],
   beforeRouteUpdate(to, from, next) {
     // 不正な画面遷移が発生したと判断
@@ -150,43 +154,35 @@ export default {
         firstName: '',
         familyNameKana: '',
         firstNameKana: ''
-      },
-      token: {
-        name: '',
-        value: ''
       }
     }
   },
   created() {
-    const decodedData = JSON.parse(decodeURIComponent(this.$route.query.shippingBean))
+    var decodedData = JSON.parse(decodeURIComponent(this.$route.query.shippingBean))
     this.localShippingBean = decodedData
   },
   methods: {
-    async doOrder() {
-      const url = this.apiDoOrder()
-      const data = this.populatePostData()
-      const headers = {
-        ...tokenService.getTokenHeader()
-      }
-      const response = await this.$http.post(url, data, { headers })
-      const commandResult = response.data
-      if (commandResult.status == 'SUCCESS') {
-        this.$router.replace({ name: 'orderSuccess', params: { status: commandResult.status } })
-        this.$emitter.emit('confirmShippingInfo.order.success')
-      } else if (commandResult.status == 'ERROR') {
-        const newToken = await tokenService.fetchToken(this.apiOutputToken())
-        if (newToken) {
-          this.token = newToken
+    doOrder() {
+      var url = this.apiDoOrder()
+      var data = this.populatePostData()
+      this.$http.post(url, data).then((response) => {
+        var commandResult = response.data
+        if (commandResult.status == 'SUCCESS') {
+          this.$router.replace({ name: 'orderSuccess', params: { status: commandResult.status } })
+          this.$emitter.emit('confirmShippingInfo.order.success')
+        } else if (commandResult.status == 'ERROR') {
+          this.$refs.token.reload()
         }
-      }
+      })
     },
     populatePostData() {
-      const data = {}
-      data[this.token.name] = this.token.value
+      var token = this.$refs.token.get()
+      var data = {}
+      data[token.name] = token.value
       return data
     },
     editShippingInfo() {
-      const encodedData = encodeURIComponent(JSON.stringify(this.localShippingBean))
+      var encodedData = encodeURIComponent(JSON.stringify(this.localShippingBean))
       this.$router.replace({ name: 'editShippingInfo', query: { editShippingBean: encodedData } })
     }
   }

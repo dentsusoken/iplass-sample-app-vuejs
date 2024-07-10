@@ -182,16 +182,20 @@
         </div>
       </div>
     </div>
+    <output-token ref="token"></output-token>
   </form>
 </template>
 
 <script>
 import { Custom } from '../../mixins/Custom'
 import { Consts } from '../../mixins/Consts'
-import { tokenService } from '../utils/tokenService'
+import OutputToken from '../token/OutputToken.vue'
 
 export default {
   name: 'InputShippingInfo',
+  components: {
+    outputToken: OutputToken
+  },
   mixins: [Custom, Consts],
   props: {
     editShippingBean: {
@@ -218,21 +222,17 @@ export default {
         familyNameKana: '',
         firstNameKana: ''
       },
-      errorsMap: {},
-      token: {
-        name: '',
-        value: ''
-      }
+      errorsMap: {}
     }
   },
   created() {
-    const name = this.$router.currentRoute.name || this.$router.currentRoute.value.name
+    var name = this.$router.currentRoute.name || this.$router.currentRoute.value.name
     if (name == 'inputShippingInfoNoMember') {
       this.loadContentNoMember()
     } else if (name == 'inputShippingInfo') {
       this.loadContent()
     } else if (name == 'editShippingInfo') {
-      const decodedData = JSON.parse(decodeURIComponent(this.$route.query.editShippingBean))
+      var decodedData = JSON.parse(decodeURIComponent(this.$route.query.editShippingBean))
       this.shippingBean = decodedData
     }
   },
@@ -241,51 +241,47 @@ export default {
   },
   methods: {
     loadContent() {
-      const url = this.apiInputShippingInfo()
+      var url = this.apiInputShippingInfo()
       this.$http.get(url).then((response) => {
-        const commandResult = response.data
+        var commandResult = response.data
         if (commandResult.status == 'SUCCESS') {
           this.shippingBean = commandResult.shippingBean
         } else if (commandResult.status == 'ERROR') {
-          const redirectURL = commandResult.redirectURL
+          var redirectURL = commandResult.redirectURL
           this.$router.push(redirectURL)
         }
       })
     },
     loadContentNoMember() {
-      const url = this.apiInputShippingInfoNoMember()
+      var url = this.apiInputShippingInfoNoMember()
       this.$http.get(url).then((response) => {
-        const commandResult = response.data
+        var commandResult = response.data
         if (commandResult.status == 'ERROR') {
-          const redirectURL = commandResult.redirectURL
+          var redirectURL = commandResult.redirectURL
           this.$router.push(redirectURL)
         }
       })
     },
-    async confirmShippingInfo() {
-      const url = this.apiConfirmShippingInfo()
-      const data = this.populatePostData()
-      const headers = {
-        ...tokenService.getTokenHeader()
-      }
-      const response = await this.$http.post(url, data, { headers })
-      const commandResult = response.data
-      if (commandResult.status == 'SUCCESS') {
-        const encodedData = encodeURIComponent(JSON.stringify(this.shippingBean))
-        this.$router.replace({
-          name: 'confirmShippingInfo',
-          query: { shippingBean: encodedData }
-        })
-      } else if (commandResult.status == 'ERROR') {
-        this.errorsMap = this.convertToErrorsMap(commandResult.result.errors)
-        const newToken = await tokenService.fetchToken(this.apiOutputToken())
-        if (newToken) {
-          this.token = newToken
+    confirmShippingInfo() {
+      var url = this.apiConfirmShippingInfo()
+      var data = this.populatePostData()
+      this.$http.post(url, data).then((response) => {
+        var commandResult = response.data
+        if (commandResult.status == 'SUCCESS') {
+          var encodedData = encodeURIComponent(JSON.stringify(this.shippingBean))
+          this.$router.replace({
+            name: 'confirmShippingInfo',
+            query: { shippingBean: encodedData }
+          })
+        } else if (commandResult.status == 'ERROR') {
+          this.errorsMap = this.convertToErrorsMap(commandResult.result.errors)
+          this.$refs.token.reload()
         }
-      }
+      })
     },
     populatePostData() {
-      const data = {
+      var token = this.$refs.token.get()
+      var data = {
         mail: this.shippingBean.mail,
         tel: this.shippingBean.tel,
         address: this.shippingBean.address,
@@ -294,7 +290,7 @@ export default {
         familyNameKana: this.shippingBean.familyNameKana,
         firstNameKana: this.shippingBean.firstNameKana
       }
-      data[this.token.name] = this.token.value
+      data[token.name] = token.value
       return data
     }
   }

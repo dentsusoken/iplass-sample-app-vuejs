@@ -29,6 +29,10 @@ import mitt from 'mitt'
 // tcPath: テナントコンテキストパス
 // lang: 言語設定
 
+// axios のデフォルトヘッダー設定
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
+axios.defaults.headers.post['Content-Type'] = 'application/json'
+
 // Event Busの設定
 const emitter = mitt()
 
@@ -74,7 +78,15 @@ app.config.globalProperties.$emitter = emitter
 
 // Axiosの設定
 app.config.globalProperties.$http = axios.create({
-  headers: { 'X-Requested-With': 'XMLHttpRequest' }
+  headers: {
+    'X-Requested-With': 'XMLHttpRequest',
+    'Content-Type': 'application/json'
+  },
+  transformRequest: [
+    function (data) {
+      return JSON.stringify(data)
+    }
+  ]
 })
 
 app.use(i18n)

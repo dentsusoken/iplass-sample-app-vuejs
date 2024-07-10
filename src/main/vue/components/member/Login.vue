@@ -84,7 +84,6 @@
               </router-link>
             </p>
           </div>
-          <output-token ref="token"></output-token>
         </form>
       </div>
     </div>
@@ -94,42 +93,44 @@
 <script>
 import { Custom } from '../../mixins/Custom'
 import { Consts } from '../../mixins/Consts'
-import OutputToken from '../token/OutputToken.vue'
+import { tokenService } from '../utils/tokenService'
 
 export default {
   name: 'Login',
-  components: {
-    outputToken: OutputToken
-  },
   mixins: [Custom, Consts],
   data() {
     return {
-      user: { id: '', password: '' }
+      user: { id: '', password: '' },
+      token: {
+        name: '',
+        value: ''
+      }
     }
   },
   mounted() {
     this.initFormInputText('.custom-form')
   },
   methods: {
-    login() {
-      var url = this.apiDoLogin()
-      var data = this.populatePostData()
-      this.$http.post(url, data).then((response) => {
-        var commandResult = response.data
-        if (commandResult.status == 'SUCCESS') {
-          this.$router.push({ path: commandResult['samples.ec01.login.redirect'] })
-        } else if (commandResult.status == 'ERROR') {
-          this.$router.push({
-            name: 'genericError',
-            params: { exception: 'org.iplass.mtp.auth.login.LoginFailedException' }
-          })
-        }
-      })
+    async login() {
+      const url = this.apiDoLogin()
+      const data = this.populatePostData()
+      const headers = {
+        ...tokenService.getTokenHeader()
+      }
+      const response = await this.$http.post(url, data, { headers })
+      const commandResult = response.data
+      if (commandResult.status == 'SUCCESS') {
+        this.$router.push({ path: commandResult['samples.ec01.login.redirect'] })
+      } else if (commandResult.status == 'ERROR') {
+        this.$router.push({
+          name: 'genericError',
+          params: { exception: 'org.iplass.mtp.auth.login.LoginFailedException' }
+        })
+      }
     },
     populatePostData() {
-      var token = this.$refs.token.get()
-      var data = { id: this.user.id, password: this.user.password }
-      data[token.name] = token.value
+      const data = { id: this.user.id, password: this.user.password }
+      data[this.token.name] = this.token.value
       return data
     }
   }

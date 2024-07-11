@@ -101,7 +101,7 @@
         </div>
       </div>
       <div class="col-12 col-md-6 pt-4 custom-form-left-container">
-        <RouterView />
+        <router-view></router-view>
         <div class="row layout-footer shipping-layout-footer">
           <div class="col-12 text-light text-left bg-dark">
             Copyright（c）2018 MTP Demo Store all rights reserved.

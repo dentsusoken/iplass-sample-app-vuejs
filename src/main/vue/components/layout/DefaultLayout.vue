@@ -159,7 +159,7 @@
           </div>
         </div>
       </div>
-      <RouterView />
+      <router-view></router-view>
     </div>
     <hr />
     <div class="row">

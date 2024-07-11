@@ -38,7 +38,7 @@
     <meta name="description" content="ご自身のWebサイトの説明を記載します" />
     <link rel="stylesheet" href="${m:esc(staticContentPath)}/styles/open-iconic-bootstrap.min.css?cv=<%=TemplateUtil.getAPIVersion()%>">
     <link rel="stylesheet" href="${m:esc(staticContentPath)}/styles/index.css?cv=<%=TemplateUtil.getAPIVersion()%>">
-    <script setup>
+    <script>
         const lang = '<%=TemplateUtil.getLanguage() %>';
         const tcPath = '<%=TemplateUtil.getTenantContextPath() %>';
     </script>
@@ -46,7 +46,7 @@
 </head>
 <body>
 	<div id="app">
-        <RouterView />
+        <router-view></router-view>
     </div>
 </body>
 </html>

@@ -70,7 +70,7 @@
               </button>
             </div>
           </div>
-          <div class="col-12 text-left">
+          <div class="col-12 text-start">
             <p>{{ $t('samples.ec01.member.login.registMemberInfo') }}</p>
             <p>
               <router-link class="text-dark" :to="{ name: 'regist' }">

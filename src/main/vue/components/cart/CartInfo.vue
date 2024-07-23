@@ -32,7 +32,7 @@
       </div>
     </div>
     <div v-if="!cartBean || cartBean.cartItems.length == 0" class="row cart-table">
-      <div class="col-12 text-left">
+      <div class="col-12 text-start">
         <p>{{ $t('samples.ec01.cart.info.emptyMsg.p1') }}</p>
         <p>
           {{ $t('samples.ec01.cart.info.emptyMsg.p2') }}

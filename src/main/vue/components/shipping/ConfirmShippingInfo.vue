@@ -41,7 +41,7 @@
       <div class="col-12 col-md-12">
         <h5>{{ $t('samples.ec01.shipping.confirm.title') }}</h5>
         <div class="card col bg-light">
-          <div class="card-body pl-0 text-left" style="position: relative">
+          <div class="card-body pl-0 text-start" style="position: relative">
             <div v-if="localShippingBean !== null">
               <div class="row">
                 <div class="col-12 col-md-12 text-muted fw-bold">
@@ -99,7 +99,7 @@
         </div>
       </div>
       <div class="col-12 mt-4 text-center clearfix">
-        <div class="float-md-right">
+        <div class="float-md-end">
           <button type="button" class="btn btn-dark btn-lg" @click="doOrder()">
             {{ $t('samples.ec01.shipping.confirm.order') }}
           </button>

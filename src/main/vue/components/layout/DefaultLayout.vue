@@ -165,23 +165,23 @@
     <div class="row">
       <div class="col-12">
         <ul class="list-group">
-          <li class="list-group-item border-0 fw-bold py-3">Links</li>
-          <li class="list-group-item border-0 py-3">
+          <li class="list-group-item border-0 fw-bold">Links</li>
+          <li class="list-group-item border-0">
             <router-link :to="{ name: 'newInfo' }" class="text-dark">
               {{ $t('samples.ec01.layout.defaultLayout.news') }}
             </router-link>
           </li>
-          <li class="list-group-item border-0 py-3">
+          <li class="list-group-item border-0">
             <router-link :to="{ name: 'fullTextSearch' }" class="text-dark">
               {{ $t('samples.ec01.layout.defaultLayout.search') }}
             </router-link>
           </li>
-          <li class="list-group-item border-0 py-3">
+          <li class="list-group-item border-0">
             <router-link :to="{ name: 'inquiry' }" class="text-dark">
               {{ $t('samples.ec01.layout.defaultLayout.inquiry') }}
             </router-link>
           </li>
-          <li class="list-group-item border-0 py-3">
+          <li class="list-group-item border-0">
             <router-link :to="{ name: 'tradeLaw' }" class="text-dark">
               {{ $t('samples.ec01.layout.defaultLayout.SCTAInfo') }}
             </router-link>
@@ -190,7 +190,7 @@
       </div>
     </div>
     <div class="row layout-footer bg-dark">
-      <div class="col-md-12 text-light text-left">
+      <div class="col-md-12 text-light text-start">
         Copyright（c）2018 MTP Demo Store all rights reserved.
       </div>
     </div>

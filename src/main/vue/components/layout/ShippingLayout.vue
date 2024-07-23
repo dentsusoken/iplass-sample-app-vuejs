@@ -27,7 +27,7 @@
       <div class="col-12 d-block d-md-none bg-light pt-3 pr-4 clearfix">
         <button
           id="toggle-btn"
-          class="border-0 bg-transparent float-left"
+          class="border-0 bg-transparent float-start"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#cartTab"
@@ -59,14 +59,14 @@
                       class="rounded"
                       :alt="productMap[item.productId].name"
                     />
-                    <span class="badge badge-dark badge-pill">{{ item.value }}</span>
+                    <span class="badge bg-dark">{{ item.value }}</span>
                   </div>
                 </td>
                 <td>
                   <p>{{ productMap[item.productId].name }}</p>
                   <p class="cate">{{ productMap[item.productId].category.name }}</p>
                 </td>
-                <td class="w-25 text-right">
+                <td class="w-25 text-end">
                   {{ productMap[item.productId].price * item.value }}
                   {{ $t('samples.ec01.all.yen') }}
                 </td>
@@ -79,19 +79,19 @@
             <tbody>
               <!-- 商品合計 -->
               <tr>
-                <td scope="row" class="w-25 text-left">
+                <td scope="row" class="w-25 text-start">
                   {{ $t('samples.ec01.layout.shipping.subtotal') }}
                 </td>
                 <td class="w-75">{{ totalPrice }}{{ $t('samples.ec01.all.yen') }}</td>
               </tr>
               <tr>
-                <td scope="row" class="w-25 text-left border-top-0">
+                <td scope="row" class="w-25 text-start border-top-0">
                   {{ $t('samples.ec01.layout.shipping.fee') }}
                 </td>
                 <td class="w-75 border-top-0">--</td>
               </tr>
               <tr>
-                <td scope="row" class="w-25 text-left h4">
+                <td scope="row" class="w-25 text-start h4">
                   {{ $t('samples.ec01.layout.shipping.total') }}
                 </td>
                 <td class="w-75 fw-bold h4">{{ totalPrice }}{{ $t('samples.ec01.all.yen') }}</td>
@@ -103,7 +103,7 @@
       <div class="col-12 col-md-6 pt-4 custom-form-left-container">
         <router-view></router-view>
         <div class="row layout-footer shipping-layout-footer">
-          <div class="col-12 text-light text-left bg-dark">
+          <div class="col-12 text-light text-start bg-dark">
             Copyright（c）2018 MTP Demo Store all rights reserved.
           </div>
         </div>

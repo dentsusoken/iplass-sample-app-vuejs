@@ -43,7 +43,7 @@
       </div>
     </div>
     <div class="col-12 mt-4 text-center clearfix">
-      <div class="float-md-right">
+      <div class="float-md-end">
         <router-link class="btn btn-dark" :to="{ name: 'top' }" replace>
           {{ $t('samples.ec01.shipping.success.return') }}
         </router-link>

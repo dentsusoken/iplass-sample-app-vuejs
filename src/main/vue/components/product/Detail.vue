@@ -48,7 +48,7 @@
         <!-- 商品サブ情報 -->
         <p class="h5">
           <template v-for="sub in subInfoList" :key="sub.oid">
-            <span class="badge badge-info" :title="sub.description"> {{ sub.name }} </span>&nbsp;
+            <span class="badge bg-info" :title="sub.description"> {{ sub.name }} </span>&nbsp;
           </template>
         </p>
         <div :class="{ 'd-none': alreadyAdded }">

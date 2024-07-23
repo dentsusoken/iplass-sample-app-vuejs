@@ -169,7 +169,7 @@
         </div>
       </div>
       <div class="col-12 mt-4 text-center clearfix">
-        <div class="float-md-right">
+        <div class="float-md-end">
           <button type="button" class="btn btn-dark btn-lg" @click="confirmShippingInfo()">
             {{ $t('samples.ec01.shipping.input.delivery') }}
           </button>

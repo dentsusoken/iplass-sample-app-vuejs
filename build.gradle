@@ -110,6 +110,10 @@ tasks.withType(AbstractCompile) {
 	options.encoding = 'UTF-8'
 }
 
+test {
+	useJUnitPlatform()
+}
+
 node {
 	download = true
 	version = nodejsVersion

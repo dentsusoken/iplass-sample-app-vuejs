@@ -42,7 +42,7 @@ import samples.ec01.entity.Product;
 		accepts = RequestType.REST_JSON,
 		restJson = @RestJson(parameterName = "param"),
 		methods = MethodType.POST,
-		privilaged = true, 
+		privileged = true, 
 		results = {
 				KeywordSearchCommand.RESULT_KEYWORD,
 				KeywordSearchCommand.RESULT_PRODUCT_LIST})

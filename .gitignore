@@ -5,3 +5,6 @@
 .project
 /.settings/
 /node_modules/
+/dist/
+src/main/webapp/styles/index.css
+src/main/webapp/styles/open-iconic-bootstrap.min.css

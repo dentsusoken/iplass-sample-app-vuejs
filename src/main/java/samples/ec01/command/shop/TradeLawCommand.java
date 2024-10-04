@@ -39,7 +39,7 @@ import samples.ec01.entity.TradeLaw;
 		displayName = "特定商取引画面表示WebAPI", 
 		accepts = RequestType.REST_JSON, 
 		methods = MethodType.GET, 
-		privilaged = true, 
+		privileged = true, 
 		results = { 
 				TradeLawCommand.RESULT_SHOP_INFO, 
 				TradeLawCommand.RESULT_TRADE_LAW })

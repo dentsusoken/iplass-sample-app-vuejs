@@ -37,7 +37,7 @@ import org.iplass.mtp.webapi.definition.RequestType;
 		displayName = "", 
 		accepts = RequestType.REST_JSON, 
 		methods = MethodType.POST, 
-		privilaged = true, 
+		privileged = true, 
 		synchronizeOnSession = true,
 		results = { 
 				OutputToken.RESULT_TOKEN_NAME,

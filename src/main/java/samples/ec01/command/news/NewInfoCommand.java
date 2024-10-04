@@ -43,7 +43,7 @@ import samples.ec01.utils.Consts;
 		accepts = RequestType.REST_JSON,
 		restJson = @RestJson(parameterName = "param"),
 		methods = MethodType.GET, 
-		privilaged = true, 
+		privileged = true, 
 		results = {
 				NewInfoCommand.RESULT_NEW_INFO_LIST, 
 				Consts.PAGINATION_REQUEST_KEY })

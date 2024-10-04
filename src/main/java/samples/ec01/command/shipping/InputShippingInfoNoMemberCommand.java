@@ -36,7 +36,7 @@ import samples.ec01.utils.Consts;
 		displayName = "非会員配送情報入力画面表示WebAPI", 
 		accepts = RequestType.REST_JSON, 
 		methods = MethodType.GET, 
-		privilaged = true, 
+		privileged = true, 
 		results = { InputShippingInfoNoMemberCommand.RESULT_REDIRECT_URL })
 @CommandClass(
 		name = "samples/ec01/shipping/InputShippingInfoNoMemberCommand", 

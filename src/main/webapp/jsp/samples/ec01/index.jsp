@@ -36,15 +36,17 @@
     <!-- Optional meta tags -->
     <meta name="keywords" content="キーワードその1,キーワードその2,キーワードその3,キーワードその4,キーワードその5" />
     <meta name="description" content="ご自身のWebサイトの説明を記載します" />
+    <link rel="stylesheet" href="${m:esc(staticContentPath)}/styles/open-iconic-bootstrap.min.css?cv=<%=TemplateUtil.getAPIVersion()%>">
+    <link rel="stylesheet" href="${m:esc(staticContentPath)}/styles/index.css?cv=<%=TemplateUtil.getAPIVersion()%>">
+    <script>
+        const lang = '<%=TemplateUtil.getLanguage() %>';
+        const tcPath = '<%=TemplateUtil.getTenantContextPath() %>';
+    </script>
+    <script type="module" src="${m:esc(staticContentPath)}/scripts/build.js?cv=<%=TemplateUtil.getAPIVersion()%>"></script>
 </head>
 <body>
 	<div id="app">
-    	<router-view></router-view>
+        <router-view></router-view>
     </div>
-<script>
-const lang = '<%=TemplateUtil.getLanguage() %>';
-const tcPath = '<%=TemplateUtil.getTenantContextPath() %>';
-</script>
-<script type="text/javascript" src="${m:esc(staticContentPath)}/scripts/build.js?cv=<%=TemplateUtil.getAPIVersion()%>"></script>
 </body>
 </html>

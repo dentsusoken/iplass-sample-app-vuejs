@@ -48,7 +48,7 @@ import samples.ec01.entity.ProductSubInfo;
 		accepts = RequestType.REST_JSON,
 		restJson = @RestJson(parameterName = "param"),
 		methods = MethodType.GET, 
-		privilaged = true, 
+		privileged = true, 
 		results = {
 				DetailCommand.RESULT_PRODUCT_INFO,
 				DetailCommand.RESULT_SUB_INFO_LIST,

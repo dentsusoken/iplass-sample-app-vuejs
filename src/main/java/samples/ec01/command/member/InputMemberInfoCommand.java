@@ -38,7 +38,7 @@ import samples.ec01.entity.MemberAgree;
 		displayName = "会員情報入力WebAPI", 
 		accepts = RequestType.REST_JSON, 
 		methods = MethodType.GET, 
-		privilaged = true, 
+		privileged = true, 
 		results = { InputMemberInfoCommand.RESULT_MEMBER_AGREE })
 @CommandClass(
 		name = "samples/ec01/member/InputMemberInfoCommand", 

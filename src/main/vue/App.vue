@@ -18,44 +18,10 @@
   along with this program. If not, see &lt;https://www.gnu.org/licenses/&gt;.
 -->
 
-<template></template>
+<script></script>
 
-<script>
-import { Consts } from '../../mixins/Consts'
-
-export default {
-  name: 'OutputToken',
-  mixins: [Consts],
-  data() {
-    return {
-      token: {
-        name: '',
-        value: ''
-      }
-    }
-  },
-  created() {
-    this.reload()
-  },
-  methods: {
-    // トークンを取得する
-    get() {
-      return this.token
-    },
-    // トークンをリロードする
-    reload() {
-      var url = this.apiOutputToken()
-      var data = {}
-      this.$http.post(url, data).then((response) => {
-        var commandResult = response.data
-        if (commandResult.status == 'SUCCESS') {
-          this.token.name = commandResult.tokenName
-          this.token.value = commandResult.tokenValue
-        }
-      })
-    }
-  }
-}
-</script>
+<template>
+  <router-view></router-view>
+</template>
 
 <style></style>

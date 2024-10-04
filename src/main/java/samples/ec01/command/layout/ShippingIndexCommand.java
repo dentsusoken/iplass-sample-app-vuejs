@@ -44,7 +44,7 @@ import samples.ec01.utils.Consts;
 		displayName = "配送先入力用レイアウトWebAPI", 
 		accepts = RequestType.REST_JSON, 
 		methods = MethodType.GET, 
-		privilaged = true, 
+		privileged = true, 
 		results = { 
 				Consts.CART_BEAN_SESSION_KEY, 
 				ShippingIndexCommand.RESULT_PRODUCT_MAP })

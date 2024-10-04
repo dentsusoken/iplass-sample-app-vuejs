@@ -55,7 +55,7 @@ import samples.ec01.utils.Consts;
 		accepts = RequestType.REST_JSON, 
 		restJson = @RestJson(parameterName = "param"), 
 		methods = MethodType.POST, 
-		privilaged = true, 
+		privileged = true, 
 		synchronizeOnSession = true, 
 		tokenCheck = @WebApiTokenCheck(
 				executeCheck = true, 

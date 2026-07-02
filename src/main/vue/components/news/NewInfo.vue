@@ -66,14 +66,9 @@ export default {
     this.loadContent()
     next()
   },
-  props: {
-    page: {
-      type: Number,
-      default: 0
-    }
-  },
   data() {
     return {
+      page: 0,
       pagination: {},
       newsInfoList: []
     }
@@ -87,6 +82,7 @@ export default {
     }
   },
   created() {
+    this.page = this.$route.query.page
     this.loadContent()
   },
   methods: {

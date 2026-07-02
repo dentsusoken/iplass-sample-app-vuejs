@@ -94,7 +94,6 @@
         <!-- ページング -->
         <pagination
           v-bind="{ pagination: pagination, paginationUrl: paginationUrl }"
-          :id="page"
         ></pagination>
       </div>
     </div>
@@ -118,6 +117,8 @@ export default {
   },
   data() {
     return {
+      page: 0,
+      categoryId: "",
       categoryName: '',
       categoryList: [],
       productList: [],

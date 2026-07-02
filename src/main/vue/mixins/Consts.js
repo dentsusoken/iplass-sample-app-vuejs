@@ -25,7 +25,7 @@ export const Consts = {
       path: {
         productImg: tcPath + '/samples/ec01/resource/bin?type=productImg&id=',
         category: '/product/category?categoryId=',
-        newInfo: '/news/newInfo?page='
+        newInfo: '/news/newInfo'
       },
       apiPath: {
         defaultLayout: tcPath + '/api/samples/ec01/layout/defaultLayout',
@@ -63,7 +63,7 @@ export const Consts = {
       }
     },
     categoryUrl(categoryId) {
-      return this.path.category + categoryId + '&page='
+      return this.path.category + categoryId
     },
     newInfoUrl() {
       return this.path.newInfo

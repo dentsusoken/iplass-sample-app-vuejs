@@ -34,7 +34,7 @@
         <router-link
           v-else
           class="page-link border-0 text-dark"
-          :to="{ path: paginationUrl + (currentPage - 1) }"
+          :to="pageTo(currentPage - 1)"
           aria-label="Previous"
         >
           <span aria-hidden="true">&laquo;{{ $t('samples.ec01.all.pagination.prev') }}</span>
@@ -47,7 +47,7 @@
           <a class="page-link border-0 text-dark bg-light">{{ i + 1 }}</a>
         </li>
         <li v-else-if="i < 3 || i > totalPage - 3" :key="'normal-' + i" class="page-item">
-          <router-link class="page-link border-0 text-dark" :to="{ path: paginationUrl + i }">
+          <router-link class="page-link border-0 text-dark" :to="pageTo(i)">
             {{ i + 1 }}
           </router-link>
         </li>
@@ -68,7 +68,7 @@
         <router-link
           v-else
           class="page-link border-0 text-dark"
-          :to="{ path: paginationUrl + (currentPage + 1) }"
+          :to="pageTo(currentPage + 1)"
           aria-label="Next"
         >
           <span aria-hidden="true">{{ $t('samples.ec01.all.pagination.next') }}</span>
@@ -98,6 +98,28 @@ export default {
     },
     totalPage() {
       return this.pagination === undefined ? 0 : this.pagination.totalPage
+    },
+    linkBase() {
+      const [path, search] = this.paginationUrl.split('?')
+      const params = new URLSearchParams(search || '')
+      const query = {}
+      params.forEach((value, key) => {
+        if (key !== 'page') {
+          query[key] = value
+        }
+      })
+      return { path, query }
+    }
+  },
+  methods: {
+    pageTo(page) {
+      return {
+        path: this.linkBase.path,
+        query: {
+          ...this.linkBase.query,
+          page: String(page)
+        }
+      }
     }
   }
 }

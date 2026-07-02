@@ -54,7 +54,7 @@ const router = createRouter({
           path: 'news/newInfo',
           name: 'newInfo',
           component: NewInfo,
-          props: (route) => ({ page: route.query.pageId })
+          props: true
         },
         { path: 'product/detail', name: 'detail', component: Detail, props: true },
         { path: 'product/category', name: 'category', component: Category, props: true },
